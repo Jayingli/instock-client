@@ -1,1 +1,123 @@
 //Warehouse List Styling
+
+.warehouse__list--component {
+    display: flex;
+    flex-direction: column;
+    background-color:antiquewhite;
+    border-radius: 5px;
+    padding: .5rem;
+    justify-content: center;
+    box-sizing: border-box;
+    
+
+    h1 {
+
+    }
+
+    input {
+        border-radius: 22px;
+        margin-bottom: 1rem;
+        padding: .5rem;
+    }
+
+    button {
+        border-radius: 22px;
+        margin-bottom: 1rem;
+        padding: .5rem;
+
+    }
+
+    .warehouse__list {
+        background-color: white;
+
+
+        .warehouse__list--item {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            border-top: 1px solid #5C667E;
+            padding: 0 .5rem 0 .5rem;
+            
+            table {
+                table {
+
+                    th {
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: #5C667E;
+                        width: 50%;
+                        margin: .5rem 0 .25rem 0;
+                    }
+        
+                    p {
+                        font-size: 11px;
+                        width: 50%;
+                        margin: 0 0 .25rem 0;
+        
+                    }
+        
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        width: 50%;
+                        margin: 0 0 .25rem 0;
+        
+                    }
+        
+                    .address {
+                        width: 40%;
+                        margin-right: 1.5rem;
+                    }
+        
+                    .button__wrap {
+                        margin-bottom: 1rem;
+        
+        
+                        img {
+                            font-size: 11px;
+                            line-height: 16px;
+                        }
+                 }
+
+            th {
+                font-size: 11px;
+                line-height: 16px;
+                color: #5C667E;
+                width: 50%;
+                margin: .5rem 0 .25rem 0;
+            }
+
+            p {
+                font-size: 11px;
+                width: 50%;
+                margin: 0 0 .25rem 0;
+
+            }
+
+            a {
+                font-size: 11px;
+                line-height: 16px;
+                width: 50%;
+                margin: 0 0 .25rem 0;
+
+            }
+
+            .address {
+                width: 40%;
+                margin-right: 1.5rem;
+            }
+
+            .button__wrap {
+                margin-bottom: 1rem;
+
+
+                img {
+                    font-size: 11px;
+                    line-height: 16px;
+                }
+    
+            }
+
+        }
+    }
+        }}}
