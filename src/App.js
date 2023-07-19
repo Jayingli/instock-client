@@ -2,13 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import WarehouseList from './components/warehouseList/warehouseList';
 import WarehouseDetails from './components/warehouseDetails/warehouseDetails';
+import Inventory from './Pages/inventory/inventory';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         {/* <WarehouseList /> */}
-        <WarehouseDetails />
+        {/* <WarehouseDetails /> */}
+        <Inventory />
 
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
