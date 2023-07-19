@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import WarehouseList from './components/warehouseList/warehouseList';
+import WarehouseDetails from './components/warehouseDetails/warehouseDetails';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <WarehouseList />
+        {/* <WarehouseList /> */}
+        <WarehouseDetails />
+
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
