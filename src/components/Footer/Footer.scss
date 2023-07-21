@@ -2,5 +2,10 @@
 @use '../../styles/partials/mixins' as *;
 
 .footer {
-
+    &__copyright {
+        display: flex;
+        justify-content: center;
+        color: $secondary-text-color;
+        @include mobile-text-label-h3();
+    }
 }
