@@ -1,0 +1,134 @@
+@use './variables' as *;
+
+/* Responsive Design */
+@mixin tablet {
+    @media (min-width: $tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+        @content;
+    }
+}
+
+/* Mobile Text Styles */
+@mixin mobile-text-pageheader-h1() {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin mobile-text-subheader-h2() {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin mobile-text-label-h3() {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin mobile-text-tableheader-h4() {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin mobile-text-bodylarge-p1() {
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+@mixin mobile-text-bodymedium-p2() {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+@mixin mobile-text-bodysmall-p3() {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Tablet & Desktop Text Styles */
+@mixin tablet-text-pageheader-h1() {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin tablet-text-subheader-h2() {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin tablet-text-label-h3() {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin tablet-text-tableheader-h4() {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+@mixin tablet-text-bodylarge-p1() {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+@mixin tablet-text-bodymedium-p2() {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+@mixin tablet-text-bodysmall-p3() {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Mobile Padding */
+@mixin mobile-padding() {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* Tablet & Desktop Padding */
+@mixin tablet-padding() {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+/* Desktop Margins */
+@mixin desktop-margin() {
+    min-width: 1020px;  
+    max-width: 1020px;
+    margin-right: auto;
+    margin-left: auto;
+}

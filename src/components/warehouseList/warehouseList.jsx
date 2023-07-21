@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Warehouse from "../../Pages/warehouse/warehouse";
 import "../warehouseList/warehouseList.scss";
+import "../../styles/partials/_global.scss";
 
 //Warehouse List Component
 

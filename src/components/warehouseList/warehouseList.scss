@@ -1,3 +1,6 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins';
+
 //Warehouse List Styling
 
 .warehouse__list--component {
@@ -120,4 +123,13 @@
 
         }
     }
-        }}}
+}}
+    // @include tablet {
+
+    // }
+
+    // @include desktop {
+
+    // }
+
+}
