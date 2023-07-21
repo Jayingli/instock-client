@@ -5,7 +5,10 @@ import "../../styles/partials/_global.scss";
 
 //Warehouse List Component
 
-function WarehouseList() {
+function WarehouseList({warehouseData}) {
+  console.log(warehouseData);
+
+
   return (
     <div className="warehouse__list--component">
       <h1>Warehouses</h1>
@@ -15,61 +18,46 @@ function WarehouseList() {
       <div className="warehouse__list">
         {/* Map function to generate cards based on server information */}
 
-        {/* Example card */}
-        <div className="warehouse__list--item">
-          <h4>Warehouse</h4>
-
-          <h4>Contact Name</h4>
-
-          <a href="">Manhattan</a>
-          {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
-
-          <p>Parmin Aujla</p>
-
-          <h4>Address</h4>
-
-          <h4>Contact Information</h4>
-
-          <p className="address">503 Broadway, New York, USA</p>
-
-          <p>+1 (629) 555-0129</p>
-          <a href="mailto: paujla@instock.com">paujla@instock.com</a>
-          <div className="button__wrap">
-            <img src="" alt="Delete Warehouse Button" />
-            <img src="" alt="Edit Warehouse Button" />
-          </div>
-        </div>
 
         <div className="warehouse__list--item">
-          <table>
-            <tr>
-              <th>Warehouse</th>
-              <th>Contact Name</th>
-              <th>Address</th>
-              <th>Contact Information</th>
-              {/* <th>Actions</th> */}
-                {/*To be hidden on mobile*/}
+          {warehouseData.map(warehouse => {
 
-            </tr>
-
-            <tr>
-              <td><a href="">Manhattan</a></td>
-              {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
-
-              <td><p>Parmin Aujla</p></td>
-
-              <td><p className="address">503 Broadway, New York, USA</p></td>
-
-              <td><p>+1 (629) 555-0129</p></td>
-
-              <td><a href="mailto: paujla@instock.com">paujla@instock.com</a></td>
-
-              <td className="button__wrap">
-                <img src="" alt="Delete Warehouse Button" />
-                <img src="" alt="Edit Warehouse Button" />
-              </td>
-            </tr>
-          </table>
+            return(
+              <table>
+                <thead>
+                  <tr>
+                    <th>Warehouse</th>
+                    <th>Contact Name</th>
+                    <th>Address</th>
+                    <th>Contact Information</th>
+                    {/* <th>Actions</th> */}
+                      {/*To be hidden on mobile*/}
+      
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="">{warehouse.warehouse_name}</a></td>
+                    {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
+      
+                    <td><p>{warehouse.contact_name}</p></td>
+      
+                    <td><p className="address">{warehouse.address}</p></td>
+      
+                    <td><p>{warehouse.contact_phone}</p></td>
+      
+                    <td><a href={`mailto: ${warehouse.contact_email}`}>{warehouse.contact_email}</a></td>
+      
+                    <td className="button__wrap">
+                      <img src="" alt="Delete Warehouse Button" />
+                      <img src="" alt="Edit Warehouse Button" />
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+  
+            )
+          })}
         </div>
       </div>
     </div>

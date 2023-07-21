@@ -1,11 +1,15 @@
 import WarehouseList from "../../components/warehouseList/warehouseList";
 import '../warehouse/warehouse.scss';
+import warehouseData from "../../Data/warehouseData.json";
+
 //Warehouse Page
 
 function Warehouse() {
+
+
     return (
         <section id="warehouse__main">
-            <WarehouseList />
+            <WarehouseList warehouseData={warehouseData}/>
         </section>
     )
 }
