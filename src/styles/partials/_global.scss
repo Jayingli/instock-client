@@ -1,0 +1,15 @@
+@use './fonts' as *;
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Titillium Web';
+    margin: 0;
+    padding: 0;
+}
