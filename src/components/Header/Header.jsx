@@ -1,11 +1,40 @@
-import './Header.scss';
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo/InStock-Logo_2x.png";
+import "./Header.scss";
 
 function Header() {
     return (
         <header className="header">
-        
+            {/* The logo image of the application - links to Home Page */}
+            <Link to="/" className="header__home">
+                <img className="header__logo" src={logo} alt="InStock Logo" />
+            </Link>
+
+            {/* Navigation Menu */}
+            <ul className="header__nav">
+                <li>
+                    <NavLink
+                        exact
+                        to="/warehouses"
+                        className="header__nav-item"
+                        activeClassName="header__nav-item--active"
+                    >
+                        Warehouses
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        exact
+                        to="/inventory"
+                        className="header__nav-item"
+                        activeClassName="header__nav-item--active"
+                    >
+                        Inventory
+                    </NavLink>
+                </li>
+            </ul>
         </header>
-    )
-};
+    );
+}
 
 export default Header;

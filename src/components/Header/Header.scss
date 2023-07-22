@@ -2,5 +2,52 @@
 @use '../../styles/partials/mixins' as *;
 
 .header {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    background-color: $secondary-background-hover-color;
+    height: 175px;
+    
+    &__logo {
+        max-width: 120px;
+        max-height: 25px;
+    }
 
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__nav-item {
+        @include mobile-text-tableheader-h4();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 135px;
+        padding: 10px 35px;
+        // margin: 0 10px;
+        
+        color: $secondary-border-color;
+        text-decoration: none;
+        
+
+        background-color: $primary-text-color;
+        border-radius: 30px;
+
+        &:hover {
+            color: $light-color;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        &--active {
+            background-color: $primary-text-color;
+            border-radius: 30px;
+        }
+    }
 }
