@@ -1,5 +1,5 @@
 @use '../../styles/partials/variables';
-@use '../../styles/partials/mixins';
+@use '../../styles/partials/mixins' as *;
 
 //Warehouse List Styling
 
@@ -9,7 +9,7 @@
     background-color:antiquewhite;
     border-radius: 5px;
     padding: .5rem;
-    justify-content: center;
+    // justify-content: center;
     box-sizing: border-box;
     
 
@@ -27,10 +27,11 @@
         border-radius: 22px;
         margin-bottom: 1rem;
         padding: .5rem;
-
+        background-color: variables.$primary-interactive-color;
+        color: variables.$light-color;
     }
 
-    .warehouse__list {
+    .warehouse__list--mobile {
         background-color: white;
 
 
@@ -40,10 +41,11 @@
             flex-wrap: wrap;
             border-top: 1px solid #5C667E;
             padding: 0 .5rem 0 .5rem;
+            text-align: left;
             
             table {
-                table {
 
+                thead {
                     th {
                         font-size: 11px;
                         line-height: 16px;
@@ -51,6 +53,10 @@
                         width: 50%;
                         margin: .5rem 0 .25rem 0;
                     }
+                }
+
+                tbody {
+
         
                     p {
                         font-size: 11px;
@@ -79,48 +85,38 @@
                         img {
                             font-size: 11px;
                             line-height: 16px;
+                            height: 1rem;
+                            width: 1rem;
                         }
                  }
 
-            th {
-                font-size: 11px;
-                line-height: 16px;
-                color: #5C667E;
-                width: 50%;
-                margin: .5rem 0 .25rem 0;
-            }
 
-            p {
-                font-size: 11px;
-                width: 50%;
-                margin: 0 0 .25rem 0;
+        }
+    }
 
-            }
+    .warehouse__list--tabdesc {
+        display: none !important;
 
-            a {
-                font-size: 11px;
-                line-height: 16px;
-                width: 50%;
-                margin: 0 0 .25rem 0;
+        .warehouse__list--item{
+            display: none;
 
-            }
+            table {
+                table-layout: fixed;
+                border-collapse: collapse;
+                display: none !important;
+                thead {
+                    display: none;
 
-            .address {
-                width: 40%;
-                margin-right: 1.5rem;
-            }
-
-            .button__wrap {
-                margin-bottom: 1rem;
-
-
-                img {
-                    font-size: 11px;
-                    line-height: 16px;
+                    th {
+                        display: none;
+                        overflow: hidden;
+                    }
                 }
-    
+                
+                tbody{
+                    display: none;
+                }
             }
-
         }
     }
 }}
