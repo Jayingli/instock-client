@@ -6,7 +6,7 @@
 .warehouse__list--component {
     display: flex;
     flex-direction: column;
-    background-color:antiquewhite;
+    background-color: variables.$light-color;
     border-radius: 5px;
     padding: .5rem;
     // justify-content: center;
