@@ -55,6 +55,8 @@ function WarehouseList({warehouseData}) {
                   <tr>
                     <td className="button__wrap">
                         <img src="" alt="Delete Warehouse Button" />
+                      </td>
+                      <td className="button__wrap">
                         <img src="" alt="Edit Warehouse Button" />
                       </td>
 
