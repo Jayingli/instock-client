@@ -5,34 +5,36 @@ import "./Header.scss";
 function Header() {
     return (
         <header className="header">
-            {/* The logo image of the application - links to Home Page */}
-            <Link to="/" className="header__home">
-                <img className="header__logo" src={logo} alt="InStock Logo" />
-            </Link>
+            <div className="header__container">
+                {/* The logo image of the application - links to Home Page */}
+                <Link to="/" className="header__home">
+                    <img className="header__logo" src={logo} alt="InStock Logo" />
+                </Link>
 
-            {/* Navigation Menu */}
-            <ul className="header__nav">
-                <li>
-                    <NavLink
-                        exact
-                        to="/warehouses"
-                        className="header__nav-item"
-                        activeClassName="header__nav-item--active"
-                    >
-                        Warehouses
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        exact
-                        to="/inventory"
-                        className="header__nav-item"
-                        activeClassName="header__nav-item--active"
-                    >
-                        Inventory
-                    </NavLink>
-                </li>
-            </ul>
+                {/* Navigation Menu */}
+                <ul className="header__nav">
+                    <li>
+                        <NavLink
+                            exact
+                            to="/warehouses"
+                            className="header__nav-item"
+                            activeClassName="header__nav-item--active"
+                        >
+                            Warehouses
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            exact
+                            to="/inventory"
+                            className="header__nav-item"
+                            activeClassName="header__nav-item--active"
+                        >
+                            Inventory
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
         </header>
     );
 }

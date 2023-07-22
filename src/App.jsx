@@ -24,14 +24,17 @@ function App() {
                     {/* Warehouses Page */}
                     {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
 
-                    {/* Individual Warehouse Page */}
+                    {/* Single Warehouse Page */}
                     {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
 
-                    {/* Inventory Page */}
-                    {/* <Route path="/inventory" element={<InventoryPage />} /> */}
+                    {/* Inventories of Individual Warehouse Page*/}
+                    {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
-                    {/* Individual Inventory Page */}
-                    {/* <Route path="/inventory/:id" element={<InventoryPage />} /> */}
+                    {/* Inventory Page */}
+                    {/* <Route path="/inventories" element={<InventoryPage />} /> */}
+
+                    {/* Single Inventory Page */}
+                    {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
 
                     {/* Catch-all to redirect to Home Page */}
                     <Route path="*" element={<Navigate to="/" />} />
