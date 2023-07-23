@@ -18,7 +18,6 @@ function Header() {
                             exact
                             to="/warehouses"
                             className="header__nav-item"
-                            activeClassName="header__nav-item--active"
                         >
                             Warehouses
                         </NavLink>
@@ -26,9 +25,8 @@ function Header() {
                     <li>
                         <NavLink
                             exact
-                            to="/inventory"
+                            to="/inventories"
                             className="header__nav-item"
-                            activeClassName="header__nav-item--active"
                         >
                             Inventory
                         </NavLink>
