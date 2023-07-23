@@ -1,3 +1,5 @@
+import './InventoryPage.scss';
+
 function InventoryPage() {
     // return (
         
