@@ -2,5 +2,33 @@
 @use '../../styles/partials/mixins' as *;
 
 .footer {
+    @include mobile-padding();
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 75px;
 
+    @include tablet {
+        @include tablet-padding();
+        height: 90px;
+    }
+
+    @include desktop {
+        height: 110px;
+    }
+
+    &__copyright {
+        @include mobile-text-bodysmall-p3();
+        color: $secondary-text-color;
+
+        @include tablet {
+            @include tablet-text-bodysmall-p3();
+        }
+
+        @include desktop {
+            @include desktop-margin();
+            display: flex;
+            justify-content: center;
+        }
+    }
 }
