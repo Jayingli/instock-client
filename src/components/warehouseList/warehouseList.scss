@@ -11,27 +11,33 @@
     padding: 1rem;
     // justify-content: center;
     box-sizing: border-box;
-    
 
-    h1 {
-        margin: .5rem .5rem .5rem 0;
-    }
+    .header__wrap {
+        display: flex;
+        flex-direction: column;
 
-    input {
-        border-radius: 22px;
-        margin-bottom: 1rem;
-        padding: .25rem;
-        border-color: variables.$secondary-border-color;
+        h1 {
+            margin: .5rem .5rem .5rem 0;
+        }
 
-    }
+        input {
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            padding: .25rem;
+            border-color: variables.$secondary-border-color;
+            font-size: 12px;
+        }
 
-    button {
-        border-radius: 22px;
-        margin-bottom: 1rem;
-        padding: .4rem;
-        background-color: variables.$primary-interactive-color;
-        color: variables.$light-color;
-        border: none;
+        button {
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            padding: .4rem;
+            background-color: variables.$primary-interactive-color;
+            color: variables.$light-color;
+            border: none;
+            font-size: 12px;
+
+        }
     }
 
     .warehouse__list--mobile {
@@ -44,7 +50,7 @@
             border-top: 1px solid variables.$secondary-border-color;
             padding: .5rem .5rem 0 .5rem;
             text-align: left;
-            
+
             table {
 
                 thead {
@@ -65,72 +71,267 @@
                         p {
                             font-size: 11px;
                             margin: 0 0 .25rem 0;
-            
+
                         }
-            
+
                         a {
                             font-size: 11px;
                             line-height: 16px;
                             margin: 0 0 .25rem 0;
                             justify-self: center;
-            
+
                         }
-            
+
                         .address {
                             margin-right: 1.5rem;
                         }
-            
+
                         .button__wrap {
                             margin-bottom: 1rem;
-            
-            
+
+
                             img {
                                 font-size: 11px;
                                 line-height: 16px;
                                 height: 1rem;
                                 width: 1rem;
                             }
-                     }
-    
+                        }
+
 
                     }
 
 
-        }
-    }
-
-    .warehouse__list--tabdesc {
-        display: none !important;
-
-        .warehouse__list--item{
-            display: none;
-
-            table {
-                table-layout: fixed;
-                border-collapse: collapse;
-                display: none !important;
-                thead {
-                    display: none;
-
-                    th {
-                        display: none;
-                        overflow: hidden;
-                    }
                 }
-                
-                tbody{
-                    display: none;
-                }
+
             }
         }
     }
-}}
-    // @include tablet {
 
+    // .warehouse__list--tabdesc {
+    //     display: none !important;
+
+    //     .warehouse__list--item {
+    //         display: none;
+
+    //         table {
+    //             table-layout: fixed;
+    //             border-collapse: collapse;
+    //             display: none !important;
+
+    //             thead {
+    //                 display: none;
+
+    //                 th {
+    //                     display: none;
+    //                     overflow: hidden;
+    //                 }
+    //             }
+
+    //             tbody {
+    //                 display: none;
+    //             }
+    //         }
+    //     }
     // }
 
-    // @include desktop {
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$light-color;
+        border-radius: 5px;
+        padding: 1rem;
+        box-sizing: border-box;
 
-    // }
+        .header__wrap {
+            display: flex;
+            flex-direction: row;
 
+            h1 {
+                margin: .5rem .5rem .5rem 0;
+                font-size: 50px;
+            }
+
+            input {
+                border-radius: 22px;
+                margin: 2rem 0 0 4rem;
+                padding: .25rem;
+                border-color: variables.$secondary-border-color;
+                font-size: 12px;
+                height: 1.5rem;
+            }
+
+            button {
+                border-radius: 22px;
+                margin: 2rem 0 0 .5rem;
+                padding: .4rem;
+                background-color: variables.$primary-interactive-color;
+                color: variables.$light-color;
+                border: none;
+                font-size: 12px;
+                height: 1.5rem;
+
+
+            }
+
+        }
+
+
+        .warehouse__list--mobile {
+            display: none;
+        }
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+
+            .warehouse__grid--container {
+                display: grid;
+                grid-template-columns: 7rem 7rem 7rem 7rem 7rem;
+                grid-template-rows: 2rem 2rem 2rem 2rem 2rem;
+
+                .grid__header--wrap {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    background-color: variables.$primary-background-color;
+
+                    h4 {
+                        width: 7.25rem;
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 .25rem 0;
+
+                    }
+                }
+
+                // p {
+
+                // }
+
+
+                .warehouse__list--item {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    border-bottom: 1px solid variables.$secondary-border-color;
+
+                    p {
+                        width: 7rem;
+                        font-size: 11px;
+                        // margin: 0 0 .25rem 0;
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        // margin: 0 0 .25rem 0;
+                        justify-self: center;
+
+                    }
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        // height: 1rem;
+                        // width: 1rem;
+                    }
+                }
+            }
+        }
+    }        
+
+    @include desktop {
+        width: 55rem;
+        display: flex;
+        justify-content: center;
+
+        .header__wrap {
+            display: flex;
+            flex-direction: row;
+
+            h1 {
+                margin: .5rem .5rem .5rem 0;
+                font-size: 50px;
+            }
+
+            input {
+                border-radius: 22px;
+                margin: 2rem 0 0 4rem;
+                padding: .25rem;
+                border-color: variables.$secondary-border-color;
+                font-size: 12px;
+                height: 1.5rem;
+            }
+
+            button {
+                border-radius: 22px;
+                margin: 2rem 0 0 .5rem;
+                padding: .4rem;
+                background-color: variables.$primary-interactive-color;
+                color: variables.$light-color;
+                border: none;
+                font-size: 12px;
+                height: 1.5rem;
+
+
+            }
+
+        }
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+
+            .warehouse__grid--container {
+                display: grid;
+                grid-template-columns: 7rem 7rem 7rem 7rem 7rem;
+                grid-template-rows: 2rem 2rem 2rem 2rem 2rem;
+
+                .grid__header--wrap {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    background-color: variables.$primary-background-color;
+
+                    h4 {
+                        width: 7.25rem;
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 .25rem 0;
+
+                    }
+                }
+
+                .warehouse__list--item {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    border-bottom: 1px solid variables.$secondary-border-color;
+
+                    p {
+                        width: 7rem;
+                        font-size: 11px;
+                        // margin: 0 0 .25rem 0;
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        // margin: 0 0 .25rem 0;
+                        justify-self: center;
+
+                    }
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        // height: 1rem;
+                        // width: 1rem;
+                    }
+                }
+            }
+
+
+        }
+
+    }
 }

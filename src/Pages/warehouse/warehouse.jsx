@@ -9,7 +9,9 @@ function Warehouse() {
 
     return (
         <section id="warehouse__main">
-            <WarehouseList warehouseData={warehouseData}/>
+            <div className="warehouse__list">
+                <WarehouseList warehouseData={warehouseData}/>
+            </div>
         </section>
     )
 }

@@ -1,6 +1,12 @@
 //Warehouse Styling
 
 #warehouse__main {
-    padding: 0 1rem 0 1rem;
+    padding: 1rem;
     background-color: #232940;
+    display: flex;
+    justify-content: center;
+
+    .warehouse__list {
+        
+    }
 }
