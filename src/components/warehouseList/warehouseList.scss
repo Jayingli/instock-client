@@ -1,123 +1,301 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
 //Warehouse List Styling
 
 .warehouse__list--component {
     display: flex;
     flex-direction: column;
-    background-color:antiquewhite;
+    background-color: variables.$light-color;
     border-radius: 5px;
-    padding: .5rem;
-    justify-content: center;
+    padding: 1rem;
     box-sizing: border-box;
-    
 
-    h1 {
+    .header__wrap {
+        display: flex;
+        flex-direction: column;
 
+        h1 {
+            margin: .5rem .5rem .5rem 0;
+        }
+
+        input {
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            padding: .25rem;
+            border-color: variables.$secondary-border-color;
+            font-size: 12px;
+        }
+
+        button {
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            padding: .4rem;
+            background-color: variables.$primary-interactive-color;
+            color: variables.$light-color;
+            border: none;
+            font-size: 12px;
+
+        }
     }
 
-    input {
-        border-radius: 22px;
-        margin-bottom: 1rem;
-        padding: .5rem;
-    }
+    .warehouse__list--mobile {
+        background-color: variables.$light-color;
 
-    button {
-        border-radius: 22px;
-        margin-bottom: 1rem;
-        padding: .5rem;
+        .warehouse__grid--mobile {
+            display: grid;
+            grid-template-columns: 6rem 6rem;
+            grid-template-rows: 3rem 3rem 3rem;
 
-    }
+            .warehouse__list--item {
+                display: flex;
+                flex-direction: column;
+                border-top: 1px solid variables.$secondary-border-color;
+                padding: .5rem .5rem 0 .5rem;
+                text-align: left;
+                grid-column: 1 / span 2;
 
-    .warehouse__list {
-        background-color: white;
+                .button__wrap {
+                    margin-bottom: 1rem;
+                    display: flex;
 
-
-        .warehouse__list--item {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            border-top: 1px solid #5C667E;
-            padding: 0 .5rem 0 .5rem;
-            
-            table {
-                table {
-
-                    th {
+                    img {
                         font-size: 11px;
                         line-height: 16px;
-                        color: #5C667E;
-                        width: 50%;
-                        margin: .5rem 0 .25rem 0;
+                        height: 1rem;
+                        width: 1rem;
                     }
-        
+    
+                }
+
+                .warehouse__info--wrap {
+                    display:flex;
+                    flex-direction: row;
+
+
+                    h4 {
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 .25rem 0;
+                        vertical-align: top;
+
+                    }
+
+                    // td {
+
                     p {
                         font-size: 11px;
-                        width: 50%;
                         margin: 0 0 .25rem 0;
-        
+                        vertical-align: top;
+
+
                     }
-        
+
                     a {
                         font-size: 11px;
                         line-height: 16px;
-                        width: 50%;
                         margin: 0 0 .25rem 0;
-        
+                        vertical-align: top;
+
                     }
-        
+
                     .address {
-                        width: 40%;
                         margin-right: 1.5rem;
                     }
-        
-                    .button__wrap {
-                        margin-bottom: 1rem;
-        
-        
-                        img {
-                            font-size: 11px;
-                            line-height: 16px;
-                        }
-                 }
 
-            th {
-                font-size: 11px;
-                line-height: 16px;
-                color: #5C667E;
-                width: 50%;
-                margin: .5rem 0 .25rem 0;
-            }
-
-            p {
-                font-size: 11px;
-                width: 50%;
-                margin: 0 0 .25rem 0;
-
-            }
-
-            a {
-                font-size: 11px;
-                line-height: 16px;
-                width: 50%;
-                margin: 0 0 .25rem 0;
-
-            }
-
-            .address {
-                width: 40%;
-                margin-right: 1.5rem;
-            }
-
-            .button__wrap {
-                margin-bottom: 1rem;
-
-
-                img {
-                    font-size: 11px;
-                    line-height: 16px;
                 }
-    
             }
 
         }
     }
-        }}}
+    
+
+
+    .warehouse__list--tabdesc {
+        display: none;
+    }
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$light-color;
+        padding: 1rem;
+
+        .header__wrap {
+            display: flex;
+            flex-direction: row;
+
+            h1 {
+                margin: .5rem .5rem .5rem 0;
+                font-size: 50px;
+            }
+
+            input {
+                margin: 2rem 0 0 4rem;
+                padding: .25rem;
+                font-size: 12px;
+                height: 1.5rem;
+            }
+
+            button {
+                margin: 2rem 0 0 .5rem;
+                padding: .4rem;
+                font-size: 12px;
+                height: 1.5rem;
+
+
+            }
+
+        }
+
+
+        .warehouse__list--mobile {
+            display: none;
+        }
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+            display: flex;
+
+            .warehouse__grid--container {
+                display: grid;
+                grid-template-columns: 7rem 7rem 7rem 7rem 7rem;
+                grid-template-rows: 2rem 2rem 2rem 2rem 2rem;
+
+                .grid__header--wrap {
+                    display: flex;
+                    padding-left: 1rem;
+                    grid-column: 1 / span 5;
+                    background-color: variables.$primary-background-color;
+
+                    h4 {
+                        width: 7.25rem;
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 0 0;
+
+                    }
+                }
+
+                .warehouse__list--item {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    border-bottom: 1px solid variables.$secondary-border-color;
+
+                    p {
+                        width: 7rem;
+                        font-size: 11px;
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        justify-self: center;
+
+                    }
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include desktop {
+        width: 52rem;
+        display: flex;
+        justify-content: center;
+
+        .header__wrap {
+            display: flex;
+            flex-direction: row;
+
+            h1 {
+                margin: .5rem;
+                font-size: 50px;
+            }
+
+            input {
+                margin: 2rem 0 0 20rem;
+                padding: .25rem;
+                font-size: 12px;
+                height: 1.5rem;
+            }
+
+            button {
+                margin: 2rem 0 0 .5rem;
+                padding: .4rem;
+                font-size: 12px;
+                height: 1.5rem;
+            }
+        }
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+
+            .warehouse__grid--container {
+                margin-left: 1rem;
+                display: grid;
+                grid-template-columns: 8rem 8rem 8rem 8rem 5rem;
+                grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
+
+                .grid__header--wrap {
+                    display: flex;
+                    padding: 0 1rem 0 1rem;
+                    grid-column: 1 / span 5;
+                    background-color: variables.$primary-background-color;
+
+                    h4 {
+                        width: 7.25rem;
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 0 0;
+
+                    }
+                }
+
+                .warehouse__list--item {
+                    display: flex;
+                    padding: 0 1rem 0 1rem;
+                    grid-column: 1 / span 5;
+                    border-bottom: 1px solid variables.$secondary-border-color;
+
+                    p {
+                        width: 8rem;
+                        font-size: 11px;
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        margin: 0.5rem 0 .25rem 0;
+                        justify-self: center;
+                        width: 8rem;
+                    }
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        height: 1rem;
+                        width: 1rem;
+                    }
+
+                    .button__wrap {
+                        width: 8rem;
+
+                    }
+                }
+            }
+
+
+        }
+
+    }
+}
