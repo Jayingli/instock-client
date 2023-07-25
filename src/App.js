@@ -3,7 +3,7 @@ import './App.css';
 import WarehouseList from './components/warehouseList/warehouseList';
 import WarehouseDetails from './components/warehouseDetails/warehouseDetails';
 import Inventory from './Pages/inventory/inventory';
-
+ 
 function App() {
   return (
     <div className="App">
