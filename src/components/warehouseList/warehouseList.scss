@@ -42,72 +42,75 @@
     .warehouse__list--mobile {
         background-color: variables.$light-color;
 
+        .warehouse__grid--mobile {
+            display: grid;
+            grid-template-columns: 6rem 6rem;
+            grid-template-rows: 3rem 3rem 3rem;
 
-        .warehouse__list--item {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid variables.$secondary-border-color;
-            padding: .5rem .5rem 0 .5rem;
-            text-align: left;
+            .warehouse__list--item {
+                display: flex;
+                flex-direction: column;
+                border-top: 1px solid variables.$secondary-border-color;
+                padding: .5rem .5rem 0 .5rem;
+                text-align: left;
+                grid-column: 1 / span 2;
 
-            img {
-                font-size: 11px;
-                line-height: 16px;
-                height: 1rem;
-                width: 1rem;
-            }
+                .button__wrap {
+                    margin-bottom: 1rem;
+                    display: flex;
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        height: 1rem;
+                        width: 1rem;
+                    }
+    
+                }
+
+                .warehouse__info--wrap {
+                    display:flex;
+                    flex-direction: row;
 
 
-            table {
-
-                thead {
-                    th {
+                    h4 {
                         font-size: 11px;
                         line-height: 16px;
                         color: variables.$secondary-text-color;
-                        width: 50%;
                         margin: .5rem 0 .25rem 0;
-                    }
-                }
-
-                tbody {
-
-                    td {
                         vertical-align: top;
 
-                        p {
-                            font-size: 11px;
-                            margin: 0 0 .25rem 0;
+                    }
 
-                        }
+                    // td {
 
-                        a {
-                            font-size: 11px;
-                            line-height: 16px;
-                            margin: 0 0 .25rem 0;
-                            justify-self: center;
-
-                        }
-
-                        .address {
-                            margin-right: 1.5rem;
-                        }
-
-                        .button__wrap {
-                            margin-bottom: 1rem;
-
-
-                        }
+                    p {
+                        font-size: 11px;
+                        margin: 0 0 .25rem 0;
+                        vertical-align: top;
 
 
                     }
 
+                    a {
+                        font-size: 11px;
+                        line-height: 16px;
+                        margin: 0 0 .25rem 0;
+                        vertical-align: top;
+
+                    }
+
+                    .address {
+                        margin-right: 1.5rem;
+                    }
 
                 }
-
             }
+
         }
     }
+    
+
 
     .warehouse__list--tabdesc {
         display: none;
@@ -201,7 +204,7 @@
                 }
             }
         }
-    }        
+    }
 
     @include desktop {
         width: 52rem;

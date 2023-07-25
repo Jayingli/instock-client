@@ -6,31 +6,29 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-
 //Warehouse List Component
 
 function WarehouseList({ warehouseData }) {
   console.log(warehouseData);
 
-  // //State
-  // const [listData, setListData] = useState(warehouseData);
+  //State
+  const [listData, setListData] = useState(warehouseData);
 
-  // useEffect(() => {
-  //   //GET array of all warehouses
-  //   const URL = "http://localhost:5050/api/"
+  useEffect(() => {
+    //GET array of all warehouses
+    const URL = "http://localhost:5050/api/";
 
-  //   axios
-  //   .get(URL+ "warehouses")
+    axios
+      .get(URL + "warehouses")
 
-  //     .then ((res) => {
-  //       //Store warehouse array in warehouseData
-  //       const warehouseDataRes = res.data;
+      .then((res) => {
+        //Store warehouse array in warehouseData
+        const warehouseDataRes = res.data;
 
-  //       //Set listData to the array of warehouses
-  //       setListData(warehouseData);
-  //     })
-  
-  // })
+        //Set listData to the array of warehouses
+        setListData(warehouseData);
+      });
+  });
 
   return (
     <div className="warehouse__list--component">
@@ -42,59 +40,41 @@ function WarehouseList({ warehouseData }) {
 
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
-        <div className="warehouse__list--item">
-          {warehouseData.map((warehouse) => {
-            return (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Warehouse</th>
-                    <th>Contact Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <a href="">{warehouse.warehouse_name}</a>
-                    </td>
+        {warehouseData.map((warehouse) => {
+          return (
+            <div className="warehouse__grid--mobile">
+              <div className="warehouse__list--item">
+                <div className="warehouse__info--wrap">
+                  <div>
+                    <h4>Warehouse</h4>
+                    <a href="">{warehouse.warehouse_name}</a>
                     {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
 
-                    <td>
-                      <p>{warehouse.contact_name}</p>
-                    </td>
-                  </tr>
-                </tbody>
-                <thead>
-                  <tr>
-                    <th>Address</th>
-                    <th>Contact Information</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p className="address">{warehouse.address}</p>
-                    </td>
-                    <td>
-                      <p>{warehouse.contact_phone}</p>
-                      <a href={`mailto: ${warehouse.contact_email}`}>
-                        {warehouse.contact_email}
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="button__wrap">
-                      <img src="#" alt="Delete Warehouse Button" />
-                    </td>
-                    <td className="button__wrap">
-                      <img src="#" alt="Edit Warehouse Button" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          })}
-        </div>
+                    <h4>Address</h4>
+                    <p className="address">{warehouse.address}</p>
+                  </div>
+
+                  <div>
+                    <h4>Contact Name</h4>
+                    <p>{warehouse.contact_name}</p>
+
+                    <h4>Contact Information</h4>
+                    <p>{warehouse.contact_phone}</p>
+
+                    <a href={`mailto: ${warehouse.contact_email}`}>
+                      {warehouse.contact_email}
+                    </a>
+
+                  </div>
+                </div>
+                <div className="button__wrap">
+                  <img src="#" alt="Delete Warehouse Button" />
+                  <img src="#" alt="Edit Warehouse Button" />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Tablet/Desktop view setup */}
