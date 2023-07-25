@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 // import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 import Warehouse from './Pages/warehouse/warehouse';
-
+import Inventory from './Pages/inventory/inventory';
 /*
 App.jsx
 - Represents the main component of the application
@@ -25,7 +25,7 @@ function App() {
                     <Route path="/" element={<Warehouse />} />
 
                     {/* Warehouses Page */}
-                    <Route path="/warehouses" element={<WarehousesPage />} />
+                    {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
 
                     {/* Single Warehouse Page */}
                     {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
@@ -34,7 +34,7 @@ function App() {
                     {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
                     {/* Inventory Page */}
-                    {/* <Route path="/inventories" element={<InventoryPage />} /> */}
+                    <Route path="/inventories" element={<Inventory />} />
 
                     {/* Single Inventory Page */}
                     {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
