@@ -41,14 +41,15 @@ function WarehouseList() {
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
         {listData.map((warehouse) => {
+
+
           return (
             <div className="warehouse__grid--mobile">
               <div className="warehouse__list--item">
                 <div className="warehouse__info--wrap">
                   <div>
                     <h4>Warehouse</h4>
-                    <a href="">{warehouse.warehouse_name}</a>
-                    {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
+                    <Link to={`/warehouses/${warehouse.id}`}>{warehouse.warehouse_name}</Link>
 
                     <h4>Address</h4>
                     <p className="address">{warehouse.address}</p>
