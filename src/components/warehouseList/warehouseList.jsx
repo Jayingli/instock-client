@@ -8,11 +8,11 @@ import { useState } from "react";
 
 //Warehouse List Component
 
-function WarehouseList({ warehouseData }) {
-  console.log(warehouseData);
+function WarehouseList() {
+  // console.log(warehouseData);
 
   //State
-  const [listData, setListData] = useState(warehouseData);
+  const [listData, setListData] = useState([]);
 
   useEffect(() => {
     //GET array of all warehouses
@@ -23,12 +23,12 @@ function WarehouseList({ warehouseData }) {
 
       .then((res) => {
         //Store warehouse array in warehouseData
-        const warehouseDataRes = res.data;
+        const warehouseData = res.data;
 
         //Set listData to the array of warehouses
         setListData(warehouseData);
       });
-  });
+  }, []);
 
   return (
     <div className="warehouse__list--component">
@@ -40,7 +40,7 @@ function WarehouseList({ warehouseData }) {
 
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
-        {warehouseData.map((warehouse) => {
+        {listData.map((warehouse) => {
           return (
             <div className="warehouse__grid--mobile">
               <div className="warehouse__list--item">
@@ -89,7 +89,7 @@ function WarehouseList({ warehouseData }) {
           </div>
 
           {/* Map function to generate cards based on server information */}
-          {warehouseData.map((warehouse) => {
+          {listData.map((warehouse) => {
             return (
               <div className="warehouse__list--item">
                 <Link to="/">{warehouse.warehouse_name}</Link>
