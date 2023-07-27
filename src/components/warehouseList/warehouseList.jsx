@@ -5,6 +5,10 @@ import "../../styles/partials/_global.scss";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import searchIcon from '../../assets/icons/search-24px.svg';
+import forwardArrow from '../../assets/icons/chevron_right-24px.svg';
+import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
+import editIcon from '../../assets/icons/edit-24px.svg';
 
 //Warehouse List Component
 
@@ -34,7 +38,10 @@ function WarehouseList() {
     <div className="warehouse__list--component">
       <div className="header__wrap">
         <h1>Warehouses</h1>
-        <input type="text" name="search" placeholder="Search..."></input>
+        <div className="input__wrap">
+          <input type="search" name="search" placeholder="Search..."></input>
+          <button className="search"><img src={searchIcon} alt="" /></button>
+        </div>
         <button>+Add New Warehouse</button>
       </div>
 
@@ -49,7 +56,7 @@ function WarehouseList() {
                 <div className="warehouse__info--wrap">
                   <div>
                     <h4>Warehouse</h4>
-                    <Link to={`/warehouses/${warehouse.id}`}>{warehouse.warehouse_name}</Link>
+                    <Link to="/"><p>{warehouse.warehouse_name}<img src={forwardArrow} alt="forward arrow" /></p></Link>
 
                     <h4>Address</h4>
                     <p className="address">{warehouse.address}</p>
@@ -69,8 +76,8 @@ function WarehouseList() {
                   </div>
                 </div>
                 <div className="button__wrap">
-                  <img src="#" alt="Delete Warehouse Button" />
-                  <img src="#" alt="Edit Warehouse Button" />
+                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <img src={editIcon} alt="Edit Warehouse Button" />
                 </div>
               </div>
             </div>
@@ -95,7 +102,7 @@ function WarehouseList() {
               <div className="warehouse__list--item">
                 
                 <div>
-                  <Link to="/"><p>{warehouse.warehouse_name}</p></Link>
+                  <Link to="/"><p>{warehouse.warehouse_name}<img src={forwardArrow} alt="forward arrow" /></p></Link>
                 </div>
                 
                 <div>
@@ -113,8 +120,8 @@ function WarehouseList() {
                 </div>
 
                 <div className="button__wrap">
-                  <img src="" alt="Delete Warehouse Button" />
-                  <img src="" alt="Edit Warehouse Button" />
+                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <img src={editIcon} alt="Edit Warehouse Button" />
                 </div>
               </div>
             );
