@@ -34,7 +34,7 @@ function WarehouseDetails() {
     <div className="warehouse__details">
       {details.map((warehouse) => {
 
-        if (warehouse.id == ID.id){
+        // if (warehouse.id == ID.id){
             return (
                 <div>
                 <div className="title__wrap">
@@ -62,7 +62,7 @@ function WarehouseDetails() {
                     </div>
                 </div>
                 </div>
-            )}
+            )
       })}
     </div>
   );

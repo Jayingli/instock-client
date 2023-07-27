@@ -93,17 +93,24 @@ function WarehouseList() {
           {listData.map((warehouse) => {
             return (
               <div className="warehouse__list--item">
-                <Link to="/">{warehouse.warehouse_name}</Link>
-                {/* <Link to={Warehouse}></Link>  replace Warehouse with Warehouse Inventory page when built */}
+                
+                <div>
+                  <Link to="/"><p>{warehouse.warehouse_name}</p></Link>
+                </div>
+                
+                <div>
+                  <p>{warehouse.contact_name}</p>
+                </div>
 
-                <p>{warehouse.contact_name}</p>
+                <div>
+                  <p className="address">{warehouse.address}</p>
+                </div>
 
-                <p className="address">{warehouse.address}</p>
-
-                <p>{warehouse.contact_phone}</p>
-                <a href={`mailto: ${warehouse.contact_email}`}>
-                  {warehouse.contact_email}
-                </a>
+                <div>
+                  <p className="contact__phone">{warehouse.contact_phone}</p>
+                  <a href={`mailto: ${warehouse.contact_email}`}>
+                    {warehouse.contact_email}</a>
+                </div>
 
                 <div className="button__wrap">
                   <img src="" alt="Delete Warehouse Button" />
