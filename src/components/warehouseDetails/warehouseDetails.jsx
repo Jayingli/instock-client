@@ -64,6 +64,8 @@ function WarehouseDetails() {
                 </div>
             )
       })}
+
+      
     </div>
   );
 }
