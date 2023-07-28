@@ -5,13 +5,11 @@ import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 
-import Button from './components/Button/Button';
-
 /*
-App.jsx
-- Represents the main component of the application
-- Contains header, footer and defines routes for different pages
-*/
+ * App.jsx
+ * - Represents the main component of the application
+ * - Contains header, footer and defines routes for different pages
+ */
 
 function App() {
     return (
@@ -19,9 +17,6 @@ function App() {
             <div className="App">
                 {/* Header Component */}
                 <Header />
-                <Button variant="primary" text="+ Add item"/>
-                <Button variant="secondary" text="Cancel"/>
-                <Button variant="delete" text="Delete"/>
 
                 {/* Define routes for different pages */}
                 <Routes>
