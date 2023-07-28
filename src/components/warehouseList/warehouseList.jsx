@@ -39,10 +39,15 @@ function WarehouseList() {
     <div className="warehouse__list--component">
       <div className="header__wrap">
         <h1>Warehouses</h1>
+
         <div className="input__wrap">
           <input type="search" name="search" placeholder="Search..."></input>
-          <button className="search"><img src={searchIcon} alt="" /></button>
+
+          <button className="search">
+            <img src={searchIcon} alt="" className="search--icon" />
+          </button>
         </div>
+
         <button>+ Add New Warehouse</button>
       </div>
 
