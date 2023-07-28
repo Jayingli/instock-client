@@ -6,10 +6,10 @@ import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 
 /*
-App.jsx
-- Represents the main component of the application
-- Contains header, footer and defines routes for different pages
-*/
+ * App.jsx
+ * - Represents the main component of the application
+ * - Contains header, footer and defines routes for different pages
+ */
 
 function App() {
     return (
