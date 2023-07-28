@@ -64,7 +64,8 @@ function InventoryList() {
                       <p>{item.quantity}</p>
 
                       <h4>Warehouse</h4>
-                      <p>Manhattan</p>
+                      <p>{item.warehouse_name}</p>
+
                       {/* Needs dynamic var once server is hooked up */}
                     </div>
                   </div>
@@ -112,7 +113,7 @@ function InventoryList() {
                   </div>
 
                   <div>
-                    <p>Manhattan</p>
+                    <p>{item.warehouse_name}</p>
                   </div>
 
                   <div className="button__wrap">
