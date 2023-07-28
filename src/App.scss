@@ -3,7 +3,7 @@
 @use './styles/partials/mixins' as *;
 
 .App {
-    background-color: $secondary-background-hover-color;
+    // background-color: $secondary-background-hover-color;
     height: 175px;
 
     @include tablet {
