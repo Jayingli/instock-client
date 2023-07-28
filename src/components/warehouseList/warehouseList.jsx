@@ -60,6 +60,8 @@ function WarehouseList() {
 
                     <h4>Address</h4>
                     <p className="address">{warehouse.address}</p>
+                    <p>{warehouse.city}, {warehouse.country}</p>
+
                   </div>
 
                   <div>
@@ -111,6 +113,7 @@ function WarehouseList() {
 
                 <div>
                   <p className="address">{warehouse.address}</p>
+                  <p>{warehouse.city}, {warehouse.country}</p>
                 </div>
 
                 <div>
