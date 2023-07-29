@@ -12,35 +12,6 @@
     background-color: variables.$light-color;
     box-sizing: border-box;
 
-    .search__wrap {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        border-bottom: 1px solid variables.$secondary-border-color;
-
-        h1 {
-            margin: .5rem .5rem .5rem 0;
-        }
-
-        input {
-            border-radius: 22px;
-            margin-bottom: .5rem;
-            padding: .25rem;
-            border-color: variables.$secondary-border-color;
-            font-size: 12px;
-            }
-
-        button {
-            border-radius: 22px;
-            // margin-bottom: 1rem;
-            padding: .4rem;
-            background-color: variables.$primary-interactive-color;
-            color: variables.$light-color;
-            border: none;
-            font-size: 12px;
-            }
-    }
-
     .inventory__list--mobile {
         display: flex;
         flex-direction: column;
@@ -52,7 +23,7 @@
             display: grid;
             grid-template-columns: 7rem 7rem;
             grid-template-rows: 3rem 3rem 3rem;
-            border-bottom: 1px solid variables.$secondary-border-color;
+            border-top: 1px solid variables.$secondary-border-color;
             
             .inventory__grid--item {
                 display: flex;
@@ -63,15 +34,28 @@
                 
                     .item__info--wrap {
                         display: flex;
-                        flex-direction: column;
+                        flex-direction: row;
+                        justify-content: space-between;
 
+                        div {
+                            width: 50%;
 
+    
+                            // a {
+                            //     margin-bottom: 1rem;
+                            //     align-self: center;
+    
+                            // }
+                            }
+
+    
                         h4 {
                             font-size: 11px;
                             line-height: 16px;
                             color: variables.$secondary-text-color;
                             margin: .5rem 0 .25rem 0;
                             vertical-align: top;
+                            text-transform: uppercase;
 
                         }
             
@@ -79,13 +63,27 @@
                             font-size: 11px;
                             margin: 0 0 .25rem 0;
                             vertical-align: top;
+
+    
                         }
 
                         a {
                             font-size: 11px;
+                            margin: 0 0 2rem 0;
                             vertical-align: top;
-                            margin: 0 0 .25rem 0;
+                            text-decoration: none;
+                            color: variables.$primary-interactive-color;
+                            font-weight: bold;
 
+                            p {
+
+                            
+                                .img {
+                                    margin-bottom: 4rem;
+                                }
+                            }
+
+    
                         }
                     }
 
@@ -115,17 +113,22 @@
     }
 
     @include tablet {
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$light-color;
+        padding: 0 .25rem;
+
         .inventory__list--mobile{
             display: none;
         }
 
         .inventory__list--tabdesc{
-            display: flex;
+            display: grid;
 
             .inventory__grid--container {
                 display: grid;
-                grid-template-columns: 5rem 5rem 5rem 5rem 5rem 5rem;
-                // grid-template-rows: 2rem 2rem 2rem 2rem 2rem 2rem;
+                // grid-template-columns: 5rem 5rem 5rem 5rem 5rem 5rem;
+                grid-template-rows: 2rem 4rem 4rem 4rem 4rem 4rem;
         
                     .grid__header--wrap {
                         display: flex;

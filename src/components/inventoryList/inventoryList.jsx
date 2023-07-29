@@ -5,6 +5,8 @@ import axios from "axios";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import SearchHeader from "../searchHeader/searchHeader";
+import { Link } from "react-router-dom";
+import forwardArrow from '../../assets/icons/chevron_right-24px.svg';
 
 //Inventory Page
 
@@ -43,7 +45,7 @@ function InventoryList() {
                   <div className="item__info--wrap">
                     <div>
                       <h4>Inventory Item</h4>
-                      <a href="#">{item.item_name}</a>
+                      <Link to={`/inventories/${item.id}`}><p>{item.item_name}<img src={forwardArrow} alt="forward arrow" /></p></Link>
 
                       <h4>Category</h4>
                       <p>{item.category}</p>

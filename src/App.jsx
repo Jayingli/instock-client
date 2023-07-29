@@ -38,7 +38,7 @@ function App() {
                     <Route path="/inventories" element={<Inventory />} />
 
                     {/* Single Inventory Page */}
-                    {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
+                    <Route path="/inventories/:id" element={<Inventory />} />
 
                     {/* Catch-all to redirect to Home Page */}
                     <Route path="*" element={<Navigate to="/" />} />
