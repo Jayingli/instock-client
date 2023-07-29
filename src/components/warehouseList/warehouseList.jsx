@@ -5,11 +5,11 @@ import "../../styles/partials/_global.scss";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import searchIcon from '../../assets/icons/search-24px.svg';
-import forwardArrow from '../../assets/icons/chevron_right-24px.svg';
-import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
-import editIcon from '../../assets/icons/edit-24px.svg';
-import sortIcon from '../../assets/icons/sort-24px.svg';
+import searchIcon from "../../assets/icons/search-24px.svg";
+import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
+import sortIcon from "../../assets/icons/sort-24px.svg";
 
 //Warehouse List Component
 
@@ -54,8 +54,6 @@ function WarehouseList() {
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
         {listData.map((warehouse) => {
-
-
           return (
             <div className="warehouse__grid--mobile">
               <div className="warehouse__list--item">
@@ -63,13 +61,19 @@ function WarehouseList() {
                   <div>
                     <h4>Warehouse</h4>
                     <div className="warehouse__name">
-                      <Link to={`/warehouses/${warehouse.id}`}><p>{warehouse.warehouse_name}<img src={forwardArrow} alt="forward arrow" /></p></Link>
+                      <Link to={`/warehouses/${warehouse.id}`}>
+                        <p>
+                          {warehouse.warehouse_name}
+                          <img src={forwardArrow} alt="forward arrow" />
+                        </p>
+                      </Link>
                     </div>
-                    
+
                     <h4>Address</h4>
                     <p className="address">{warehouse.address}</p>
-                    <p>{warehouse.city}, {warehouse.country}</p>
-
+                    <p>
+                      {warehouse.city}, {warehouse.country}
+                    </p>
                   </div>
 
                   <div>
@@ -82,7 +86,6 @@ function WarehouseList() {
                     <a href={`mailto: ${warehouse.contact_email}`}>
                       {warehouse.contact_email}
                     </a>
-
                   </div>
                 </div>
                 <div className="button__wrap">
@@ -128,14 +131,24 @@ function WarehouseList() {
           {listData.map((warehouse) => {
             return (
               <div className="warehouse__list--item">
-                
                 <div>
-                <Link to={`/warehouses/${warehouse.id}`}><p>{warehouse.warehouse_name}<img className="forward__arrow"src={forwardArrow} alt="forward arrow" /></p></Link>
+                  <Link to={`/warehouses/${warehouse.id}`}>
+                    <p>
+                      {warehouse.warehouse_name}
+                      <img
+                        className="forward__arrow"
+                        src={forwardArrow}
+                        alt="forward arrow"
+                      />
+                    </p>
+                  </Link>
                 </div>
 
                 <div>
                   <p className="address">{warehouse.address}</p>
-                  <p>{warehouse.city}, {warehouse.country}</p>
+                  <p>
+                    {warehouse.city}, {warehouse.country}
+                  </p>
                 </div>
 
                 <div>
@@ -145,7 +158,8 @@ function WarehouseList() {
                 <div>
                   <p className="contact__phone">{warehouse.contact_phone}</p>
                   <a href={`mailto: ${warehouse.contact_email}`}>
-                    {warehouse.contact_email}</a>
+                    {warehouse.contact_email}
+                  </a>
                 </div>
 
                 <div className="button__wrap">
