@@ -39,13 +39,6 @@
 
                     div {
                         width: 50%;
-
-
-                        // a {
-                        //     margin-bottom: 1rem;
-                        //     align-self: center;
-
-                        // }
                     }
 
 
@@ -117,6 +110,7 @@
         flex-direction: column;
         background-color: variables.$light-color;
         padding: 0 .25rem;
+        width: 30rem;
 
         .inventory__list--mobile {
             display: none;
@@ -126,6 +120,7 @@
             background-color: variables.$light-color;
             display: grid;
 
+
             .inventory__grid--container {
                 display: grid;
                 // width: auto;
@@ -133,6 +128,8 @@
                 grid-template-rows: 2rem 4rem 4rem 4rem 4rem 4rem;
 
                 .grid__header--wrap {
+                    width: 30rem;
+
                     display: flex;
                     padding-left: 1rem;
                     grid-column: 1 / span 6;
@@ -160,6 +157,7 @@
                 }
 
                 .inventory__grid--item {
+                    width: 30rem;
                     display: flex;
                     // flex-direction: row;
                     grid-column: 1 / span 6;
