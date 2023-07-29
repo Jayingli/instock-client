@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react";
 import '../inventoryList/inventoryList.scss';
 import axios from "axios";
-import searchIcon from "../../assets/icons/search-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
-
+import SearchHeader from "../searchHeader/searchHeader";
 
 //Inventory Page
 
@@ -28,19 +27,13 @@ function InventoryList() {
         //Set listData to the array of warehouses
         setListData(inventoryData);
       });
-  });
+  }, []);
 
   return (
     <section className="inventory__list">
-      <div className="search__wrap">
-        <h1>Inventory</h1>
-        <div className="input__wrap">
-          <input type="search" name="search" placeholder="Search..."></input>
-          <button className="search"><img src={searchIcon} alt="" /></button>
-        </div>
-        <button>+Add New Item</button>
-      </div>
-
+      <SearchHeader 
+        obj='item'
+        page='Inventory'/>
       <div className="inventory__list--mobile">
           {listData.map((item) => {
             return (

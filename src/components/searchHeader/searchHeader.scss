@@ -1,0 +1,149 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables';
+
+//SearchHeader Styling
+
+.header__wrap {
+    display: flex;
+    flex-direction: column;
+    // border-bottom: 1px solid variables.$secondary-border-color;
+    padding: .5rem 1rem 0 1rem;
+
+    h1 {
+        margin: .5rem .5rem .5rem 0;
+    }
+    .input__wrap {
+        position:relative;
+
+        input {
+            display: block;
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            padding: .25rem 1rem;
+            font-size: 12px;
+            width: 100%;
+            height: 1.75rem;
+            outline: none;
+            border: 1px solid variables.$secondary-border-color;
+        }
+
+        button {
+          position: absolute;
+          background-color: white;
+          top: 0;
+          right: 1.5rem;
+          width: 0;
+          padding: 0;
+
+          .search--icon {
+
+          }
+
+        }
+
+        }
+
+    button {
+        border-radius: 22px;
+        margin-bottom: 1rem;
+        height: 1.75rem;
+        background-color: variables.$primary-interactive-color;
+        color: variables.$light-color;
+        border: none;
+        font-size: 12px;
+
+    }
+
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: top;
+
+        .input__wrap {
+
+            input {
+                display: block;
+                margin: 2rem 0 1rem 4rem;
+                padding: .25rem 1rem;
+                font-size: 12px;
+                width: 9rem;
+                height: 1.75rem;
+                outline: none;
+                border: 1px solid variables.$secondary-border-color;
+            }
+
+            button {
+                background-color: white;
+
+            }
+
+            }
+
+        h1 {
+            margin: .5rem .5rem .5rem 0;
+            font-size: 40px;
+        }
+
+        button {
+            margin: 2rem 0 0 .5rem;
+            padding: .4rem;
+            font-size: 12px;
+            height: 1.75rem;
+            width: 8rem;
+
+
+        }
+
+    }
+
+    @include desktop {
+        display: flex;
+        // flex-direction: row;
+        align-items: center;
+        margin: 2rem 0 1rem 0;
+        padding: 0 1.5rem;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 50px;
+        }
+
+        .input__wrap {
+
+            input {
+                display: block;
+                margin: 0 0 0 11rem;
+                padding: .25rem 1rem;
+                font-size: 12px;
+                width: 13rem;
+                height: 2rem;
+                outline: none;
+                border: 1px solid variables.$secondary-border-color;
+            }
+
+            button {
+              position: absolute;
+              background-color: white;
+              top: .4rem;
+              height:.5rem;
+              width: .5rem;
+
+            }
+
+            }
+
+
+        button {
+            margin: 0 0 0 .5rem;
+            padding: 0 1rem;
+            font-size: 12px;
+            height: 2rem;
+            width: auto;
+        }
+    }
+
+
+
+}
+
