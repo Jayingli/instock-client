@@ -262,6 +262,12 @@
                             height: 1rem;
                         }
                     }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 3rem;
+                        }
+                    }
                 }
 
                 .warehouse__list--item {
@@ -323,8 +329,7 @@
                 }
 
                 .warehouse__list--item:hover {
-                    background-color: variables.$primary-interactive-color;
-                    opacity: 0.3;
+                    background-color: variables.$primary-background-color;
                     color: variables.$primary-text-color;
                 }
             }
@@ -332,7 +337,7 @@
     }
 
     @include desktop {
-        width: 52rem;
+        width: 50rem;
         display: flex;
         // justify-content: center;
         // align-items: center;
@@ -420,6 +425,13 @@
                         }
     
                     }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 4.5rem;
+                        }
+                    }
+
 
                 }
 
