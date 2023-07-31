@@ -10,7 +10,8 @@ import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-
+import SearchHeader from '../searchHeader/searchHeader';
+// 
 //Warehouse List Component
 
 function WarehouseList() {
@@ -37,28 +38,19 @@ function WarehouseList() {
 
   return (
     <div className="warehouse__list--component">
-      <div className="header__wrap">
-        <h1>Warehouses</h1>
-
-        <div className="input__wrap">
-          <input type="search" name="search" placeholder="Search..."></input>
-
-          <button className="search">
-            <img src={searchIcon} alt="" className="search--icon" />
-          </button>
-        </div>
-
-        <button>+ Add New Warehouse</button>
-      </div>
+      <SearchHeader 
+        obj='warehouse'
+        page='Warehouses'
+      />
 
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
         {listData.map((warehouse) => {
           return (
-            <div className="warehouse__grid--mobile">
+            <div className="warehouse__grid--mobile" key={warehouse.id}>
               <div className="warehouse__list--item">
                 <div className="warehouse__info--wrap">
-                  <div>
+                  <div className="warehouse__div">
                     <h4>Warehouse</h4>
                     <div className="warehouse__name">
                       <Link to={`/warehouses/${warehouse.id}`}>
@@ -130,7 +122,7 @@ function WarehouseList() {
           {/* Map function to generate cards based on server information */}
           {listData.map((warehouse) => {
             return (
-              <div className="warehouse__list--item">
+              <div className="warehouse__list--item" key={warehouse.id}>
                 <div>
                   <Link to={`/warehouses/${warehouse.id}`}>
                     <p>
