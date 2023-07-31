@@ -1,0 +1,81 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//Edit inventory Item Styling
+
+.editInventoryItem {
+
+    .editHeader__div {
+
+        a {
+
+        }
+
+        img {
+
+        }
+
+        h1 {
+
+        }
+    }
+
+    form {
+
+        .details__wrap {
+
+            h2 {
+
+            }
+
+            label {
+
+            }
+
+            input {
+
+            }
+
+            textarea {
+
+            }
+
+            .category__dropdown {
+
+            }
+        }
+    }
+
+    .availability__wrap {
+
+        h2 {
+
+        }
+
+        .status__wrap {
+
+            label {
+
+            }
+
+            button {
+
+            }
+        }
+
+        label {
+
+        }
+        
+        .warehouse__dropdown {
+
+        }
+    }
+
+    .button__wrap {
+
+        button {
+            
+        }
+    }
+}
