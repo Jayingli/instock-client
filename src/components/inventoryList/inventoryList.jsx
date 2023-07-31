@@ -37,17 +37,19 @@ function InventoryList() {
       <div className="inventory__list--mobile">
         {listData.map((item) => {
           return (
-            <div className="inventory__grid--mobile">
+            <div className="inventory__grid--mobile" key={item.id}>
               <div className="inventory__grid--item">
                 <div className="item__info--wrap">
-                  <div>
+                  <div className="inventory__div">
                     <h4>Inventory Item</h4>
-                    <Link to={`/inventories/${item.id}`}>
-                      <p>
-                        {item.item_name}
-                        <img src={forwardArrow} alt="forward arrow" />
-                      </p>
-                    </Link>
+                    <div className="inventory__name">
+                      <Link to={`/inventories/${item.id}`}>
+                        <p>
+                          {item.item_name}
+                          <img src={forwardArrow} alt="forward arrow" />
+                        </p>
+                      </Link>
+                    </div>
 
                     <h4>Category</h4>
                     <p>{item.category}</p>
@@ -112,7 +114,7 @@ function InventoryList() {
 
           {listData.map((item) => {
             return (
-              <div className="inventory__grid--item">
+              <div className="inventory__grid--item" key={item.id}>
                 <div>
                   <Link to={`/inventories/${item.id}`}>
                     <p>

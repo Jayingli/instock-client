@@ -1,4 +1,4 @@
-@use '../../styles/partials/_variables.scss';
+@use '../../styles/partials/_variables';
 @use '../../styles/partials/mixins' as *;
 
 
@@ -7,29 +7,33 @@
 .inventory__list {
     display: flex;
     flex-direction: column;
-    padding: 1rem 1rem 0 1rem;
+    // padding: 1rem 1rem 0 1rem;
     border-radius: 5px;
-    background-color: variables.$light-color;
-    box-sizing: border-box;
+    // background-color: variables.$light-color;
+    // box-sizing: border-box;
 
     .inventory__list--mobile {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        width: 100%;
         background-color: variables.$light-color;
 
 
         .inventory__grid--mobile {
-            padding: .5rem .75rem 1rem .75rem;
+            // padding: .5rem .75rem 1rem .75rem;
             display: grid;
             grid-template-columns: 6rem 6rem;
             grid-template-rows: 3rem 3rem 3rem;
             border-top: 1px solid variables.$secondary-border-color;
+            padding-bottom: .75rem;
 
             .inventory__grid--item {
-                display: flex;
-                flex-direction: column;
+                display: grid;
+                justify-content: space-between;
+                width: 100%;
                 grid-column: 1 / span 2;
-                padding: .5rem .5rem 0 .5rem;
+                grid-row: 1 / span 3;
+                padding: .5rem 0 0 .5rem;
+                text-align: left;
 
 
                 .item__info--wrap {
@@ -39,6 +43,24 @@
 
                     div {
                         width: 50%;
+                        display: grid;
+                    }
+
+                    .inventory__div {
+
+                        .inventory__name {
+                            display: flex;
+                            flex-direction: row;
+                            width: 100% !important;
+
+                            a {
+                                margin: 0;
+                            }
+
+                            img {
+                                margin-bottom: -4rem;
+                            }
+                        }
                     }
 
 
@@ -68,13 +90,13 @@
                         color: variables.$primary-interactive-color;
                         font-weight: bold;
 
-                        p {
+                        // p {
 
 
-                            .img {
-                                margin-bottom: 4rem;
-                            }
-                        }
+                        //     .img {
+                        //         margin-bottom: 4rem;
+                        //     }
+                        // }
 
 
                     }
@@ -109,8 +131,8 @@
         display: flex;
         flex-direction: column;
         background-color: variables.$light-color;
-        padding: 0 .25rem;
-        width: 30rem;
+        padding: 0 0 .5rem 0;
+        // width: 30rem;
 
         .inventory__list--mobile {
             display: none;
@@ -123,12 +145,10 @@
 
             .inventory__grid--container {
                 display: grid;
-                // width: auto;
-                // grid-template-columns: 8rem 8rem 8rem 8rem 8rem 8rem;
                 grid-template-rows: 2rem 4rem 4rem 4rem 4rem 4rem;
 
                 .grid__header--wrap {
-                    width: 30rem;
+                    // width: 30rem;
 
                     display: flex;
                     padding-left: 1rem;
@@ -154,10 +174,16 @@
                             height: 1rem;
                         }
                     }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 3rem;
+                        }
+                    }
                 }
 
                 .inventory__grid--item {
-                    width: 30rem;
+                    // width: 30rem;
                     display: flex;
                     // flex-direction: row;
                     grid-column: 1 / span 6;
@@ -182,7 +208,7 @@
                     p {
                         width: 7rem;
                         font-size: 11px;
-                        margin: 0;
+                        margin-bottom: 0;
                     }
 
                     a {
@@ -196,9 +222,9 @@
                             margin: 0;
                         }
 
-                        img {
-                            margin-top: 1rem;
-                        }
+                        // img {
+                        //     margin-top: 1rem;
+                        // }
 
 
 
@@ -207,6 +233,7 @@
                     .button__wrap {
                         display: flex;
                         justify-content: center;
+                        margin-left: 1.25rem;
 
                         img {
                             font-size: 11px;
@@ -218,8 +245,7 @@
                 }
 
                 .inventory__list--item:hover {
-                    background-color: variables.$primary-interactive-color;
-                    opacity: 0.3;
+                    background-color: variables.$primary-background-color;
                     color: variables.$primary-text-color;
                 }
 
@@ -230,8 +256,11 @@
     }
 
     @include desktop {
-        width: 52rem;
+        // width: 52rem;
         display: flex;
+        padding: 0 0 .5rem 0;
+        align-self: center;
+        margin: 0 4rem 0 4rem;
         // justify-content: center;
         // align-items: center;
 
@@ -242,7 +271,6 @@
             width: 100%;
 
             .inventory__grid--container {
-                // margin-left: 1rem;
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
                 grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
@@ -273,6 +301,13 @@
 
                     }
 
+                    div:last-child {
+                        h4 {
+                            margin-left: 4.5rem;
+                        }
+                    }
+
+
                 }
 
                 .inventory__grid--item {
@@ -296,7 +331,6 @@
                     }
 
                     p {
-                        // width: 8rem;
                         font-size: 11px;
 
                     }
@@ -312,12 +346,6 @@
                         width: 8rem;
                     }
 
-                    img {}
-
-                    .button__wrap {
-                        // width: 8rem;
-
-                    }
                 }
             }
 
