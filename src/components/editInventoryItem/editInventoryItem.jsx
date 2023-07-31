@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom';
 import backArrow from '../../assets/icons/arrow_back-24px.svg';
 
 
-
 //Edit Inventory Item Component
 
 function EditInventoryItem() {
 
     //Pull down url 
     const objId = useParams();
+
+
+    //GET request to get array of inventory items
+    
+
+    //POST request to write the new info to the database?
 
     return (
         <section className='editInventoryItem'>
@@ -30,7 +35,7 @@ function EditInventoryItem() {
                     <textarea name="description" id="description"></textarea>
 
                     <label htmlFor="category">Category</label>
-                    <div className="category__dropdown"></div>
+                    <div className="category__dropdown">Category Dropdown</div>
                 </div>
 
                 <div className="availability__wrap">
@@ -38,17 +43,17 @@ function EditInventoryItem() {
                     
                     <div className="status__wrap">
                         <label htmlFor="status">Status</label>
-                        <button></button>
-                        <button></button>
+                        <input type="radio" /> <label htmlFor="in stock">In stock</label>
+                        <input type="radio" /> <label htmlFor="out of stock">Out of stock</label>
                     </div>
 
                     <label htmlFor="warehouse">Warehouse</label>
-                    <div className="warehouse__dropdown"></div>
+                    <div className="warehouse__dropdown">Warehouse Dropdown</div>
                 </div>
 
                 <div className="button__wrap">
-                    <button className="cancel"></button>
-                    <button className="save"></button>
+                    <button className="cancel">Cancel</button>
+                    <button className="save">Save</button>
                 </div>
 
 
