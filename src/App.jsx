@@ -7,6 +7,7 @@ import './App.scss';
 import Warehouse from './Pages/warehouse/warehouse';
 import Inventory from './Pages/inventory/inventory';
 import WarehouseDetails from './components/warehouseDetails/warehouseDetails';
+import EditInventoryItem from './components/editInventoryItem/editInventoryItem';
 /*
  * App.jsx
  * - Represents the main component of the application
@@ -38,7 +39,7 @@ function App() {
                     <Route path="/inventories" element={<Inventory />} />
 
                     {/* Single Inventory Page */}
-                    <Route path="/inventories/:id" element={<Inventory />} />
+                    <Route path="/inventories/:id" element={<EditInventoryItem />} />
 
                     {/* Catch-all to redirect to Home Page */}
                     <Route path="*" element={<Navigate to="/" />} />
