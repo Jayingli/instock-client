@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "../warehouseDetails/warehouseDetails.scss";
 import axios from "axios";
 import { useParams } from "react-router";
+import editIcon from '../../assets/icons/edit-24px.svg';
+import backArrow from '../../assets/icons/arrow_back-24px.svg';
+import { Link } from "react-router-dom";
 
 //WarehouseDetails Component
 
@@ -10,8 +13,8 @@ function WarehouseDetails() {
   const [details, setDetails] = useState([]);
 
   //Get current id
-  const { ID } = useParams();
-  console.log(ID);
+  const { id } = useParams();
+  console.log(id);
 
   //GET request
   useEffect(() => {
@@ -34,13 +37,14 @@ function WarehouseDetails() {
     <div className="warehouse__details">
       {details.map((warehouse) => {
 
-        // if (warehouse.id == ID.id){
+        if (warehouse.id == id){
+
             return (
                 <div>
                 <div className="title__wrap">
-                    <img src="" alt="Back Arrow" />
+                    <img src={backArrow} alt="Back Arrow" />
                     <h1>{warehouse.warehouse_name}</h1>
-                    <button>Edit</button>
+                    <Link to="/warehouses/:id"><img src={editIcon} alt="" /></Link>
                 </div>
 
                 <div className="detail__wrap">
@@ -63,7 +67,10 @@ function WarehouseDetails() {
                 </div>
                 </div>
             )
-      })}
+          }
+      }
+      )
+    }
 
       
     </div>
