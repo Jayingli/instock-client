@@ -20,6 +20,11 @@
 
         .warehouse {
             display: flex;
+
+            a {
+                margin: 1rem 0 0 0;
+
+            }
         }
 
         img {
@@ -31,25 +36,29 @@
             margin: .5rem 1rem .5rem .5rem;
         }
 
-        a {
-            display: flex;
-            border-radius: 50%;
-            background-color: variables.$primary-interactive-color;
-            height: 1.75rem;
-            width: 1.75rem;
-            margin: .6rem .5rem 0 0;
-            text-decoration: none;
-            
-            img {
-                fill: variables.$light-color !important;
-                color: variables.$light-color !important;
+        .edit {
+
+        
+            a {
+                display: flex;
+                border-radius: 50%;
+                background-color: variables.$primary-interactive-color;
+                height: 1.75rem;
+                width: 1.75rem;
+                margin: .6rem .5rem 0 0;
+                text-decoration: none;
+                
+                img {
+                    fill: variables.$light-color !important;
+                    color: variables.$light-color !important;
 
 
-            }
+                }
 
 
-            p {
-                display: none;
+                p {
+                    display: none;
+                }
             }
         }
     }
@@ -111,7 +120,7 @@
                 border-radius: 22px;
                 background-color: variables.$primary-interactive-color;
                 height: 1.5rem;
-                width: 4rem;
+                width: 3.5rem;
                 margin: .6rem 1rem 0 0;
                 text-decoration: none;
                 font-size: 13px;
