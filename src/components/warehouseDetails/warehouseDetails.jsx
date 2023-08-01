@@ -42,14 +42,18 @@ function WarehouseDetails() {
             return (
                 <div>
                 <div className="title__wrap">
-                    <img src={backArrow} alt="Back Arrow" />
-                    <h1>{warehouse.warehouse_name}</h1>
-                    <Link to="/warehouses/:id"><img src={editIcon} alt="" /></Link>
+                    <div className="warehouse">
+                      <img src={backArrow} alt="Back Arrow" />
+                      <h1>{warehouse.warehouse_name}</h1>
+                    </div>
+                    <Link to="/warehouses/:id"><img src={editIcon} alt="edit icon" fill="white" /></Link>
                 </div>
 
                 <div className="detail__wrap">
-                    <h4>Warehouse Address:</h4>
-                    <p>{warehouse.address}</p>
+                    <div className="detail__header">
+                      <h4>Warehouse Address:</h4>
+                      <p>{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
+                    </div>
 
                     <div className="contact__wrap">
                     <div className="name__wrap">
