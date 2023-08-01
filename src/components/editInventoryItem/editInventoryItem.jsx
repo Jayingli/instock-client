@@ -85,8 +85,10 @@ function EditInventoryItem() {
                     
                     <div className="status__wrap">
                         <label htmlFor="status">Status</label>
-                        <input type="radio" name='status' value='In Stock' checked='true'/> <label htmlFor="in stock">In stock</label>
-                        <input type="radio" name='status' value='Out of Stock' checked='false' /> <label htmlFor="out of stock">Out of stock</label>
+                        <div className="radio__wrap">
+                            <input type="radio" name='status' value='In Stock' checked='true'/> <label htmlFor="in stock">In stock</label>
+                            <input type="radio" name='status' value='Out of Stock' checked='false' /> <label htmlFor="out of stock">Out of stock</label>
+                        </div>
                     </div>
 
                     <label htmlFor="warehouse">Warehouse</label>
