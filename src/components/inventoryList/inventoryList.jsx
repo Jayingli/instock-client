@@ -117,7 +117,7 @@ function InventoryList() {
           {listData.map((item) => {
             return (
               <div className="inventory__grid--item" key={item.id}>
-                <div>
+                <div className="inventory__item">
                   <Link to={`/inventories/${item.id}`}>
                     <p>
                       {item.item_name}

@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     padding: 1rem 1rem 0 1rem;
+    background-color: variables.$light-color;
+    border-radius: 5px;
+
 
     h1 {
         margin: 0 .5rem .5rem 0;
