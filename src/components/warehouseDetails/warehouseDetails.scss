@@ -38,13 +38,18 @@
             height: 1.75rem;
             width: 1.75rem;
             margin: .6rem .5rem 0 0;
+            text-decoration: none;
             
-
             img {
                 fill: variables.$light-color !important;
                 color: variables.$light-color !important;
 
 
+            }
+
+
+            p {
+                display: none;
             }
         }
     }
@@ -69,7 +74,11 @@
             margin: 0 0 0 0;
         }
 
-        .detail__header {
+        .detail__header--tabdesc {
+            display: none;
+        }
+
+        .detail__header--mobile {
             margin-bottom: 1rem;
         }
 
@@ -93,10 +102,76 @@
         }
     }
     @include tablet {
+        margin: 0 2rem;
+        align-self: center;
 
+        .title__wrap {
+
+            a {
+                border-radius: 22px;
+                background-color: variables.$primary-interactive-color;
+                height: 1.5rem;
+                width: 4rem;
+                margin: .6rem 1rem 0 0;
+                text-decoration: none;
+                font-size: 13px;
+                justify-content: center;
+                align-content: center;
+    
+
+                img {
+                    height: 1rem;
+                    margin-top: .25rem;
+                    fill: white;
+                    
+                }
+
+                p {
+                    display: flex;
+                    color: variables.$light-color;
+                    margin: 0.25rem 0 0 0;
+                }   
+            
+            }
+        }
+
+        .detail__wrap {
+            display:flex;
+            flex-direction: row;
+
+            .detail__header--mobile {
+                display: none;
+            }
+
+            .detail__header--tabdesc {
+                display: flex;
+                flex-direction: column;
+                border-right: solid 1px variables.$secondary-border-color;
+                margin: 1rem 2rem 0 0;
+                // padding: 0 5rem 0 0;
+                width: 60%;
+
+                h4 {
+                    margin-top: 0;
+                }
+            }
+
+            .contact__wrap {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+        }
     }
 
     @include desktop {
+        margin: 0 7rem;
+
+        .detail__wrap {
+            padding-left: 2rem;
+
+        }
         
     }
 }

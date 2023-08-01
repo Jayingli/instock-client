@@ -46,14 +46,21 @@ function WarehouseDetails() {
                       <img src={backArrow} alt="Back Arrow" />
                       <h1>{warehouse.warehouse_name}</h1>
                     </div>
-                    <Link to="/warehouses/:id"><img src={editIcon} alt="edit icon" fill="white" /></Link>
+                    <Link to="/warehouses/:id"><img src={editIcon} alt="edit icon" fill="white" /><p>Edit</p></Link>
                 </div>
 
                 <div className="detail__wrap">
-                    <div className="detail__header">
+                    <div className="detail__header--mobile">
                       <h4>Warehouse Address:</h4>
                       <p>{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
                     </div>
+
+                    <div className="detail__header--tabdesc">
+                      <h4>Warehouse Address:</h4>
+                      <p>{warehouse.address}, </p>
+                      <p>{warehouse.city}, {warehouse.country}</p>
+                    </div>
+
 
                     <div className="contact__wrap">
                     <div className="name__wrap">
