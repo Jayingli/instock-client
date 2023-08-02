@@ -19,6 +19,7 @@ function EditInventoryItem() {
         status: '',
         warehouse: '',
     });
+    const [category, setCategory] = useState([]);
 
     //Pull down url 
     const {id} = useParams();
@@ -52,6 +53,36 @@ function EditInventoryItem() {
 
           });
       }, []);
+
+    //GET request
+    useEffect(() => {
+        //GET array of all inventories
+        const URL = "http://localhost:5050/api/";
+
+        axios
+        .get(URL + "inventories")
+
+        .then((res) => {
+            //Store warehouse array in inventoryData
+            const inventoryData = res.data;
+
+            const categoryData = [];
+
+            inventoryData.forEach((obj) => {
+                const objCategory = obj.category;
+                //If category from obj is not included in categoryData array, push category to array
+                if(!categoryData.includes(objCategory)) {
+                    categoryData.push(objCategory);
+                }
+            })
+
+            //Setting State 
+            setCategory(categoryData);
+
+        });
+    }, []);
+
+    console.log(category);
     
     //PUT request to write the new info to the database?
     // axios
