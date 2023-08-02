@@ -8,6 +8,7 @@ import WarehouseInventoryList from "./components/warehouseInventoryList/warehous
 import Warehouse from "./Pages/warehouse/warehouse";
 import Inventory from "./Pages/inventory/inventory";
 import WarehouseDetails from "./components/warehouseDetails/warehouseDetails";
+import EditInventoryItem from "./components/editInventoryItem/editInventoryItem";
 /*
  * App.jsx
  * - Represents the main component of the application

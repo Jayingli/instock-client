@@ -1,0 +1,97 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//Edit inventory Item Styling
+
+.editInventoryItem {
+    background-color: variables.$light-color;
+
+
+    .editHeader__div {
+        display: flex;
+        border-bottom: 1px solid variables.$secondary-border-color;
+
+        a {
+
+        }
+
+        img {
+
+        }
+
+        h1 {
+
+        }
+    }
+
+    form {
+
+        .details__wrap {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem .5rem 1rem;
+            border-bottom: 1px solid variables.$secondary-border-color;
+            
+            h2 {
+
+            }
+
+            label {
+
+            }
+
+            input {
+
+            }
+
+            textarea {
+
+            }
+
+            .category__dropdown {
+
+            }
+        }
+
+        .availability__wrap {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem .5rem 1rem;
+
+            h2 {
+
+            }
+
+            .status__wrap {
+                display: flex;
+
+                label {
+
+                }
+
+                button {
+
+                }
+            }
+
+            label {
+
+            }
+            
+            .warehouse__dropdown {
+
+            }
+        }
+
+        .button__wrap {
+            display: flex;
+            justify-content: space-between;
+            padding: .5rem 1rem;
+            background-color: variables.$primary-background-color;
+            
+            button {
+
+            }
+        }
+    }
+}

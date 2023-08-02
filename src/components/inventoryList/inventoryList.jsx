@@ -71,7 +71,9 @@ function InventoryList() {
 
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
+                  <Link to={`/inventories/${item.id}`}>
+                    <img src={editIcon} alt="Edit Warehouse Button" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -115,7 +117,7 @@ function InventoryList() {
           {listData.map((item) => {
             return (
               <div className="inventory__grid--item" key={item.id}>
-                <div>
+                <div className="inventory__item">
                   <Link to={`/inventories/${item.id}`}>
                     <p>
                       {item.item_name}
@@ -142,7 +144,9 @@ function InventoryList() {
 
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
+                  <Link to={`/inventories/${item.id}`}>
+                    <img src={editIcon} alt="Edit Warehouse Button" />
+                  </Link>
                 </div>
               </div>
             );
