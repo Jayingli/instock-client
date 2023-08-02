@@ -1,0 +1,77 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//Delete Item Styling
+
+.delete__component {
+    background-color: variables.$light-color;
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+
+    a {
+        display: flex;
+        justify-content: right;
+    }
+
+    img {
+        
+    }
+
+    .delete__prompt {
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        .button__wrap {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15rem;
+
+
+            button {
+                display: flex;
+                border-radius: 22px;
+                background-color: variables.$label-outofstock-color;
+                color: variables.$light-color;
+                height: 2.25rem;
+                width: 100%;
+                padding: .5rem 1rem;
+                justify-content: center;
+                border: none;
+            }
+        }
+    }
+    @include tablet {
+        margin: 10rem 3rem 1rem 3rem;
+        width:auto;
+
+        .delete__prompt {
+            padding: 0 1rem 1rem 2rem;
+
+            h1 {
+                margin-top: 0;
+            }
+
+            .button__wrap {
+                margin-top: 1rem;
+                justify-content: right;
+
+                button {
+                    width: 4.5rem;
+                    margin-left: .5rem;
+
+                }
+            }
+        }
+    }
+
+    @include desktop {
+        margin: 10rem 15rem;
+    }
+}
