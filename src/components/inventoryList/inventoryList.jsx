@@ -71,7 +71,7 @@ function InventoryList() {
 
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <Link to={`/inventories/${item.id}`}>
+                  <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
                 </div>
@@ -144,7 +144,7 @@ function InventoryList() {
 
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <Link to={`/inventories/${item.id}`}>
+                  <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
                 </div>
