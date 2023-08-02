@@ -1,12 +1,15 @@
+import { useParams } from "react-router";
 import "../warehouseInventoryList/warehouseInventoryList.scss";
 
 //Warehouse Inventory List Component
 
 function WarehouseInventoryList() {
+  const { id } = useParams();
+  console.log(id);
   return (
     <div>
       <div>
-        <p>hi</p>
+        <p></p>
       </div>
     </div>
   );

@@ -8,93 +8,54 @@
     flex-direction: column;
     background-color: variables.$light-color;
     border-radius: 5px;
-    padding: 1rem;
-    box-sizing: border-box;
-
-    .header__wrap {
-        display: flex;
-        flex-direction: column;
-
-        h1 {
-            margin: .5rem .5rem .5rem 0;
-        }
-
-        .input__wrap {
-
-            input {
-                border-radius: 22px;
-                margin-bottom: 1rem;
-                padding: .25rem;
-                border-color: variables.$secondary-border-color;
-                font-size: 12px;
-                width: 100%;
-            }
-    
-            .search {
-                background-color: white;
-                position: absolute;
-                right: 2rem;
-                top: 11.3rem;
-                height: .5rem;
-
-
-                img {
-                    height: 1rem;
-                }
-
-            }
-    
-        }
-
-
-        button {
-            border-radius: 22px;
-            margin-bottom: 1rem;
-            padding: .4rem;
-            background-color: variables.$primary-interactive-color;
-            color: variables.$light-color;
-            border: none;
-            font-size: 12px;
-
-        }
-    }
 
     .warehouse__list--mobile {
+        display: grid;
         background-color: variables.$light-color;
+        width: 100%;
 
         .warehouse__grid--mobile {
             display: grid;
             grid-template-columns: 6rem 6rem;
             grid-template-rows: 3rem 3rem 3rem;
+            border-top: 1px solid variables.$secondary-border-color;
+            padding-bottom: .75rem;
 
             .warehouse__list--item {
-                display: flex;
-                flex-direction: column;
-                // border-bottom: 1px solid variables.$secondary-border-color;
-                padding: .5rem .5rem 0 .5rem;
+                display: grid;
+                justify-content: space-between;
+                width: 100%;
+                padding: .5rem 0 0 1rem;
                 text-align: left;
                 grid-column: 1 / span 2;
-
-                .button__wrap {
-                    margin-bottom: 1rem;
-                    display: flex;
-                    justify-content: space-between;
-
-
-                    img {
-                        font-size: 11px;
-                        line-height: 16px;
-                        height: 1rem;
-                        width: 1rem;
-                        color: variables.$label-outofstock-color;
-                    }
-
-                }
+                grid-row: 1 / span 3;
 
                 .warehouse__info--wrap {
                     display: flex;
                     flex-direction: row;
+                    justify-content: space-between;
 
+                    div {
+                        width: 50%;
+                        display: grid;
+                    }
+
+                    .warehouse__div {
+
+                        .warehouse__name {
+                            display: flex;
+                            flex-direction: row;
+                            width: 100% !important;
+
+                            a {
+                                margin: 0
+                            }
+
+                            img {
+                                margin-bottom: -.4rem;
+                            }
+                        }
+                    }
 
                     h4 {
                         font-size: 11px;
@@ -102,6 +63,7 @@
                         color: variables.$secondary-text-color;
                         margin: .5rem 0 .25rem 0;
                         vertical-align: top;
+                        text-transform: uppercase;
 
                     }
 
@@ -114,10 +76,10 @@
 
                     }
 
-
                     a {
                         font-size: 11px;
-                        margin: 0 0 1rem 0;
+                        margin: 0 0 .25rem 0;
+                        vertical-align: top;
                         text-decoration: none;
                         color: variables.$primary-interactive-color;
                         font-weight: bold;
@@ -129,12 +91,24 @@
                     }
 
                 }
+
+                .button__wrap {
+                    margin-bottom: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        height: 1rem;
+                        width: 1rem;
+                    }
+                }
+
             }
 
         }
     }
-
-
 
     .warehouse__list--tabdesc {
         display: none;
@@ -143,37 +117,8 @@
     @include tablet {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
-
-        .header__wrap {
-            display: flex;
-            flex-direction: row;
-            // justify-content: space-between;
-
-            h1 {
-                margin: .5rem .5rem .5rem 0;
-                font-size: 50px;
-            }
-
-            input {
-                margin: 2rem 0 0 4rem;
-                padding: .25rem;
-                font-size: 12px;
-                height: 1.5rem;
-                background: transparent url("../../assets/icons/search-24px.svg") no-repeat 13px
-            }
-
-            button {
-                margin: 2rem 0 0 .5rem;
-                padding: .4rem;
-                font-size: 12px;
-                height: 1.5rem;
-
-
-            }
-
-        }
-
+        background-color: variables.$light-color;
+        padding: 0 0 .5rem 0;
 
         .warehouse__list--mobile {
             display: none;
@@ -181,12 +126,12 @@
 
         .warehouse__list--tabdesc {
             background-color: variables.$light-color;
-            display: flex;
+            display: grid;
+
 
             .warehouse__grid--container {
                 display: grid;
-                grid-template-columns: 7rem 7rem 7rem 7rem 7rem;
-                grid-template-rows: 2rem 2rem 2rem 2rem 2rem;
+                grid-template-rows: 2rem 4rem 4rem 4rem 4rem;
 
                 .grid__header--wrap {
                     display: flex;
@@ -194,114 +139,170 @@
                     grid-column: 1 / span 5;
                     background-color: variables.$primary-background-color;
 
-                    h4 {
-                        width: 7.25rem;
-                        font-size: 11px;
-                        line-height: 16px;
-                        color: variables.$secondary-text-color;
-                        margin: .5rem 0 0 0;
+                    div {
+                        display: flex;
+                        width: 100%;
 
+
+                        h4 {
+                            width: auto;
+                            font-size: 11px;
+                            line-height: 16px;
+                            color: variables.$secondary-text-color;
+                            margin-right: .5rem;
+
+                        }
+
+                        img {
+                            margin-top: .6rem;
+                            height: 1rem;
+                        }
+                    }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 3rem;
+                        }
                     }
                 }
 
                 .warehouse__list--item {
                     display: flex;
                     grid-column: 1 / span 5;
-                    border-bottom: 1px solid variables.$secondary-border-color;
+                    border-top: 1px solid variables.$secondary-border-color;
+                    padding: 0 1rem;
+                    align-items: center;
+
+                    div {
+
+                        .forward__arrow {
+                            margin-bottom: -.4rem;
+                        }
+
+                        a {
+                            margin-bottom: 1rem;
+                            align-self: center;
+
+                        }
+                    }
+
 
                     p {
                         width: 7rem;
                         font-size: 11px;
-                        
-
-                    }
-
-                    .contact__phone {
                         margin-bottom: 0;
+
                     }
 
                     a {
                         font-size: 11px;
+                        text-decoration: none;
+                        color: variables.$primary-interactive-color;
+                        margin-bottom: .5rem;
+                        font-weight: bold;
+
+                        p {
+                            margin: 0;
+                        }
 
                     }
 
-                    img {
-                        font-size: 11px;
-                        line-height: 16px;
+                    .button__wrap {
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 1.25rem;
+
+                        img {
+                            font-size: 11px;
+                            height: 1.25rem;
+                            margin: 1rem 0 0 1rem;
+                        }
                     }
+
+                }
+
+                .warehouse__list--item:hover {
+                    background-color: variables.$primary-background-color;
+                    color: variables.$primary-text-color;
                 }
             }
         }
     }
 
     @include desktop {
-        width: 52rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .header__wrap {
-            display: flex;
-            flex-direction: row;
-
-            h1 {
-                margin: .5rem;
-                font-size: 50px;
-            }
-
-            input {
-                margin: 2rem 0 0 20rem;
-                padding: .25rem;
-                font-size: 12px;
-                height: 1.5rem;
-            }
-
-            button {
-                margin: 2rem 0 0 .5rem;
-                padding: .4rem;
-                font-size: 12px;
-                height: 1.5rem;
-            }
-        }
+        padding: 0 0 .5rem 0;
+        align-self: center;
+        margin: 0 4rem 0 4rem;
 
         .warehouse__list--tabdesc {
             background-color: variables.$light-color;
             display: flex;
-            flex-direction: column;   
-            // width: 60%;         
+            flex-direction: column;
+            width: 100%;
 
             .warehouse__grid--container {
-                margin-left: 1rem;
                 display: grid;
-                grid-template-columns: 8rem 8rem 8rem 8rem 5rem;
+                grid-template-columns: repeat(5, 1fr);
                 grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
 
                 .grid__header--wrap {
-                    display: flex;
-                    padding: 0 1rem 0 1rem;
-                    grid-column: 1 / span 5;
+                    text-transform: uppercase;
+                    display: grid;
+                    padding: 0 1rem 0 2rem;
+                    grid-template-columns: repeat(5, 1fr);
+                    align-items: center;
                     background-color: variables.$primary-background-color;
 
-                    h4 {
-                        width: 7.25rem;
-                        font-size: 11px;
-                        line-height: 16px;
-                        color: variables.$secondary-text-color;
-                        margin: .5rem 0 0 0;
+                    div {
+                        display: flex;
+
+                        h4 {
+                            width: auto;
+                            font-size: 11px;
+                            line-height: 16px;
+                            color: variables.$secondary-text-color;
+                            margin-right: .5rem;
+
+                        }
+
+                        img {
+                            margin-top: .5rem;
+                        }
 
                     }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 4.5rem;
+                        }
+                    }
+
+
                 }
 
                 .warehouse__list--item {
-                    display: flex;
-                    padding: 0 1rem 0 1rem;
-                    grid-column: 1 / span 5;
+                    display: grid;
+                    padding: 0 1rem 0 2rem;
+                    grid-template-columns: repeat(5, 1fr);
+                    align-items: center;
                     border-bottom: 1px solid variables.$secondary-border-color;
 
-                    p {
-                        width: 8rem;
-                        font-size: 11px;
+                    div {
 
+                        .forward__arrow {
+                            margin-bottom: -.4rem;
+                        }
+
+                        a {
+                            margin-bottom: 1rem;
+                            align-self: center;
+
+                        }
+                    }
+
+                    p {
+                        font-size: 11px;
                     }
 
                     .contact__phone {
@@ -315,17 +316,6 @@
                         width: 8rem;
                     }
 
-                    img {
-                        font-size: 11px;
-                        line-height: 16px;
-                        height: 1rem;
-                        width: 1rem;
-                    }
-
-                    .button__wrap {
-                        width: 8rem;
-
-                    }
                 }
             }
 
