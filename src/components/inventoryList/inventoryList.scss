@@ -36,6 +36,14 @@
                 padding: .5rem 0 0 1rem;
                 text-align: left;
 
+                .inStock {
+                    background-color: variables.$label-instock-color;
+                }
+
+                .outOfStock {
+                    background-color: variables.$label-outofstock-color;
+                }
+
 
                 .item__info--wrap {
                     display: flex;

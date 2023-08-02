@@ -1,4 +1,3 @@
-// import inventoryData from "../../Data/inventoriesData.json";
 import { useEffect, useState } from "react";
 import "../inventoryList/inventoryList.scss";
 import axios from "axios";
@@ -8,7 +7,8 @@ import SearchHeader from "../searchHeader/searchHeader";
 import { Link } from "react-router-dom";
 import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-//Inventory Page
+
+//Inventory List Component
 
 function InventoryList() {
   //State
@@ -57,7 +57,8 @@ function InventoryList() {
 
                   <div>
                     <h4>Status</h4>
-                    <p>{item.status}</p>
+                    <p className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>{item.status}</p>
+                    
 
                     <h4>QTY</h4>
                     <p>{item.quantity}</p>
@@ -131,7 +132,7 @@ function InventoryList() {
                 </div>
 
                 <div>
-                  <p>{item.status}</p>
+                  <p className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>{item.status}</p>
                 </div>
 
                 <div>
