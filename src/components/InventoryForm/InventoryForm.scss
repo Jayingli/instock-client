@@ -1,0 +1,99 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.inventory-form {
+    @include mobile-padding();
+
+    @include tablet {
+        @include tablet-padding();
+    };
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__label {
+        margin-bottom: 4px;
+    }
+
+    &__input {
+        color: $primary-text-color;
+        width: 100%;
+        height: 36px;
+        padding: 0 16px;
+        border: 1px solid $secondary-border-color;
+        border-radius: 20px;
+        background-color: $light-color;
+
+        @include tablet {
+            width: auto;
+            height: 38px;
+        }
+
+        &::placeholder {
+            color: $secondary-text-color;
+        }
+
+        &:focus {
+            outline: 1px solid $primary-interactive-color;
+        }    
+    }
+
+    &__textarea {
+        font-family: 'Titillium Web';
+        color: $primary-text-color;
+        width: 100%;
+        // height: 36px;
+        padding: 0 16px;
+        border: 1px solid $secondary-border-color;
+        border-radius: 20px;
+        background-color: $light-color;
+        resize: none;
+
+        @include tablet {
+            width: auto;
+            // height: 38px;
+        }
+
+        &:focus {
+            outline: 1px solid $primary-interactive-color;
+        }
+        
+        &::placeholder {
+            color: $secondary-text-color;
+        }
+    }
+
+    &__select {
+        color: $primary-text-color;
+        width: 100%;
+        height: 36px;
+        padding: 0 16px;
+        border: 1px solid $secondary-border-color;
+        border-radius: 20px;
+        background-color: $light-color;
+
+        @include tablet {
+            width: auto;
+            height: 38px;
+        }
+
+        &:focus {
+            outline: 1px solid $primary-interactive-color;
+        }
+    }
+
+    &__status {
+        width: 50%;
+    }
+
+    &__radio {
+        margin-right: 0.5rem;
+
+        // &:checked {
+        //     border-color: $primary-interactive-color;
+        //     background-color: $primary-interactive-color;
+        // }
+    }
+}

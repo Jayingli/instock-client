@@ -5,6 +5,9 @@ import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 
+import InventoryForm from './components/InventoryForm/InventoryForm';
+import Button from './components/Button/Button';
+
 /*
  * App.jsx
  * - Represents the main component of the application
@@ -17,30 +20,35 @@ function App() {
             <div className="App">
                 {/* Header Component */}
                 <Header />
+                {/* <Button variant="primary" text="+ Add Warehouse Item"/> */}
+                {/* <InventoryForm /> */}
 
                 {/* Define routes for different pages */}
-                <Routes>
-                    {/* Home Page */}
-                    <Route path="/" element={<Navigate to="/warehouses" />} />
+                <div className="App__page">
+                    <Routes>
+                        {/* Home Page */}
+                        <Route path="/" element={<Navigate to="/warehouses" />} />
 
-                    {/* Warehouses Page */}
-                    <Route path="/warehouses" element={<WarehousesPage />} />
+                        {/* Warehouses Page */}
+                        {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
+                        <Route path="/warehouses" element={<InventoryForm  />} />
 
-                    {/* Single Warehouse Page */}
-                    {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
+                        {/* Single Warehouse Page */}
+                        {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
 
-                    {/* Inventories of Individual Warehouse Page*/}
-                    {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
+                        {/* Inventories of Individual Warehouse Page*/}
+                        {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
-                    {/* Inventory Page */}
-                    <Route path="/inventories" element={<InventoryPage />} />
+                        {/* Inventory Page */}
+                        <Route path="/inventories" element={<InventoryPage />} />
 
-                    {/* Single Inventory Page */}
-                    {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
+                        {/* Single Inventory Page */}
+                        {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
 
-                    {/* Catch-all to redirect to Home Page */}
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
+                        {/* Catch-all to redirect to Home Page */}
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                </div>
 
                 {/* Footer Component */}
                 <Footer />
