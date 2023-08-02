@@ -43,7 +43,6 @@ function EditInventoryItem() {
                 warehouse: inventoryData.warehouse_name,
         
             }
-            console.log(newObj);
 
             setFormData(newObj);
     
@@ -78,6 +77,7 @@ function EditInventoryItem() {
                         <textarea name="description" id="description" value={formData.description}></textarea>
 
                         <label htmlFor="category">Category</label>
+                        {/* Map over array of all categories to generate each as a list item */}
                         <div className="category">{formData.category}</div>
                     </div>
 
