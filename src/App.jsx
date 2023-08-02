@@ -5,7 +5,7 @@ import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 
-import InventoryForm from './components/InventoryForm/InventoryForm';
+import AddNewInventoryItem from './components/AddNewInventoryItem/AddNewInventoryItem';
 import Button from './components/Button/Button';
 
 /*
@@ -31,7 +31,7 @@ function App() {
 
                         {/* Warehouses Page */}
                         {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
-                        <Route path="/warehouses" element={<InventoryForm  />} />
+                        <Route path="/warehouses" element={<AddNewInventoryItem  />} />
 
                         {/* Single Warehouse Page */}
                         {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
