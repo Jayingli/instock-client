@@ -116,27 +116,14 @@
         .title__wrap {
             padding: 1rem 0.5rem .6rem 1rem;
 
-            .warehouse {
-                display: flex;
-
-                a {
-                    margin: 1rem 0 0 0;
-    
-                }
-    
-            }
-
             .edit {
 
                 a {
                     border-radius: 22px;
-                    background-color: variables.$primary-interactive-color;
                     height: 1.5rem;
                     width: 3.4rem;
                     margin: .9rem 1rem 0 0;
-                    text-decoration: none;
                     font-size: 13px;
-                    justify-content: center;
                     align-content: center;
         
 
