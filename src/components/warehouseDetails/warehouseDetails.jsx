@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "../warehouseDetails/warehouseDetails.scss";
 import axios from "axios";
-import { useParams } from "react-router";
-import WarehouseInventoryList from "../warehouseInventoryList/warehouseInventoryList";
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/icons/edit-white-24px.svg";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
-import { Link } from "react-router-dom";
+import WarehouseInventoryList from "../warehouseInventoryList/warehouseInventoryList";
 
 //WarehouseDetails Component
 
@@ -15,7 +15,6 @@ function WarehouseDetails() {
 
   //Get current id
   const { id } = useParams();
-  console.log(id);
 
   //GET request
   useEffect(() => {
@@ -29,31 +28,42 @@ function WarehouseDetails() {
         //Store warehouse array in warehouseData
         const warehouseData = res.data;
 
-        //Set listData to the array of warehouses
+        //Set details to the array of warehouses
         setDetails(warehouseData);
       });
   }, []);
 
   return (
-    <div>
-      <div className="warehouse__details">
-        {details.map((warehouse) => {
-          if (warehouse.id == id) {
-            return (
-              <div>
-                <div className="title__wrap">
-                  <div className="warehouse">
-                    <Link to="/warehouses">
-                      <img src={backArrow} alt="Back Arrow" />
-                    </Link>
-                    <h1>{warehouse.warehouse_name}</h1>
-                  </div>
-                  <div className="edit">
-                    <Link to="/warehouses/:id">
-                      <img src={editIcon} alt="edit icon" fill="white" />
-                      <p>Edit</p>
-                    </Link>
-                  </div>
+    <div className="warehouse__details">
+      {details.map((warehouse) => {
+        // If warehouse id is equal to url id, build component below with that data
+        if (warehouse.id == id) {
+          return (
+            <div>
+              <div className="title__wrap">
+                <div className="warehouse">
+                  <Link to="/warehouses">
+                    <img src={backArrow} alt="Back Arrow" />
+                  </Link>
+                  
+                  <h1>{warehouse.warehouse_name}</h1>
+                </div>
+
+                <div className="edit">
+                  <Link to="/warehouses/:id">
+                    <img src={editIcon} alt="edit icon" />
+
+                    <p>Edit</p>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="detail__wrap">
+                <div className="detail__header--mobile">
+                  <h4>Warehouse Address:</h4>
+                  <p>
+                    {warehouse.address}, {warehouse.city}, {warehouse.country}
+                  </p>
                 </div>
 
                 <div className="detail__wrap">
