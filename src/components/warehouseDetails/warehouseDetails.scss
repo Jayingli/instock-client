@@ -47,10 +47,11 @@
                 width: 1.75rem;
                 margin: .6rem .5rem 0 0;
                 text-decoration: none;
+                justify-content: center;
                 
                 img {
-                    fill: variables.$light-color !important;
-                    color: variables.$light-color !important;
+                    height: 1rem;
+                    align-self: center;
                 }
 
 
@@ -113,6 +114,7 @@
         align-self: center;
 
         .title__wrap {
+            padding: 1rem 0.5rem .6rem 1rem;
 
             .warehouse {
                 display: flex;
@@ -128,26 +130,19 @@
 
                 a {
                     border-radius: 22px;
-                    background-color: seagreen;
+                    background-color: variables.$primary-interactive-color;
                     height: 1.5rem;
-                    width: 3.5rem;
-                    margin: .6rem 1rem 0 0;
+                    width: 3.4rem;
+                    margin: .9rem 1rem 0 0;
                     text-decoration: none;
                     font-size: 13px;
                     justify-content: center;
                     align-content: center;
-
-                    // .edit__icon svg {
-                    //     fill: white;
-                    //     color: white;
-                    // }
         
 
                     img {
-                        height: 1rem;
-                        margin-top: .25rem;
-                        fill: white;
-                        color: white;
+                        height: .85rem;
+                        margin: 0.1rem .25rem 0 0;
 
                     }
 
@@ -164,6 +159,7 @@
         .detail__wrap {
             display:flex;
             flex-direction: row;
+            padding: .5rem 1.5rem 1rem 1.5rem;
 
             .detail__header--mobile {
                 display: none;
@@ -174,7 +170,6 @@
                 flex-direction: column;
                 border-right: solid 1px variables.$secondary-border-color;
                 margin: 1rem 2rem 0 0;
-                // padding: 0 5rem 0 0;
                 width: 60%;
 
                 h4 {
