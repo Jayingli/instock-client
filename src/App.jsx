@@ -7,8 +7,6 @@ import './App.scss';
 import Warehouse from './Pages/warehouse/warehouse';
 import Inventory from './Pages/inventory/inventory';
 import WarehouseDetails from './components/warehouseDetails/warehouseDetails';
-import EditInventoryItem from './components/editInventoryItem/editInventoryItem';
-import InventoryDetails from './components/inventoryDetails/inventoryDetails';
 /*
  * App.jsx
  * - Represents the main component of the application
@@ -28,22 +26,19 @@ function App() {
                     <Route path="/" element={<Warehouse />} />
 
                     {/* Warehouses Page */}
-                    <Route path="/warehouses" element={<Warehouse />} />
+                    {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
 
                     {/* Single Warehouse Page */}
                     <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
                     {/* Inventories of Individual Warehouse Page*/}
-                    {/* <Route path="/warehouses/:id/inventories" element={<Warehouse />} /> */}
+                    {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
                     {/* Inventory Page */}
                     <Route path="/inventories" element={<Inventory />} />
 
                     {/* Single Inventory Page */}
-                    <Route path="/inventories/:id" element={<InventoryDetails />} />
-
-                    {/* Edit Single Inventory Item */}
-                    <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
+                    <Route path="/inventories/:id" element={<Inventory />} />
 
                     {/* Catch-all to redirect to Home Page */}
                     <Route path="*" element={<Navigate to="/" />} />
