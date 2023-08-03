@@ -123,17 +123,17 @@ function EditInventoryItem() {
 
                         <label htmlFor="category">Category</label>
                         <div className="category">
-                            {/* <select name="categories__dropdown" id="categories">
+                            <select name="categories__dropdown" id="categories">
                                 <option value="">{formData.category}</option>
                                 {categories.map((category) => {
+                                    if(category != formData.category){
                                     return (
-                                        {if(!category == formData.category){
-                                                <option value="">{category}</option>
-                                            }
-                                        
+                                        <option value="">{category}</option>
                                     )
+                                }
                             })}
-                            </select> */}
+
+                            </select>
                             </div>
                     </div>
 
@@ -152,7 +152,13 @@ function EditInventoryItem() {
                         <div className="warehouse__name">
                             <select name="warehouses__dropdown" id="warehouses">
                                 <option value="">{formData.warehouse_id}</option>
-                                <option value=""></option>
+                                {warehouses.map((warehouse) => {
+                                    if(warehouse != formData.warehouse_id){
+                                    return (
+                                        <option value="">{warehouse}</option>
+                                    )
+                                }
+                            })}
                             </select>
                         </div>
                     </div>
