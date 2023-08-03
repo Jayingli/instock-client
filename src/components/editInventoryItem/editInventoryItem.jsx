@@ -17,9 +17,10 @@ function EditInventoryItem() {
         description: '',
         category: '',
         status: '',
-        warehouse: '',
+        warehouse_id: '',
     });
-    const [category, setCategory] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [warehouses, setWarehouses] = useState([]);
 
     //Pull down url 
     const {id} = useParams();
@@ -41,7 +42,7 @@ function EditInventoryItem() {
                 description: inventoryData.description,
                 category: inventoryData.category,
                 status: inventoryData.status,
-                warehouse: inventoryData.warehouse_name,
+                warehouse_id: inventoryData.warehouse_name,
         
             }
             console.log(newObj);
@@ -63,26 +64,38 @@ function EditInventoryItem() {
         .get(URL + "inventories")
 
         .then((res) => {
-            //Store warehouse array in inventoryData
+            //Store inventory array in inventoryData
             const inventoryData = res.data;
 
             const categoryData = [];
+            const warehouseData = [];
 
+            //For each object in the array, if category from obj is not included in categoryData array, push category to array
             inventoryData.forEach((obj) => {
                 const objCategory = obj.category;
-                //If category from obj is not included in categoryData array, push category to array
                 if(!categoryData.includes(objCategory)) {
                     categoryData.push(objCategory);
                 }
             })
 
+            //For each object in the array, if warehouse name from obj is not included in warehouseData array, push warehouse to array
+            inventoryData.forEach((obj) => {
+                const objWarehouse = obj.warehouse_name;
+                if(!warehouseData.includes(objWarehouse)) {
+                    warehouseData.push(objWarehouse);
+                }
+            })
+
             //Setting State 
-            setCategory(categoryData);
+            setCategories(categoryData);
+            setWarehouses(warehouseData);
 
         });
     }, []);
 
-    console.log(category);
+    console.log(categories);
+    console.log(warehouses)
+    console.log(formData.warehouse_id);
     
     //PUT request to write the new info to the database?
     // axios
@@ -109,7 +122,19 @@ function EditInventoryItem() {
                         <textarea name="description" id="description" value={formData.description}></textarea>
 
                         <label htmlFor="category">Category</label>
-                        <div className="category">{formData.category}</div>
+                        <div className="category">
+                            {/* <select name="categories__dropdown" id="categories">
+                                <option value="">{formData.category}</option>
+                                {categories.map((category) => {
+                                    return (
+                                        {if(!category == formData.category){
+                                                <option value="">{category}</option>
+                                            }
+                                        
+                                    )
+                            })}
+                            </select> */}
+                            </div>
                     </div>
 
                     <div className="availability__wrap">
@@ -124,7 +149,12 @@ function EditInventoryItem() {
                         </div>
 
                         <label htmlFor="warehouse">Warehouse</label>
-                        <div className="warehouse_name">{formData.warehouse_name}</div>
+                        <div className="warehouse__name">
+                            <select name="warehouses__dropdown" id="warehouses">
+                                <option value="">{formData.warehouse_id}</option>
+                                <option value=""></option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
