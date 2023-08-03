@@ -1,9 +1,8 @@
 @use '../../styles/partials/variables';
 @use '../../styles/partials/mixins' as *;
 
-//WarehouseDetails styling
-
-.warehouse__details {
+//Inventory Details Styling
+.inventory__details {
     background-color: variables.$light-color;
     display: flex;
     flex-direction: column;
@@ -18,7 +17,7 @@
         padding: .5rem .5rem .5rem .5rem;
         justify-content:space-between;
 
-        .warehouse {
+        .inventory__item {
             display: flex;
 
             a {
@@ -64,6 +63,7 @@
 
     .detail__wrap {
         padding: 0 1rem .5rem 1rem;
+        
 
         h4 {
             font-size: 11px;
@@ -82,32 +82,42 @@
             margin: 0 0 0 0;
         }
 
-        .detail__header--tabdesc {
-            display: none;
-        }
+        // .detail__header--tabdesc {
+        //     display: none;
+        // }
 
-        .detail__header--mobile {
+        .detail__header {
             margin-bottom: 1rem;
         }
 
-        .contact__wrap {
-            display: flex;
 
-            div {
-                width: 50%;
-            }
-
-            .info__wrap {
-
-                a {
-                    font-size: 12px;
-                    vertical-align: top;
-                    color: variables.$primary-text-color;
-                    text-decoration: none;
-
-                }    
-            }
+        div {
+            // width: 50%;
         }
+
+        .status__wrap {
+
+            .statquant__wrap {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                padding-right: 2rem;
+
+                div {
+                    // display: flex;
+                }
+
+                h4 {
+                    margin: 0;
+                }
+
+                p {
+
+                }
+            }
+
+        }
+        
     }
     @include tablet {
         margin: 0 2rem;
@@ -148,26 +158,36 @@
             flex-direction: row;
             padding: .5rem 1.5rem 1rem 1.5rem;
 
-            .detail__header--mobile {
-                display: none;
-            }
-
-            .detail__header--tabdesc {
+            .detail__header {
                 display: flex;
                 flex-direction: column;
                 border-right: solid 1px variables.$secondary-border-color;
-                margin: 1rem 2rem 0 0;
+                margin: .5rem 2rem 0 0;
+                padding-right: 1rem;
                 width: 60%;
 
                 h4 {
                     margin-top: 0;
                 }
+
+                p {
+                    margin-bottom: 1rem;
+                }
             }
 
-            .contact__wrap {
-                display: flex;
+            .status__wrap {
                 justify-content: space-between;
                 width: 100%;
+                margin: .5rem 2rem 0 0;
+
+
+                .statquant__wrap {
+                    display: flex;
+                    width: 100%;
+                    // justify-content:center ;
+                    padding-right: 5rem;
+    
+                }
             }
 
         }
@@ -175,6 +195,10 @@
 
     @include desktop {
         margin: 0 7rem;
+
+        .title__wrap {
+            padding-top: 0.5rem;
+        }
 
         .detail__wrap {
             padding-left: 2rem;

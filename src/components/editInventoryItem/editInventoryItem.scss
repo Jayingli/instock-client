@@ -1,0 +1,203 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//Edit inventory Item Styling
+
+.editInventoryItem {
+    background-color: variables.$light-color;
+    margin: 0 .5rem;
+    border-radius: 5px;
+
+    label {
+        font-size: 13px;
+        font-weight: bold;
+        color: variables.$primary-text-color;
+        margin-bottom: .5rem;
+    }
+
+
+    .editHeader__div {
+        display: flex;
+        border-bottom: 1px solid variables.$secondary-border-color;
+        align-content: center;
+        justify-content: space-evenly;
+        padding-left: .5rem;
+
+        a {
+            margin: 1.5rem 0 0 0;
+        }
+
+        img {
+
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 1rem 1rem 1rem 0;
+        }
+    }
+
+    form {
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .details__wrap {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem .5rem 1rem;
+            border-bottom: 1px solid variables.$secondary-border-color;
+            
+
+
+            input {
+                border-radius: 22px;
+                margin: 0 0 1rem .25rem;
+                padding: .5rem 1rem;
+                font-size: 13px;
+                border: 1px solid variables.$secondary-text-color;
+
+            }
+
+            textarea {
+                border-radius: 22px;
+                height: 6rem;
+                margin: 0 0 1rem .25rem;
+                padding: .5rem 1rem;
+                font-size: 13px;
+                border-color: variables.$secondary-text-color;
+
+            }
+
+            .category__dropdown {
+
+            }
+        }
+
+        .availability__wrap {
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem .5rem 1rem;
+
+            h2 {
+
+            }
+
+            .status__wrap {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    margin-bottom: 0;
+                }
+
+                .radio__wrap {
+                    margin-bottom: 1rem;
+
+
+                    label {
+                        font-weight: 400;
+                    }
+
+                    button {
+                    }
+                }
+
+            }
+
+            label {
+                font-size: 13px;
+            }
+            
+            .warehouse__dropdown {
+
+            }
+        }
+
+        .button__wrap {
+            display: flex;
+            justify-content: space-between;
+            padding: .5rem 1rem;
+            background-color: variables.$primary-background-color;
+            
+            button {
+                border-radius: 22px;
+                margin-bottom: 1rem;
+                height: 1.75rem;
+                width: 6rem;
+                background-color: variables.$primary-interactive-color;
+                color: variables.$light-color;
+                border: none;
+                font-size: 12px;
+    }
+        }
+    }
+
+    @include tablet {
+        margin: 0 2rem;
+
+        .editHeader__div {
+            display: flex;
+            border-bottom: 1px solid variables.$secondary-border-color;
+            align-content: left;
+            justify-content: left;
+            padding-left: .5rem;
+    
+            a {
+                margin: 1.5rem 0 0 0;
+            }
+    
+            img {
+                margin: 0 .5rem 0 .5rem;
+            }
+    
+            h1 {
+                font-size: 28px;
+                margin: 1rem 1rem 1rem 0;
+            }
+    
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            div {
+                width: 100%;
+            }
+
+            .form__wrap {
+                display: flex;
+
+                .details__wrap {
+                    border-right: 1px solid variables.$secondary-border-color;
+                    margin: 1rem 0;
+                    border-bottom: none;
+
+                    h2 {
+                        margin-top: 0;
+                    }
+                }
+
+                .availability__wrap {
+
+
+                }
+            }
+
+            .button__wrap {
+                justify-content: flex-end;
+                align-content: center;
+
+                .button {
+                    margin: 0 .5rem 0 0.5rem;
+                }
+            }
+        }
+    }
+
+    @include desktop {
+        margin: 0 6.5rem;
+    }
+}
