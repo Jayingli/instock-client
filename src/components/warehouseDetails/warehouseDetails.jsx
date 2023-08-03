@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "../warehouseDetails/warehouseDetails.scss";
 import axios from "axios";
-import { useParams } from "react-router";
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/icons/edit-white-24px.svg";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
-import { Link } from "react-router-dom";
 
 //WarehouseDetails Component
 
@@ -14,7 +14,6 @@ function WarehouseDetails() {
 
   //Get current id
   const { id } = useParams();
-  console.log(id);
 
   //GET request
   useEffect(() => {
@@ -28,7 +27,7 @@ function WarehouseDetails() {
         //Store warehouse array in warehouseData
         const warehouseData = res.data;
 
-        //Set listData to the array of warehouses
+        //Set details to the array of warehouses
         setDetails(warehouseData);
       });
   }, []);
@@ -36,23 +35,23 @@ function WarehouseDetails() {
   return (
     <div className="warehouse__details">
       {details.map((warehouse) => {
+        // If warehouse id is equal to url id, build component below with that data
         if (warehouse.id == id) {
           return (
             <div>
               <div className="title__wrap">
                 <div className="warehouse">
-                  <Link to="/warehouses"><img src={backArrow} alt="Back Arrow" />
+                  <Link to="/warehouses">
+                    <img src={backArrow} alt="Back Arrow" />
                   </Link>
+                  
                   <h1>{warehouse.warehouse_name}</h1>
                 </div>
+
                 <div className="edit">
                   <Link to="/warehouses/:id">
-                    <img src={editIcon} alt="edit icon" fill="none" className="edit__icon" /> 
-                    {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04V7.04Z" fill="#2E66E6"/>
-                    </svg> */}
+                    <img src={editIcon} alt="edit icon" />
 
-                    
                     <p>Edit</p>
                   </Link>
                 </div>

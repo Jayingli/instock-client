@@ -9,7 +9,8 @@
     flex-direction: column;
     // padding: 1rem 1rem 0 1rem;
     border-radius: 5px;
-    width: 100%;
+    // width: 100%;
+    margin:0 .5rem 1rem .5rem;
     // background-color: variables.$light-color;
     // box-sizing: border-box;
 
@@ -34,6 +35,14 @@
                 grid-row: 1 / span 3;
                 padding: .5rem 0 0 1rem;
                 text-align: left;
+
+                .inStock {
+                    background-color: variables.$label-instock-color;
+                }
+
+                .outOfStock {
+                    background-color: variables.$label-outofstock-color;
+                }
 
 
                 .item__info--wrap {
