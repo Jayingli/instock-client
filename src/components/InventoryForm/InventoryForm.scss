@@ -141,6 +141,27 @@
         }
     }
 
+    &__quantity {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__error {
+        @include mobile-text-bodysmall-p3();
+        margin-top: 0.25rem;
+        color: $label-outofstock-color;
+        padding-left: 1.25rem;
+        background-image: url('../../assets/icons/error-24px.svg'); 
+        background-size: 16px; 
+        background-repeat: no-repeat;
+        background-position: left center; 
+
+        @include tablet {
+            @include tablet-text-bodysmall-p3();
+            margin-top: 0.25rem;
+        }
+    }
+
     &__buttons {
         @include mobile-padding();
         display: flex;
