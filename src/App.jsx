@@ -19,28 +19,30 @@ function App() {
                 <Header />
 
                 {/* Define routes for different pages */}
-                <Routes>
-                    {/* Home Page */}
-                    <Route path="/" element={<Navigate to="/warehouses" />} />
+                <div className="App__page">
+                    <Routes>
+                        {/* Home Page */}
+                        <Route path="/" element={<Navigate to="/warehouses" />} />
 
-                    {/* Warehouses Page */}
-                    <Route path="/warehouses" element={<WarehousesPage />} />
+                        {/* Warehouses Page */}
+                        <Route path="/warehouses" element={<WarehousesPage />} />
 
-                    {/* Single Warehouse Page */}
-                    {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
+                        {/* Single Warehouse Page */}
+                        {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
 
-                    {/* Inventories of Individual Warehouse Page*/}
-                    {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
+                        {/* Inventories of Individual Warehouse Page*/}
+                        {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
-                    {/* Inventory Page */}
-                    <Route path="/inventories" element={<InventoryPage />} />
+                        {/* Inventory Page */}
+                        <Route path="/inventories" element={<InventoryPage />} />
 
-                    {/* Single Inventory Page */}
-                    {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
+                        {/* Single Inventory Page */}
+                        {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
 
-                    {/* Catch-all to redirect to Home Page */}
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
+                        {/* Catch-all to redirect to Home Page */}
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                </div>
 
                 {/* Footer Component */}
                 <Footer />

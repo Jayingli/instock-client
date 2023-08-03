@@ -1,0 +1,184 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.inventory-form {
+    &__content {
+        @include tablet {
+            display: flex;
+            padding: 1.5rem 0;
+        }
+    }
+
+    &__title {
+        @include mobile-text-subheader-h2();
+        padding: 1rem 0 0;
+
+        @include tablet {
+            @include tablet-text-subheader-h2();
+            padding: 0.5rem 0 0;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem 1rem;
+
+        @include tablet {
+            @include tablet-padding();
+            width: 50%;
+            padding: 0 2rem 0.5rem;
+        }
+
+        @include desktop {
+            padding: 0 2.5rem;
+        }
+
+        &:first-child {
+            @include tablet {
+                border-right: 1px solid $secondary-border-color;
+            }
+        }
+    }
+    
+    &__label {
+        @include mobile-text-label-h3();
+        margin: 0.875rem 0 0.25rem;
+
+        @include tablet {
+            @include tablet-text-label-h3();
+            margin: 1.625rem 0 0.3125rem;
+        }
+    }
+
+    &__input {
+        @include form-styles();
+        height: 32px;
+        padding: 0 1rem;
+
+        @include tablet {
+            height: 38px;
+        }
+
+        &::placeholder {
+            color: $secondary-text-color;
+        }
+    }
+
+    &__textarea {
+        @include form-styles();
+        padding: 0.5rem 1rem;
+        resize: none;
+
+        &::placeholder {
+            color: $secondary-text-color;
+        }
+    }
+
+    &__select {
+        @include form-styles();
+        height: 32px;
+        padding: 0 1rem;
+        appearance: none;
+        background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 22px;
+        background-position-x: 97%;
+        
+        @include tablet {
+            height: 38px;
+            background-size: 26px;
+        }   
+    } 
+
+    &__status {
+        @include mobile-text-bodymedium-p2();
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+        }
+
+        &:first-child {
+            margin-right: 3.5rem;
+
+            @include tablet {
+                margin-right: 2.5rem;
+            }
+        }
+    }
+
+    &__radio {
+        margin-right: 0.5rem;
+        appearance: none;
+
+        /* Custom radio button */
+        width: 16px;
+        height: 16px;
+        position: relative;
+        border: 1px solid $primary-interactive-color;
+        border-radius: 50%;
+        vertical-align: middle;
+        top: -2px;
+
+        /* Inner circle to represent the checked state */
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $primary-interactive-color;
+            opacity: 0; /* Make the inner circle transparent by default */
+        }
+
+        /* Set background color of the custom radio button when checked */
+        &:checked::after {
+            opacity: 1; /* Show the inner circle when checked */
+        }
+    }
+
+    &__quantity {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__error {
+        @include mobile-text-bodysmall-p3();
+        margin-top: 0.25rem;
+        color: $label-outofstock-color;
+        padding-left: 1.25rem;
+        background-image: url('../../assets/icons/error-24px.svg'); 
+        background-size: 16px; 
+        background-repeat: no-repeat;
+        background-position: left center; 
+
+        @include tablet {
+            @include tablet-text-bodysmall-p3();
+            margin-top: 0.25rem;
+        }
+    }
+
+    &__buttons {
+        @include mobile-padding();
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 56px;
+        gap: 16px;
+        background-color: $primary-background-color;
+
+        @include tablet {
+            @include tablet-padding();
+            justify-content: flex-end;
+            height: 68px;
+        }
+
+        @include desktop {
+            padding: 0 2.5rem;
+        }
+    }
+}
