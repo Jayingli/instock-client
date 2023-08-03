@@ -15,15 +15,14 @@
 
 /* Mobile Text Styles */
 @mixin mobile-text-pageheader-h1() {
-    font-size: 1.5625rem;
-    line-height: 1.875rem;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
     font-weight: 600;
     margin: 0;
 }
 
 @mixin mobile-text-subheader-h2() {
-    // font-size: 1.25rem;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 600;
     margin: 0;
@@ -132,23 +131,4 @@
     max-width: 1020px;
     margin-right: auto;
     margin-left: auto;
-}
-
-/* Form Styles */
-@mixin form-styles() {
-    @include mobile-text-bodymedium-p2();
-    width: 100%;
-    border: 1px solid $secondary-border-color;
-    border-radius: 1.25rem;
-    color: $primary-text-color;
-    background-color: $light-color;
-    font-family: 'Titillium Web';
-
-    @include tablet {
-        width: auto;
-    }
-
-    &:focus {
-        outline: 1px solid $primary-interactive-color;
-    }
 }

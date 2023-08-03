@@ -15,6 +15,7 @@ function Header() {
                 <ul className="header__nav">
                     <li>
                         <NavLink
+                            exact
                             to="/warehouses"
                             className="header__nav-item"
                         >
@@ -23,6 +24,7 @@ function Header() {
                     </li>
                     <li>
                         <NavLink
+                            exact
                             to="/inventories"
                             className="header__nav-item"
                         >
