@@ -16,16 +16,20 @@
     &__icon {
         width: 22px;
         margin-right: 0.25rem;
+        transition: transform 0.2s ease;
 
         @include tablet {
             width: 24px;
             margin-right: 0.5rem;
         }
+
+        &:hover {
+            transform: translateX(-4px);
+        }
     }
 
     &__title {
         @include mobile-text-pageheader-h1();
-        
         
         @include tablet {
             @include tablet-text-pageheader-h1();

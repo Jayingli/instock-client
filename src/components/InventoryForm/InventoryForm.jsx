@@ -41,8 +41,42 @@ function InventoryForm() {
         setSelectedOption(event.target.value);
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        // Retrieve form values
+        const itemName = event.target.name.value;
+        const itemDescription = event.target.description.value;
+        const itemCategory = event.target.category.value;
+        const itemStatus = selectedOption;
+        const itemQuantity = event.target.quantity.value;
+        const warehouseName = event.target.warehouse.value;
+
+        // Create a new item object
+        const newItem = {
+            item_name: itemName,
+            description: itemDescription,
+            category: itemCategory,
+            status: itemStatus,
+            quantity: itemQuantity,
+            warehouse_name: warehouseName
+        };
+
+        // Send the new item data to your backend API endpoint
+        axios.post("http://localhost:5050/api/inventories", newItem)
+            .then((response) => {
+                console.log("New item added:", response.data);
+                // Optionally, you can update your state or trigger a success message here
+            })
+            .catch((error) => console.error("Failed to add item:", error));
+
+        // Clear the form fields after successful submission
+        event.target.reset();
+        setSelectedOption('in-stock'); // Reset radio button to default value
+    };
+
     return (
-        <form className="inventory-form">
+        <form className="inventory-form" onSubmit={handleSubmit}>
             <div className="inventory-form__content">
                 <div className="inventory-form__section">
                     <h3 className="inventory-form__title">Item Details</h3>
@@ -108,8 +142,8 @@ function InventoryForm() {
             </div>
 
             <div className="inventory-form__buttons">
-                    <Button variant="secondary" text="Cancel"/>
-                    <Button variant="primary" text="+ Add item"/>
+                <Button variant="secondary" text="Cancel"/>
+                <Button variant="primary" type="submit" text="+ Add item"/>
             </div>
         </form>
     );
