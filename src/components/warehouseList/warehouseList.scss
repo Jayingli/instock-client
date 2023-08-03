@@ -1,0 +1,326 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//Warehouse List Styling
+
+.warehouse__list--component {
+    display: flex;
+    flex-direction: column;
+    background-color: variables.$light-color;
+    border-radius: 5px;
+
+    .warehouse__list--mobile {
+        display: grid;
+        background-color: variables.$light-color;
+        width: 100%;
+
+        .warehouse__grid--mobile {
+            display: grid;
+            grid-template-columns: 6rem 6rem;
+            grid-template-rows: 3rem 3rem 3rem;
+            border-top: 1px solid variables.$secondary-border-color;
+            padding-bottom: .75rem;
+
+            .warehouse__list--item {
+                display: grid;
+                justify-content: space-between;
+                width: 100%;
+                padding: .5rem 0 0 1rem;
+                text-align: left;
+                grid-column: 1 / span 2;
+                grid-row: 1 / span 3;
+
+
+                .button__wrap {
+                    margin-bottom: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+
+                    img {
+                        font-size: 11px;
+                        line-height: 16px;
+                        height: 1rem;
+                        width: 1rem;
+                    }
+                }
+
+                .warehouse__info--wrap {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    div {
+                        width: 50%;
+                        display: grid;
+                    }
+
+                    .warehouse__div {
+
+                        .warehouse__name {
+                            display: flex;
+                            flex-direction: row;
+                            width: 100% !important;
+
+                            a {
+                                margin: 0
+                            }
+
+                            img {
+                                margin-bottom: -.4rem;
+                            }
+                        }
+                    }
+
+                    h4 {
+                        font-size: 11px;
+                        line-height: 16px;
+                        color: variables.$secondary-text-color;
+                        margin: .5rem 0 .25rem 0;
+                        vertical-align: top;
+                        text-transform: uppercase;
+
+                    }
+
+
+                    p {
+                        font-size: 11px;
+                        margin: 0 0 .25rem 0;
+                        vertical-align: top;
+
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        margin: 0 0 .25rem 0;
+                        vertical-align: top;
+                        text-decoration: none;
+                        color: variables.$primary-interactive-color;
+                        font-weight: bold;
+
+                    }
+
+                    .address {
+                        margin-right: 1.5rem;
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .warehouse__list--tabdesc {
+        display: none;
+    }
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$light-color;
+        padding: 0 0 .5rem 0;
+
+        .warehouse__list--mobile {
+            display: none;
+        }
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+            display: grid;
+
+
+            .warehouse__grid--container {
+                display: grid;
+                grid-template-rows: 2rem 4rem 4rem 4rem 4rem;
+
+                .grid__header--wrap {
+                    display: flex;
+                    padding-left: 1rem;
+                    grid-column: 1 / span 5;
+                    background-color: variables.$primary-background-color;
+
+                    div {
+                        display: flex;
+                        width: 100%;
+
+
+                        h4 {
+                            width: auto;
+                            font-size: 11px;
+                            line-height: 16px;
+                            color: variables.$secondary-text-color;
+                            margin-right: .5rem;
+
+                        }
+
+                        img {
+                            margin-top: .6rem;
+                            height: 1rem;
+                        }
+                    }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 3rem;
+                        }
+                    }
+                }
+
+                .warehouse__list--item {
+                    display: flex;
+                    grid-column: 1 / span 5;
+                    border-top: 1px solid variables.$secondary-border-color;
+                    padding: 0 1rem;
+                    align-items: center;
+
+                    div {
+
+                        .forward__arrow {
+                            margin-bottom: -.4rem;
+                        }
+
+                        a {
+                            margin-bottom: 1rem;
+                            align-self: center;
+
+                        }
+                    }
+
+
+                    p {
+                        width: 7rem;
+                        font-size: 11px;
+                        margin-bottom: 0;
+
+                    }
+
+                    a {
+                        font-size: 11px;
+                        text-decoration: none;
+                        color: variables.$primary-interactive-color;
+                        margin-bottom: .5rem;
+                        font-weight: bold;
+
+                        p {
+                            margin: 0;
+                        }
+
+                    }
+
+                    .button__wrap {
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 1.25rem;
+
+                        img {
+                            font-size: 11px;
+                            height: 1.25rem;
+                            margin: 1rem 0 0 1rem;
+                        }
+                    }
+
+                }
+
+                .warehouse__list--item:hover {
+                    background-color: variables.$primary-background-color;
+                    color: variables.$primary-text-color;
+                }
+            }
+        }
+    }
+
+    @include desktop {
+        display: flex;
+        padding: 0 0 .5rem 0;
+        align-self: center;
+        margin: 0 4rem 0 4rem;
+
+        .warehouse__list--tabdesc {
+            background-color: variables.$light-color;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .warehouse__grid--container {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
+
+                .grid__header--wrap {
+                    text-transform: uppercase;
+                    display: grid;
+                    padding: 0 1rem 0 2rem;
+                    grid-template-columns: repeat(5, 1fr);
+                    align-items: center;
+                    background-color: variables.$primary-background-color;
+
+                    div {
+                        display: flex;
+
+                        h4 {
+                            width: auto;
+                            font-size: 11px;
+                            line-height: 16px;
+                            color: variables.$secondary-text-color;
+                            margin-right: .5rem;
+
+                        }
+
+                        img {
+                            margin-top: .5rem;
+                        }
+
+                    }
+
+                    div:last-child {
+                        h4 {
+                            margin-left: 4.5rem;
+                        }
+                    }
+
+
+                }
+
+                .warehouse__list--item {
+                    display: grid;
+                    padding: 0 1rem 0 2rem;
+                    grid-template-columns: repeat(5, 1fr);
+                    align-items: center;
+                    border-bottom: 1px solid variables.$secondary-border-color;
+
+                    div {
+
+                        .forward__arrow {
+                            margin-bottom: -.4rem;
+                        }
+
+                        a {
+                            margin-bottom: 1rem;
+                            align-self: center;
+
+                        }
+                    }
+
+                    p {
+                        font-size: 11px;
+                    }
+
+                    .contact__phone {
+                        margin: 0;
+                    }
+
+                    a {
+                        font-size: 11px;
+                        margin: 0.5rem 0 .25rem 0;
+                        justify-self: center;
+                        width: 8rem;
+                    }
+
+                }
+            }
+
+
+        }
+
+    }
+}
