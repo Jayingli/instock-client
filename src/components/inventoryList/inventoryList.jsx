@@ -7,12 +7,14 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import SearchHeader from "../searchHeader/searchHeader";
 import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import DeleteItem from "../deleteItem/deleteItem";
 
 //Inventory List Component
 
 function InventoryList() {
   //State
   const [listData, setListData] = useState([]);
+  const [deleteVisibility, setDeleteVisibility] = useState();
 
   //GET request
   useEffect(() => {
@@ -30,6 +32,10 @@ function InventoryList() {
         setListData(inventoryData);
       });
   }, []);
+
+  const deleteItemHandler = () => {
+
+  }
 
   return (
     <section className="inventory__list">
@@ -72,7 +78,9 @@ function InventoryList() {
                 </div>
 
                 <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <Link to={`/inventories/${item.id}/delete`}>
+                    <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  </Link>
                   <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
@@ -145,7 +153,9 @@ function InventoryList() {
                 </div>
 
                 <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <Link to={`/inventories/${item.id}/delete`}>
+                    <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  </Link>
                   <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
@@ -155,6 +165,11 @@ function InventoryList() {
           })}
         </div>
       </div>
+      <DeleteItem 
+            obj="television"
+            page="inventory"
+            />
+
     </section>
   );
 }

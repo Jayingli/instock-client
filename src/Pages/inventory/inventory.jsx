@@ -6,10 +6,23 @@ import InventoryList from "../../components/inventoryList/inventoryList";
 
 function Inventory() {
 
+    // function showComponent() {
+    //     // const component = <DeleteItem />;
+
+    //     // if (component.style.display === 'none') {
+    //     //     component.style.display ='flex';
+    //     // } else 
+
+    //     component.style.display == 'none' ? component.style.display = 'flex' : component.style.display = 'none'
+    // }
+
     return (
         <section id="inventory">
             <InventoryList />
-            {/* <DeleteItem /> */}
+            {/* <DeleteItem 
+            obj="television"
+            page="inventory"
+            /> */}
         </section>
     )
 }
