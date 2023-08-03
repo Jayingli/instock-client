@@ -17,17 +17,17 @@ function InventoryDetails() {
 
   //GET request
   useEffect(() => {
-    //GET inventories array
+    //GET array of all warehouses
     const URL = "http://localhost:5050/api/";
 
     axios
       .get(URL + "inventories")
 
       .then((res) => {
-        //Store inventory array in inventoryData
+        //Store warehouse array in warehouseData
         const inventoryData = res.data;
 
-        //Set details to the inventories array
+        //Set details to the array of warehouses
         setDetails(inventoryData);
       });
   }, []);
@@ -70,10 +70,7 @@ function InventoryDetails() {
                   <div className="statquant__wrap">
                     <div>
                       <h4>Status:</h4>
-
-                      <div className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>
-                        <p>{item.status}</p>
-                      </div>
+                      <p className={item.status}>{item.status}</p>
                     </div>
 
                     <div>
