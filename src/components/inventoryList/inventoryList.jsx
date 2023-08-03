@@ -1,14 +1,14 @@
-// import inventoryData from "../../Data/inventoriesData.json";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../inventoryList/inventoryList.scss";
 import axios from "axios";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import SearchHeader from "../searchHeader/searchHeader";
-import { Link } from "react-router-dom";
 import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-//Inventory Page
+
+//Inventory List Component
 
 function InventoryList() {
   //State
@@ -57,7 +57,10 @@ function InventoryList() {
 
                   <div>
                     <h4>Status</h4>
-                    <p>{item.status}</p>
+                    <div className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>
+                      <p>{item.status}</p>
+                    </div>
+                    
 
                     <h4>QTY</h4>
                     <p>{item.quantity}</p>
@@ -65,7 +68,6 @@ function InventoryList() {
                     <h4>Warehouse</h4>
                     <p>{item.warehouse_name}</p>
 
-                    {/* Needs dynamic var once server is hooked up */}
                   </div>
                 </div>
 
@@ -130,8 +132,8 @@ function InventoryList() {
                   <p>{item.category}</p>
                 </div>
 
-                <div>
-                  <p>{item.status}</p>
+                <div className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>
+                  <p >{item.status}</p>
                 </div>
 
                 <div>
