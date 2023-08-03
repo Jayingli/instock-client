@@ -5,9 +5,6 @@ import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import './App.scss';
 
-import AddNewInventoryItem from './components/AddNewInventoryItem/AddNewInventoryItem';
-import Button from './components/Button/Button';
-
 /*
  * App.jsx
  * - Represents the main component of the application
@@ -20,8 +17,6 @@ function App() {
             <div className="App">
                 {/* Header Component */}
                 <Header />
-                {/* <Button variant="primary" text="+ Add Warehouse Item"/> */}
-                {/* <InventoryForm /> */}
 
                 {/* Define routes for different pages */}
                 <div className="App__page">
@@ -30,8 +25,7 @@ function App() {
                         <Route path="/" element={<Navigate to="/warehouses" />} />
 
                         {/* Warehouses Page */}
-                        {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
-                        <Route path="/warehouses" element={<AddNewInventoryItem  />} />
+                        <Route path="/warehouses" element={<WarehousesPage />} />
 
                         {/* Single Warehouse Page */}
                         {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
