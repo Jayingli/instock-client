@@ -28,13 +28,13 @@ function App() {
                     <Route path="/" element={<Warehouse />} />
 
                     {/* Warehouses Page */}
-                    {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
+                    <Route path="/warehouses" element={<Warehouse />} />
 
                     {/* Single Warehouse Page */}
                     <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
                     {/* Inventories of Individual Warehouse Page*/}
-                    {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
+                    {/* <Route path="/warehouses/:id/inventories" element={<Warehouse />} /> */}
 
                     {/* Inventory Page */}
                     <Route path="/inventories" element={<Inventory />} />
