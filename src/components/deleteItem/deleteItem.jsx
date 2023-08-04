@@ -6,7 +6,7 @@ import axios from 'axios';
 
 //Delete Item Component
 
-function DeleteItem({obj, page, visibility}) {
+function DeleteItem({obj, page, visibility, deleteItemHandler}) {
 
     const {id} = useParams();
 
@@ -27,7 +27,7 @@ function DeleteItem({obj, page, visibility}) {
 
     return(
         <div className='delete__component' visibility={visibility}>
-            <Link><img src={closeIcon} alt="" /></Link>
+            <Link to='/inventories'><img src={closeIcon} alt="Close Icon" onClick={deleteItemHandler} /></Link>
             <div className="delete__prompt">
                 <h1>Delete {obj} {page == 'inventory' ? 'inventory item' : 'warehouse'}?</h1>
                 <p>Please confirm that you'd like to delete {obj} from the {page == 'inventory' ? 'inventory list' : 'list of warehouses'}.

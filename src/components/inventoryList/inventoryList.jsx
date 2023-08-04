@@ -14,7 +14,7 @@ import DeleteItem from "../deleteItem/deleteItem";
 function InventoryList() {
   //State
   const [listData, setListData] = useState([]);
-  const [deleteVisibility, setDeleteVisibility] = useState();
+  const [deleteVisibility, setDeleteVisibility] = useState(false);
 
   //GET request
   useEffect(() => {
@@ -34,18 +34,8 @@ function InventoryList() {
   }, []);
 
   const deleteItemHandler = (e) => {
-    // console.log(e.target);
-    // e.preventDefault();
 
-    return(
-        <div className="delete__component--wrap">
-          <DeleteItem 
-                obj="television"
-                page="inventory"
-                visibility="hidden"
-                />
-        </div>
-      )
+    setDeleteVisibility(!deleteVisibility);
       
     }
 
@@ -166,7 +156,7 @@ function InventoryList() {
 
                 <div className="button__wrap">
                   <Link to={`/inventories/${item.id}/delete`}>
-                    <img src={deleteIcon} alt="Delete Warehouse Button" />
+                    <img src={deleteIcon} alt="Delete Warehouse Button" onClick={deleteItemHandler}/>
                   </Link>
                   <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
@@ -177,6 +167,16 @@ function InventoryList() {
           })}
         </div>
       </div>
+      {deleteVisibility && 
+        <div className="delete__component--wrap">
+            <DeleteItem 
+                  obj="television"
+                  page="inventory"
+                  visibility="hidden"
+                  deleteItemHandler={deleteItemHandler}
+                  />
+          </div>
+      }
 
     </section>
   );
