@@ -20,6 +20,8 @@ function EditInventoryItem() {
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
 
+
+
   //Pull down url
   const { id } = useParams();
 
@@ -42,7 +44,7 @@ function EditInventoryItem() {
           status: inventoryData.status,
           warehouse_id: inventoryData.warehouse_name,
         };
-        console.log(newObj);
+        // console.log(newObj);
 
         setFormData(newObj);
       });
@@ -90,7 +92,10 @@ function EditInventoryItem() {
     console.log(e.target.value);
     const { name, value } = e.target;
     setNewFormData({ [name]: value });
+    
   };
+
+
 
   //Change Handler to submit new form data
   const itemSubmitHandler = (e) => {
@@ -104,12 +109,12 @@ function EditInventoryItem() {
         console.log(res.data);
 
         const newObj = {
-          warehouse_id: e.warehouse_name,
-          item_name: e.item_name,
-          description: e.description,
-          category: e.category,
-          status: e.status,
-          quantity: res.quantity,
+          warehouse_id: newFormData.warehouse_name,
+          item_name: newFormData.item_name,
+          description: newFormData.description,
+          category: newFormData.category,
+          status: newFormData.status,
+          quantity: Number(res.quantity),
         };
 
         // setNewFormData({newObj});
