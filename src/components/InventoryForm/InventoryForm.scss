@@ -147,6 +147,10 @@
     }
 
     &__error {
+        outline: 1px solid $label-outofstock-color;
+    }
+
+    &__error-message {
         @include mobile-text-bodysmall-p3();
         margin-top: 0.25rem;
         color: $label-outofstock-color;

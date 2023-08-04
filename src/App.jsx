@@ -37,8 +37,8 @@ function App() {
                         <Route path="/" element={<Navigate to="/warehouses" />} />
 
                         {/* Warehouses Page */}
-                        {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
-                        <Route path="/warehouses" element={<AddNewInventoryItem  />} />
+                        <Route path="/warehouses" element={<WarehousesPage />} />
+                        {/* <Route path="/warehouses" element={<AddNewInventoryItem  />} /> */}
 
                         {/* Single Warehouse Page */}
                         {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}

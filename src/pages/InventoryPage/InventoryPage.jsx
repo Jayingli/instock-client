@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
 import AddNewInventoryItem from '../../components/AddNewInventoryItem/AddNewInventoryItem';
@@ -10,17 +12,35 @@ import './InventoryPage.scss';
  */
 
 function InventoryPage() {
+    const [showAddItem, setShowAddItem] = useState(false);
+
+    const handleAddItemClick = () => {
+        setShowAddItem(true);
+    };
+
+    const handleCancelAddItem = () => {
+        setShowAddItem(false);
+    };
+
     return (
         <div className="inventory-page">
+            {showAddItem ? null : (
             <div className="inventory-page__header">
                 <h1 className="inventory-page__title">Inventory</h1>
                 <div className="inventory-page__actions">
                     <SearchBar />
-                    <Button variant="primary" text="+ Add New Item"/>
+                    {!showAddItem && (
+                        <Button variant="primary" text="+ Add New Item" onClick={handleAddItemClick} />
+                    )}
                 </div>
             </div>
+            )}
 
-            <InventoryList />
+            {showAddItem ? (
+                <AddNewInventoryItem onCancelAddItem={handleCancelAddItem} />
+            ) : (
+                <InventoryList />
+            )}
         </div>        
     );
 }

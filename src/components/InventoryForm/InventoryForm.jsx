@@ -13,7 +13,7 @@ import "./InventoryForm.scss";
  * '' prop:
  */
 
-function InventoryForm() {
+function InventoryForm({ onCancelAddItem }) {
     // State to store warehouses and categories
     const [warehouses, setWarehouses] = useState([]);
     const [categories, setCategories] = useState(new Set()); // Use Set to store unique categories
@@ -123,6 +123,9 @@ function InventoryForm() {
         setSelectedOption("in-stock");
         // Clear form errors after successful submission
         setFormErrors({});
+
+        // Close the AddNewInventoryItem component
+        onCancelAddItem();
     };
 
     return (
@@ -137,7 +140,7 @@ function InventoryForm() {
                         Item Name
                     </label>
                     <input
-                        className="inventory-form__input"
+                        className={`inventory-form__input ${formErrors.name ? "inventory-form__error" : ""}`}
                         type="text"
                         id="name"
                         name="name"
@@ -147,7 +150,7 @@ function InventoryForm() {
                     ></input>
                     {/* Item name error message */}
                     {formErrors.name && (
-                        <div className="inventory-form__error">
+                        <div className="inventory-form__error-message">
                             {formErrors.name}
                         </div>
                     )}
@@ -157,7 +160,7 @@ function InventoryForm() {
                         Description
                     </label>
                     <textarea
-                        className="inventory-form__textarea"
+                        className={`inventory-form__textarea ${formErrors.description ? "inventory-form__error" : ""}`}
                         id="description"
                         name="description"
                         rows="5"
@@ -167,7 +170,7 @@ function InventoryForm() {
                     ></textarea>
                     {/* Item description error message */}
                     {formErrors.description && (
-                        <div className="inventory-form__error">
+                        <div className="inventory-form__error-message">
                             {formErrors.description}
                         </div>
                     )}
@@ -177,7 +180,7 @@ function InventoryForm() {
                         Category
                     </label>
                     <select
-                        className="inventory-form__select"
+                        className={`inventory-form__select ${formErrors.category ? "inventory-form__error" : ""}`}
                         name="category"
                         id="category"
                         value={formValues.category}
@@ -192,7 +195,7 @@ function InventoryForm() {
                     </select>
                     {/* Category error message */}
                     {formErrors.category && (
-                        <div className="inventory-form__error">
+                        <div className="inventory-form__error-message">
                             {formErrors.category}
                         </div>
                     )}
@@ -232,7 +235,7 @@ function InventoryForm() {
                     </div>
                     {/* Status error message */}
                     {formErrors.status && (
-                        <div className="inventory-form__error">
+                        <div className="inventory-form__error-message">
                             {formErrors.status}
                         </div>
                     )}
@@ -244,7 +247,7 @@ function InventoryForm() {
                                 Quantity
                             </label>
                             <input
-                                className="inventory-form__input"
+                                className={`inventory-form__input ${formErrors.quantity ? "inventory-form__error" : ""}`}
                                 type="quantity"
                                 id="quantity"
                                 name="quantity"
@@ -253,7 +256,7 @@ function InventoryForm() {
                             ></input>
                             {/* Quantity error message */}
                             {formErrors.quantity && (
-                                <div className="inventory-form__error">
+                                <div className="inventory-form__error-message">
                                     {formErrors.quantity}
                                 </div>
                             )}
@@ -265,7 +268,7 @@ function InventoryForm() {
                         Warehouse
                     </label>
                     <select
-                        className="inventory-form__select"
+                        className={`inventory-form__select ${formErrors.warehouse ? "inventory-form__error" : ""}`}
                         name="warehouse"
                         id="warehouse"
                         value={formValues.warehouse}
@@ -280,7 +283,7 @@ function InventoryForm() {
                     </select>
                     {/* Warehouse error message */}
                     {formErrors.warehouse && (
-                        <div className="inventory-form__error">
+                        <div className="inventory-form__error-message">
                             {formErrors.warehouse}
                         </div>
                     )}
@@ -289,9 +292,7 @@ function InventoryForm() {
 
             {/* Form Buttons */}
             <div className="inventory-form__buttons">
-                <Link to="/inventories">
-                <Button variant="secondary" text="Cancel" />
-                </Link>
+                <Button variant="secondary" text="Cancel" onClick={onCancelAddItem} />
                 <Button variant="primary" type="submit" text="+ Add item" />
             </div>
         </form>

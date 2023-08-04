@@ -10,9 +10,9 @@ import "./Button.scss";
  * 'text' prop: should be a string that is the text within the button
  */
 
-function Button({ variant, type, text }) {
+function Button({ variant, type, text, onClick }) {
     return (
-        <button className={`button button__${variant}`} type={type} >
+        <button className={`button button__${variant}`} type={type} onClick={onClick}>
             {text}
         </button>
     );
