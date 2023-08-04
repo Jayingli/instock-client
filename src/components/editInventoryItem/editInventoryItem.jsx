@@ -59,6 +59,7 @@ function EditInventoryItem() {
       .then((res) => {
         //Store inventory array in inventoryData
         const inventoryData = res.data;
+        console.log(inventoryData);
 
         const categoryData = [];
         const warehouseData = [];
@@ -104,12 +105,12 @@ function EditInventoryItem() {
         console.log(res.data);
 
         const newObj = {
-          warehouse_id: e.warehouse_name,
+          warehouse_id: e.warehouse_id,
           item_name: e.item_name,
           description: e.description,
           category: e.category,
           status: e.status,
-          quantity: res.quantity,
+          quantity: formData.quantity,
         };
 
         // setNewFormData({newObj});

@@ -33,9 +33,21 @@ function InventoryList() {
       });
   }, []);
 
-  const deleteItemHandler = () => {
+  const deleteItemHandler = (e) => {
+    // console.log(e.target);
+    // e.preventDefault();
 
-  }
+    return(
+        <div className="delete__component--wrap">
+          <DeleteItem 
+                obj="television"
+                page="inventory"
+                visibility="hidden"
+                />
+        </div>
+      )
+      
+    }
 
   return (
     <section className="inventory__list">
@@ -78,8 +90,8 @@ function InventoryList() {
                 </div>
 
                 <div className="button__wrap">
-                  <Link to={`/inventories/${item.id}/delete`}>
-                    <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <Link to={`/inventories/${item.id}/delete`} >
+                    <img src={deleteIcon} alt="Delete Warehouse Button" onClick={deleteItemHandler}/>
                   </Link>
                   <Link to={`/inventories/${item.id}/edit`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
@@ -165,10 +177,6 @@ function InventoryList() {
           })}
         </div>
       </div>
-      <DeleteItem 
-            obj="television"
-            page="inventory"
-            />
 
     </section>
   );

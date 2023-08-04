@@ -7,12 +7,8 @@
 .inventory__list {
     display: flex;
     flex-direction: column;
-    // padding: 1rem 1rem 0 1rem;
     border-radius: 5px;
-    // width: 100%;
     margin:0 .5rem 1rem .5rem;
-    // background-color: variables.$light-color;
-    // box-sizing: border-box;
 
     .inventory__list--mobile {
         display: grid;
@@ -21,7 +17,6 @@
 
 
         .inventory__grid--mobile {
-            // padding: .5rem .75rem 1rem .75rem;
             display: grid;
             grid-template-columns: 7rem 7rem;
             grid-template-rows: 3rem 3rem 3rem;
@@ -178,6 +173,13 @@
 
     .inventory__list--tabdesc {
         display: none;
+    }
+
+    .delete__component--wrap {
+        position: absolute;
+        top: 0;
+        left:0;
+        width: 16.1rem;
     }
 
     @include tablet {
@@ -347,6 +349,13 @@
             }
         }
 
+        .delete__component--wrap {
+            position: absolute;
+            top: 10rem;
+            left: 1.5rem;
+            width: 34.3rem;
+        }
+    
 
     }
 
