@@ -1,2 +1,36 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
+
+.inventory-page {
+    &__header {
+        padding: 1.5rem 1rem 1.25rem;
+        border-bottom: 1px solid $secondary-border-color;
+
+        @include tablet {
+            @include tablet-padding();
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__title {
+        @include mobile-text-pageheader-h1();
+        padding-bottom: 1rem;
+        
+        @include tablet {
+            @include tablet-text-pageheader-h1();
+            padding: 0.5rem 0 0.125rem;   
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+}

@@ -4,4 +4,17 @@
 .warehouses {
     background-color: $light-color;
     margin: 0 auto;
+    
+}
+
+//Warehouse Styling
+
+#warehouse__main {
+    padding: 0 1rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+
+    .warehouse__list {
+        width: 100%;
+    }
 }

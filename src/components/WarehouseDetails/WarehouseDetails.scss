@@ -1,0 +1,70 @@
+@use '../../styles/partials/variables';
+@use '../../styles/partials/mixins' as *;
+
+//WarehouseDetails styling
+
+.warehouse__details {
+    background-color: variables.$light-color;
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1px variables.$secondary-border-color;
+    border-radius: 5px;
+
+
+    .title__wrap {
+        display: flex;
+        border-bottom: solid 1px variables.$secondary-border-color;
+        padding: 1.5rem .5rem .5rem .5rem;
+
+        img {
+            font-size: 11px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: .5rem 1rem 0 .5rem;
+        }
+
+        button {
+            border-radius: 50%;
+            background-color: variables.$primary-interactive-color;
+            height: 2.5rem;
+            margin-bottom: .5rem;
+        }
+    }
+
+    .detail__wrap {
+        padding: 0 1rem .5rem 1rem;
+
+        h4 {
+            font-size: 11px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .contact__wrap {
+            display: flex;
+
+            .name__wrap {
+
+            }
+
+            .info__wrap {
+
+                a {
+                    font-size: 12px;
+                    margin: .5rem 0 .5rem 0;
+                }    
+            }
+        }
+    }
+    @include tablet {
+
+    }
+
+    @include desktop {
+
+    }
+}
