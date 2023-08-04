@@ -45,7 +45,7 @@ function WarehouseDetails() {
                   <Link to="/warehouses">
                     <img src={backArrow} alt="Back Arrow" />
                   </Link>
-                  
+
                   <h1>{warehouse.warehouse_name}</h1>
                 </div>
 
@@ -99,10 +99,11 @@ function WarehouseDetails() {
                   </div>
                 </div>
               </div>
-            );
-          }
-        })}
-      </div>
+            </div>
+          );
+        }
+      })}
+
       <WarehouseInventoryList />
     </div>
   );
