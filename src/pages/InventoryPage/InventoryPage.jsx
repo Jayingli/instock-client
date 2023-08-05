@@ -25,15 +25,15 @@ function InventoryPage() {
     return (
         <div className="inventory-page">
             {showAddItem ? null : (
-            <div className="inventory-page__header">
-                <h1 className="inventory-page__title">Inventory</h1>
-                <div className="inventory-page__actions">
-                    <SearchBar />
-                    {!showAddItem && (
-                        <Button variant="primary" text="+ Add New Item" onClick={handleAddItemClick} />
-                    )}
+                <div className="inventory-page__header">
+                    <h1 className="inventory-page__title">Inventory</h1>
+                    <div className="inventory-page__actions">
+                        <SearchBar />
+                        {!showAddItem && (
+                            <Button variant="primary" text="+ Add New Item" onClick={handleAddItemClick} />
+                        )}
+                    </div>
                 </div>
-            </div>
             )}
 
             {showAddItem ? (

@@ -7,10 +7,6 @@ import "./InventoryForm.scss";
 /*
  * InventoryForm Component
  * - Represents the inventory form for adding new inventory item
- *
- * Props:
- * '' prop:
- * '' prop:
  */
 
 function InventoryForm({ onCancelAddItem }) {
@@ -21,25 +17,23 @@ function InventoryForm({ onCancelAddItem }) {
     useEffect(() => {
         // Fetch warehouses data from the backend API
         const warehousesURL = "http://localhost:5050/api/warehouses";
-        axios
-        .get(warehousesURL)
-        .then((response) => {
-            setWarehouses(response.data);
-        })
-        .catch((error) => console.error("Failed to fetch warehouse:", error));
+        axios.get(warehousesURL)
+            .then((response) => {
+                setWarehouses(response.data);
+            })
+            .catch((error) => console.error("Failed to fetch warehouse:", error));
 
         // Fetch categories data from the backend API
-        const categoriesURL = "http://localhost:5050/api/inventories";
-        axios
-        .get(categoriesURL)
-        .then((response) => {
-            // Get an array of all categories from the response data
-            const allCategories = response.data.map((item) => item.category);
-            // Create a new Set from the array to store unique categories
-            const uniqueCategories = new Set(allCategories);
-            setCategories(uniqueCategories);
-        })
-        .catch((error) => console.error("Failed to fetch category:", error));
+        const inventoriesURL = "http://localhost:5050/api/inventories";
+        axios.get(inventoriesURL)
+            .then((response) => {
+                // Get an array of all categories from the response data
+                const allCategories = response.data.map((item) => item.category);
+                // Create a new Set from the array to store unique categories
+                const uniqueCategories = new Set(allCategories);
+                setCategories(uniqueCategories);
+            })
+            .catch((error) => console.error("Failed to fetch category:", error));
     }, []);
 
     // State to store the selected option "In stock"

@@ -3,97 +3,100 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import editIcon from "../../assets/icons/edit-white-24px.svg";
-import backArrow from "../../assets/icons/arrow_back-24px.svg";
+import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
+import Button from "../Button/Button";
 import "./InventoryDetails.scss";
 
-//Inventory Details Component
+/* 
+ * InventoryDetails Component
+ * - Represents the details of the individual component
+ * - Includes item name, description, category, status, quantity, warehouse
+ * - Has an editing function
+ */
 
 function InventoryDetails() {
-  //State
-  const [details, setDetails] = useState([]);
+    //State
+    const [details, setDetails] = useState([]);
 
-  //Get current id
-  const { id } = useParams();
+    //Get current id
+    const { id } = useParams();
 
-  //GET request
-  useEffect(() => {
-    //GET inventories array
-    const URL = "http://localhost:5050/api/";
+    //GET request
+    useEffect(() => {
+        //GET array of all inventories
+        const inventoriesURL = "http://localhost:5050/api/inventories";
+        axios.get(inventoriesURL)
+            .then((response) => {
+                setDetails(response.data);
+          });
+    }, []);
 
-    axios
-      .get(URL + "inventories")
+    return (
+        <div>
+            {details.map((item) => {
+                // If item id is equal to url id, build component below with that data
+                if (item.id == id) {
+                    return (
+                        <div className="inventory-details">
+                            <div className="inventory-details__header">
+                                <div className="inventory-details__heading">
+                                    <Link to="/inventories">
+                                        <img 
+                                            className="inventory-details__icon" 
+                                            src={backArrowIcon} 
+                                            alt="Back Arrow Icon" 
+                                        />
+                                    </Link>
+                                    <h1 className="inventory-details__title" >{item.item_name}</h1>
+                                </div>
 
-      .then((res) => {
-        //Store inventory array in inventoryData
-        const inventoryData = res.data;
+                                <div className="inventory-details__edit-mobile">
+                                    <Link to={`/inventories/${item.id}/edit`}>
+                                        <img className="inventory-details__edit-icon" src={editIcon} alt="Edit Icon" />
+                                    </Link>
+                                </div>
 
-        //Set details to the inventories array
-        setDetails(inventoryData);
-      });
-  }, []);
+                                <div className="inventory-details__edit-tablet">
+                                    <Button variant="primary" text="Edit" icon={editIcon}/>
+                                </div>
+                            </div>
 
-  return (
-    <div className="inventory__details">
-      {details.map((item) => {
-        // If item id is equal to url id, build component below with that data
-        if (item.id == id) {
-          return (
-            <div>
-              <div className="title__wrap">
-                <div className="inventory__item">
-                  <Link to="/inventories">
-                    <img src={backArrow} alt="Back Arrow" />
-                  </Link>
+                            <div className="inventory-details__body">
+                                <div className="inventory-details__column">
+                                    <h2 className="inventory-details__subtitle">Item Description:</h2>
+                                    <p className="inventory-details__paragraph">{item.description}</p>
 
-                  <h1>{item.item_name}</h1>
-                </div>
+                                    <h2 className="inventory-details__subtitle">Category:</h2>
+                                    <p className="inventory-details__paragraph-two">{item.category}</p>
+                                </div>
 
-                <div className="edit">
-                  <Link to={`/inventories/${item.id}/edit`}>
-                    <img src={editIcon} alt="edit icon" />
+                                <div className="inventory-details__column">
+                                    <div className="inventory-details__wrap">
+                                        <div>
+                                            <h2 className="inventory-details__subtitle">Status:</h2>
 
-                    <p>Edit</p>
-                  </Link>
-                </div>
-              </div>
+                                            <div className={item.status === 'In Stock' ? 'inventory-details__in-stock' : 'inventory-details__out-of-stock'}>
+                                              <p className="inventory-details__status">{item.status}</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className="inventory-details__subtitle">Quantity:</h2>
+                                            <p className="inventory-details__paragraph">{item.quantity}</p>
+                                        </div>
+                                    </div>
 
-              <div className="detail__wrap">
-                <div className="detail__header">
-                  <h4>Item Description:</h4>
-                  <p>{item.description}</p>
-
-                  <h4>Category:</h4>
-                  <p>{item.category}</p>
-                </div>
-
-                <div className="status__wrap">
-                  <div className="statquant__wrap">
-                    <div>
-                      <h4>Status:</h4>
-
-                      <div className={item.status == 'In Stock' ? 'inStock' : 'outOfStock'}>
-                        <p>{item.status}</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4>Quantity:</h4>
-                      <p>{item.quantity}</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4>Warehouse:</h4>
-                    <p>{item.warehouse_name}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        }
-      })}
-    </div>
-  );
+                                    <div>
+                                        <h2 className="inventory-details__subtitle">Warehouse:</h2>
+                                        <p className="inventory-details__paragraph-two">{item.warehouse_name}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                }
+            })}
+        </div>
+    );
 }
 
 export default InventoryDetails;

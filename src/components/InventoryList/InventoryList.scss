@@ -1,10 +1,141 @@
-@use '../../styles/partials/_variables.scss';
+@use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
 
+.inventory-list {
+    &__table {
+        width: 100%;
+    }
+
+    &__header {
+        display: none;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+    
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $secondary-border-color;
+    }
+
+    &__column {
+        @include mobile-padding();
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__data {
+        padding: 8px 0;
+        
+    }
+
+    &__title {
+        @include mobile-text-tableheader-h4();
+        text-transform: uppercase;
+    }
+
+    &__icon {
+        display: none;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__actions {
+        display: none;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__title-mobile {
+        @include mobile-text-tableheader-h4();
+        text-transform: uppercase;
+        padding-bottom:2px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+
+        // &::after {
+        //     background-image: url('../../assets/icons/chevron_right-24px.svg');
+        // }
+        // // background-image: url('../../assets/icons/chevron_right-24px.svg');
+        // // background-position: left center;
+        // // background-repeat: no-repeat;
+        // // background-size: 22px;
+        // // background-position-x: 50%;
+    }
+
+
+    &__link-icon {
+        width: 22px;
+        padding-left: 4px;
+    }
+
+    &__name {
+        background-image: url('../../assets/icons/chevron_right-24px.svg');
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-size: 22px;
+        background-position-x: 80%;
+    }
+
+    &__in-stock {
+        @include in-stock-styles();
+    }
+
+    &__out-of-stock {
+        @include out-of-stock-styles();
+    }
+
+    &__status {
+        @include status-styles();
+    }
+
+    &__paragraph {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom:12px;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    &__delete {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+        }
+    }
+
+    &__edit {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+        }
+    }
+}
+
 //Inventory Styling
 
-.inventory__list {
+// .inventory__list {
     // display: flex;
     // flex-direction: column;
     // padding: 1rem 1rem 0 1rem;
@@ -326,4 +457,4 @@
 
 
     // }
-}
+// }
