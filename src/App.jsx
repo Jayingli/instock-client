@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 import "./App.scss";
 import WarehouseInventoryList from "./components/warehouseInventoryList/warehouseInventoryList";
 import Warehouse from "./pages/warehouse/warehouse.jsx";
-import Inventory from "./Pages/inventory/inventory";
+import Inventory from "./pages/inventory/inventory";
 import WarehouseDetails from "./components/warehouseDetails/warehouseDetails";
 import EditInventoryItem from "./components/editInventoryItem/editInventoryItem";
 /*

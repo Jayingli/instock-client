@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Warehouse from "../../Pages/warehouse/warehouse";
+import Warehouse from "../../pages/warehouse/warehouse";
 import "../warehouseList/warehouseList.scss";
 import "../../styles/partials/_global.scss";
 import axios from "axios";
@@ -10,8 +10,8 @@ import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-import SearchHeader from '../searchHeader/searchHeader';
-// 
+import SearchHeader from "../searchHeader/searchHeader";
+//
 //Warehouse List Component
 
 function WarehouseList() {
@@ -38,10 +38,7 @@ function WarehouseList() {
 
   return (
     <div className="warehouse__list--component">
-      <SearchHeader 
-        obj='warehouse'
-        page='Warehouses'
-      />
+      <SearchHeader obj="warehouse" page="Warehouses" />
 
       {/* Mobile view set up */}
       <div className="warehouse__list--mobile">
