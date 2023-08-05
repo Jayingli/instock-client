@@ -9,12 +9,20 @@ import { useEffect, useState } from "react";
 
 function EditInventoryItem() {
   // State
-  // const [newFormData, setNewFormData] = useState({});
-  const [formData, setFormData] = useState({});
+  const [newFormData, setNewFormData] = useState({});
+  // const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    id:'',
+    item_name: '',
+    description: '',
+    category: '',
+    status: '',
+    warehouse_id: '',
+    quantity: '',
+
+  });
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
-
-
 
   //Pull down url
   const { id } = useParams();
@@ -33,15 +41,16 @@ function EditInventoryItem() {
 
         console.log(res.data);
 
-        // const newObj = {
-        //   item_name: inventoryData.item_name,
-        //   description: inventoryData.description,
-        //   category: inventoryData.category,
-        //   status: inventoryData.status,
-        //   warehouse_id: inventoryData.warehouse_name,
-        //   quantity: inventoryData.quantity,
-        // };
-        // console.log(newObj);
+        const newObj = {
+          id:inventoryData.id,
+          item_name: inventoryData.item_name,
+          description: inventoryData.description,
+          category: inventoryData.category,
+          status: inventoryData.status,
+          warehouse_id: inventoryData.warehouse_name,
+          quantity: inventoryData.quantity,
+        };
+        console.log(newObj);
 
         setFormData(inventoryData);
       });
@@ -87,11 +96,30 @@ function EditInventoryItem() {
   //Change handler to take in form changes
   const itemEditHandler = (e) => {
     console.log(e.target.value);
-    const { name, value } = e.target;
+    const { name, value } = e.target.value;
     setFormData({...formData, [name]: value });
+    // console.log(newFormData);
+
+    const newObj = {
+      id:formData.id,
+      warehouse_id: formData.warehouse_id,
+      item_name: formData.item_name,
+      description: formData.description,
+      category: formData.category,
+      status: formData.status,
+      quantity: formData.quantity,
+    };
+
+    console.log(newObj);
+
+
+    setFormData(newObj);
+
+    // setFormData(setNewFormData);
+
+    console.log(formData);
     
   };
-
 
 
   //Change Handler to submit new form data
@@ -106,14 +134,15 @@ function EditInventoryItem() {
         console.log(res.data);
 
         // const newObj = {
-        //   warehouse_id: formData.warehouse_id,
-        //   item_name: formData.item_name,
-        //   description: formData.description,
-        //   category: formData.category,
-        //   status: formData.status,
-        //   quantity: formData.quantity,
+        //   warehouse_id: newFormData.warehouse_id,
+        //   item_name: newFormData.item_name,
+        //   description: newFormData.description,
+        //   category: newFormData.category,
+        //   status: newFormData.status,
+        //   quantity: res.quantity,
         // };
 
+    
       })
 
       .catch((err) => {
@@ -130,7 +159,7 @@ function EditInventoryItem() {
         <h1>Edit Inventory Item</h1>
       </div>
 
-      <form action="submit" onClick={itemSubmitHandler}>
+      <form action="submit" onSubmit={itemSubmitHandler}>
         <div className="form__wrap">
           <div className="details__wrap">
             <h2>Item Details</h2>
@@ -153,7 +182,7 @@ function EditInventoryItem() {
 
             <label htmlFor="category">Category</label>
             <div className="category">
-              <select name="categories__dropdown" value={formData.category} id="categories" onChange={itemEditHandler}>
+              <select name="category" value={formData.category} id="categories" onChange={itemEditHandler}>
                 <option value={formData.category}>{formData.category}</option>
                 {categories.map((category) => {
                   if (category != formData.category) {
@@ -174,7 +203,7 @@ function EditInventoryItem() {
                   type="radio"
                   name="status"
                   value="In Stock"
-                  checked="true"
+                  checked={true}
                   onChange={itemEditHandler}
                 />{" "}
                 <label htmlFor="in stock">In stock</label>
@@ -182,7 +211,7 @@ function EditInventoryItem() {
                   type="radio"
                   name="status"
                   value="Out of Stock"
-                  checked="false"
+                  checked={false}
                   onChange={itemEditHandler}
                 />{" "}
                 <label htmlFor="out of stock">Out of stock</label>
@@ -191,11 +220,12 @@ function EditInventoryItem() {
 
             <label htmlFor="warehouse">Warehouse</label>
             <div className="warehouse__name">
-              <select name="warehouse_id" value={formData.warehouse_id} id="warehouses_dropdown" onChange={itemEditHandler}>
+              <select name="warehouse_id" value={formData.warehouse_name} id="warehouses_dropdown" onChange={itemEditHandler}>
                 <option value={formData.warehouse_name}>{formData.warehouse_name}</option>
                 {warehouses.map((warehouse) => {
                   if (warehouse != formData.warehouse_name) {
-                    return <option value={warehouse}>{warehouse}</option>;
+                    const warehouse_name = warehouse;
+                    return <option value={warehouse_name}>{warehouse_name}</option>;
                   }
                 })}
               </select>
