@@ -170,7 +170,7 @@ function InventoryList() {
       {deleteVisibility && 
         <div className="delete__component--wrap">
             <DeleteItem 
-                  obj="television"
+                  obj={listData.item_name}
                   page="inventory"
                   visibility="hidden"
                   deleteItemHandler={deleteItemHandler}

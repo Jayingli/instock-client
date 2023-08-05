@@ -6,7 +6,7 @@ import axios from 'axios';
 
 //Delete Item Component
 
-function DeleteItem({obj, page, visibility, deleteItemHandler}) {
+function DeleteItem({obj, page, deleteItemHandler}) {
 
     const {id} = useParams();
 
@@ -18,6 +18,7 @@ function DeleteItem({obj, page, visibility, deleteItemHandler}) {
 
         .then((res) => {
             console.log(`deleted post with id ${id}`);
+            deleteItemHandler();
         })
 
         .catch((err) => {
@@ -26,7 +27,7 @@ function DeleteItem({obj, page, visibility, deleteItemHandler}) {
     }
 
     return(
-        <div className='delete__component' visibility={visibility}>
+        <div className='delete__component'>
             <Link to='/inventories'><img src={closeIcon} alt="Close Icon" onClick={deleteItemHandler} /></Link>
             <div className="delete__prompt">
                 <h1>Delete {obj} {page == 'inventory' ? 'inventory item' : 'warehouse'}?</h1>
@@ -34,7 +35,7 @@ function DeleteItem({obj, page, visibility, deleteItemHandler}) {
                     You won't be able to undo this action.</p>
 
                 <div className="button__wrap">
-                    <button className="cancel">Cancel</button>
+                    <button className="cancel" onClick={deleteItemHandler}>Cancel</button>
                     <button className="delete" onClick={deleteHandler}>Delete</button>
                 </div>
             </div>
