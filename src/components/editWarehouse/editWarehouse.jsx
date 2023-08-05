@@ -49,7 +49,7 @@ function EditWarehouse() {
   };
 
   return (
-    <section className="editInventoryItem">
+    <section className="editWarehouse">
       <div className="editHeader__div">
         <Link to="/inventories">
           <img src={backArrow} alt="Back Arrow" />
@@ -63,44 +63,68 @@ function EditWarehouse() {
             <h2>Warehouse Details</h2>
 
             <label htmlFor="item__name">Warehouse Name</label>
-            <input type="text" name="item_name" value={formData.item_name} />
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Warehouse Name"
+            />
 
             <label htmlFor="item__name">Street Address</label>
-            <input type="text" name="item_name" value={formData.item_name} />
-            {/* <label htmlFor="description">Street Address</label>
-            <textarea
-              name="description"
-              id="description"
-              value={formData.description}
-            ></textarea> */}
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Street Address"
+            />
 
             <label htmlFor="item__name">City</label>
-            <input type="text" name="item_name" value={formData.item_name} />
-            {/* <label htmlFor="category">City</label>
-            <div className="category">{formData.category}</div> */}
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="City"
+            />
+
             <label htmlFor="item__name">Country</label>
-            <input type="text" name="item_name" value={formData.item_name} />
-            {/* 
-            <label htmlFor="category">Country</label>
-            <div className="category">{formData.category}</div> */}
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Country"
+            />
           </div>
 
-          <div className="availability__wrap">
+          <div className="details__wrap">
             <h2>Contact Details</h2>
-
-            <div className="status__wrap">
-              <label htmlFor="status">Contact Name</label>
-              <div className="radio__wrap">
-                <input type="text" name="status" />
-              </div>
-            </div>
-
+            <label htmlFor="warehouse">Contact Name</label>
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Contact Name"
+            />
             <label htmlFor="warehouse">Position</label>
-            <input type="text" name="item_name" value={formData.item_name} />
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Position"
+            />
             <label htmlFor="warehouse">Phone Number</label>
-            <input type="text" name="item_name" value={formData.item_name} />
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Phone Number"
+            />
             <label htmlFor="warehouse">Email</label>
-            <input type="text" name="item_name" value={formData.item_name} />
+            <input
+              type="text"
+              name="item_name"
+              value={formData.item_name}
+              placeholder="Email"
+            />
           </div>
         </div>
 
