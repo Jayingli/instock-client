@@ -5,53 +5,53 @@ import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// Edit Inventory Item Component
-
 function EditInventoryItem() {
-  // State
   const [formData, setFormData] = useState({
-    item_name: "",
-    description: "",
-    category: "",
-    status: "",
-    warehouse_id: "",
+    id: '',
+    item_name: '',
+    description: '',
+    category: '',
+    status: '',
+    warehouse_id: '',
+    quantity: '',
   });
+
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
 
-  // Pull down url
   const { id } = useParams();
 
-  // GET request to get the inventory item from the backend
-  const getInventoryItem = async (itemId) => {
-    try {
-      const response = await axios.get(`http://localhost:5050/api/inventories/${itemId}`);
-      const inventoryData = response.data;
+  useEffect(() => {
+    const URL = "http://localhost:5050/api/";
 
-      const newObj = {
-        item_name: inventoryData.item_name,
-        description: inventoryData.description,
-        category: inventoryData.category,
-        status: inventoryData.status,
-        warehouse_id: inventoryData.warehouse_id, // warehouse_id
-      };
+    axios.get(`${URL}inventories/${id}`)
+      .then((res) => {
+        const inventoryData = res.data;
+        console.log("Fetched inventory data:", inventoryData);
+        setFormData({
+          id: inventoryData.id,
+          item_name: inventoryData.item_name,
+          description: inventoryData.description,
+          category: inventoryData.category,
+          status: inventoryData.status,
+          warehouse_id: inventoryData.warehouse_id,
+          quantity: inventoryData.quantity,
+        });
+      })
+      .catch((err) => {
+        console.log("Error fetching inventory data:", err);
+      });
+  }, [id]);
 
-      setFormData(newObj);
-    } catch (error) {
-      console.error("Error fetching inventory item:", error);
-    }
-  };
+  useEffect(() => {
+    const URL = "http://localhost:5050/api/";
 
-  // GET request to get array of all inventories
-  const getAllInventories = async () => {
-    try {
-      const response = await axios.get("http://localhost:5050/api/inventories");
-      const inventoryData = response.data;
-
+    axios.get(`${URL}inventories`)
+    .then((res) => {
+      const inventoryData = res.data;
       const categoryData = [];
       const warehouseData = [];
 
-      // For each object in the array, if category from obj is not included in categoryData array, push category to array
       inventoryData.forEach((obj) => {
         const objCategory = obj.category;
         if (!categoryData.includes(objCategory)) {
@@ -59,7 +59,6 @@ function EditInventoryItem() {
         }
       });
 
-      // For each object in the array, if warehouse name from obj is not included in warehouseData array, push warehouse to array
       inventoryData.forEach((obj) => {
         const objWarehouse = obj.warehouse_name;
         if (!warehouseData.includes(objWarehouse)) {
@@ -67,52 +66,34 @@ function EditInventoryItem() {
         }
       });
 
-      // Setting State
       setCategories(categoryData);
       setWarehouses(warehouseData);
-    } catch (error) {
-      console.error("Error fetching all inventories:", error);
-    }
-  };
+    });
+  }, []);
 
-  // Fetch the inventory item and all inventories on component mount
-  useEffect(() => {
-    getInventoryItem(id);
-    getAllInventories();
-  }, [id]);
-
-  // Change handler to take in form changes
   const itemEditHandler = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [name]: value });
+
+    console.log("Updated Form Data:", { ...formData, [name]: value });
   };
 
-  // Change Handler to submit new form data
   const itemSubmitHandler = (e) => {
     e.preventDefault();
 
-    // PUT request to write the new info to the database
+    console.log("Form Data:", formData);
+
+    const URL = "http://localhost:5050/api/";
+    console.log("Submitting form data:", formData);
     axios
-      .put(`http://localhost:5050/api/inventories/${id}`, formData)
+      .put(`${URL}inventories/${id}`, formData)
       .then((res) => {
         console.log(res.data);
-
-        const newObj = {
-          warehouse_id: formData.warehouse_id,
-          item_name: formData.item_name,
-          description: formData.description,
-          category: formData.category,
-          status: formData.status,
-          quantity: res.data.quantity, // res.data.quantity
-        };
-
-        console.log(newObj);
+        // Handle success or other logic after successful update
       })
       .catch((err) => {
         console.log(err);
+        // Handle error if the update fails
       });
   };
 
@@ -124,12 +105,12 @@ function EditInventoryItem() {
         </Link>
         <h1>Edit Inventory Item</h1>
       </div>
-
+  
       <form action="submit" onSubmit={itemSubmitHandler}>
         <div className="form__wrap">
           <div className="details__wrap">
             <h2>Item Details</h2>
-
+  
             <label htmlFor="item__name">Item Name</label>
             <input
               type="text"
@@ -137,7 +118,7 @@ function EditInventoryItem() {
               value={formData.item_name}
               onChange={itemEditHandler}
             />
-
+  
             <label htmlFor="description">Description</label>
             <textarea
               name="description"
@@ -145,20 +126,29 @@ function EditInventoryItem() {
               value={formData.description}
               onChange={itemEditHandler}
             ></textarea>
-
+  
             <label htmlFor="category">Category</label>
             <div className="category">
-              <select name="categories__dropdown" value={formData.category} id="categories" onChange={itemEditHandler}>
-                {categories.map((category) => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
+              <select
+                name="category"
+                value={formData.category}
+                id="categories"
+                onChange={itemEditHandler}
+              >
+                <option value={formData.category}>{formData.category}</option>
+                {categories.map((category) => {
+                  if (category !== formData.category) {
+                    return <option value={category}>{category}</option>;
+                  }
+                  return null;
+                })}
               </select>
             </div>
           </div>
-
+  
           <div className="availability__wrap">
             <h2>Item Availability</h2>
-
+  
             <div className="status__wrap">
               <label htmlFor="status">Status</label>
               <div className="radio__wrap">
@@ -180,18 +170,29 @@ function EditInventoryItem() {
                 <label htmlFor="out of stock">Out of stock</label>
               </div>
             </div>
-
+  
             <label htmlFor="warehouse">Warehouse</label>
             <div className="warehouse__name">
-              <select name="warehouse_id" value={formData.warehouse_id} id="warehouses_dropdown" onChange={itemEditHandler}>
-                {warehouses.map((warehouse) => (
-                  <option key={warehouse} value={warehouse}>{warehouse}</option>
-                ))}
+              <select
+                name="warehouse_id"
+                value={formData.warehouse_id}
+                id="warehouses_dropdown"
+                onChange={itemEditHandler}
+              >
+                <option value={formData.warehouse_id}>
+                  {formData.warehouse_id}
+                </option>
+                {warehouses.map((warehouse) => {
+                  if (warehouse !== formData.warehouse_id) {
+                    return <option value={warehouse}>{warehouse}</option>;
+                  }
+                  return null;
+                })}
               </select>
             </div>
           </div>
         </div>
-
+  
         <div className="button__wrap">
           <button className="cancel">Cancel</button>
           <button className="save" type="submit">
