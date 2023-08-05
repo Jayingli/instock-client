@@ -79,7 +79,9 @@ function WarehouseList() {
                 </div>
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
+                  <Link to={`/warehouses/update/${warehouse.id}`}>
+                    <img src={editIcon} alt="Edit Warehouse Button" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -153,7 +155,9 @@ function WarehouseList() {
 
                 <div className="button__wrap">
                   <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
+                  <Link to={`/warehouses/update/${warehouse.id}`}>
+                    <img src={editIcon} alt="Edit Warehouse Button" />
+                  </Link>
                 </div>
               </div>
             );
