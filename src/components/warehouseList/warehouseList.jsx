@@ -22,7 +22,7 @@ function WarehouseList() {
 
   useEffect(() => {
     //GET array of all warehouses
-    const URL = "http://localhost:5050/api/";
+    const URL = "http://localhost:8000/api/";
 
     axios
       .get(URL + "warehouses")
@@ -41,6 +41,7 @@ function WarehouseList() {
       <SearchHeader 
         obj='warehouse'
         page='Warehouses'
+        routeTo = '/warehouses/new'
       />
 
       {/* Mobile view set up */}

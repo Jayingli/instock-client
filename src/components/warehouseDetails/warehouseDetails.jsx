@@ -18,7 +18,7 @@ function WarehouseDetails() {
   //GET request
   useEffect(() => {
     //GET array of all warehouses
-    const URL = "http://localhost:5050/api/";
+    const URL = "http://localhost:8000/api/";
 
     axios
       .get(URL + "warehouses")

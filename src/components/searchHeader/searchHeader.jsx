@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import '../searchHeader/searchHeader.scss';
 
 //SearchHeader Component
 
-function SearchHeader({obj, page}) {
+function SearchHeader({obj, page, routeTo}) {
 
     return (
         <div className="header__wrap">
@@ -17,7 +18,7 @@ function SearchHeader({obj, page}) {
                 </button>
             </div>
 
-            <button>+ Add New {obj}</button>
+          <Link to={routeTo} ><button>+ Add New {obj}</button></Link>  
         </div>
 
     )

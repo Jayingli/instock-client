@@ -17,7 +17,7 @@ function InventoryList() {
   //GET request
   useEffect(() => {
     //GET array of all inventories
-    const URL = "http://localhost:5050/api/";
+    const URL = "http://localhost:8000/api/";
 
     axios
       .get(URL + "inventories")

@@ -26,7 +26,7 @@ function EditInventoryItem() {
   //GET request to get array of inventory items
   useEffect(() => {
     //GET array of all inventory items
-    const URL = "http://localhost:5050/api/";
+    const URL = "http://localhost:8000/api/";
 
     axios
       .get(`${URL}inventories/${id}`)
@@ -51,7 +51,7 @@ function EditInventoryItem() {
   //GET request
   useEffect(() => {
     //GET array of all inventories
-    const URL = "http://localhost:5050/api/";
+    const URL = "http://localhost:8000/api/";
 
     axios
       .get(`${URL}inventories`)
@@ -98,7 +98,7 @@ function EditInventoryItem() {
 
     // PUT request to write the new info to the database?
     axios
-      .put(`http://localhost:5050/api/inventories/${id}`, { newFormData })
+      .put(`http://localhost:8000/api/inventories/${id}`, { newFormData })
 
       .then((res) => {
         console.log(res.data);
