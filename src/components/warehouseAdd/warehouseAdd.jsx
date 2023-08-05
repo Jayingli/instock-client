@@ -44,6 +44,56 @@ const WarehouseAdd = () => {
   //Form Validation
 
   //Empty Fields
+  const isFieldsValid = () => {
+    if (
+      !warehouse_name ||
+      !address ||
+      !city ||
+      !country ||
+      !contact_name ||
+      !contact_position ||
+      !contact_phone ||
+      !contact_email
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  //Phone Number validation
+  const isPhoneValid = () => {
+const phoneValidator = /1?-?\(?[0-9]{3}[\-\)][0-9]{3}-[0-9]{4}/;
+
+    if (!phoneValidator.test(contact_phone)) {
+      return false;
+    } else {
+      return true;
+    };
+  };
+
+//   Email Validation
+const isEmailValid = ()=>{
+    if (!contact_email.includes("@")){
+        return false;
+    } else {
+        return true;
+    };
+};
+
+// Final validation
+const isValidForm = () =>{
+    if(!isEmailValid){
+        return false;
+    };
+    if(!isPhoneValid){
+        return false;
+    };
+    if(!isEmailValid){
+        return false;
+    };
+    return true;
+}
 
   //Handle to submit form
   const handleSubmit = (event) => {
