@@ -16,6 +16,8 @@ function InventoryList() {
   const [listData, setListData] = useState([]);
   const [deleteVisibility, setDeleteVisibility] = useState(false);
 
+  // console.log(listData);
+
   //GET request
   useEffect(() => {
     //GET array of all inventories
@@ -33,17 +35,20 @@ function InventoryList() {
       });
   }, []);
 
-  const deleteItemHandler = (e) => {
+  const deleteItemHandler = (id) => {
 
     setDeleteVisibility(!deleteVisibility);
-      
+
     }
 
   return (
     <section className="inventory__list">
       <SearchHeader obj="item" page="Inventory" />
+      {!deleteVisibility && 
       <div className="inventory__list--mobile">
         {listData.map((item) => {
+          const id = item.id;
+
           return (
             <div className="inventory__grid--mobile" key={item.id}>
               <div className="inventory__grid--item">
@@ -92,6 +97,7 @@ function InventoryList() {
           );
         })}
       </div>
+      }
 
       <div className="inventory__list--tabdesc">
         <div className="inventory__grid--container">
@@ -170,10 +176,11 @@ function InventoryList() {
       {deleteVisibility && 
         <div className="delete__component--wrap">
             <DeleteItem 
-                  obj={listData.item_name}
+                  array={listData}
                   page="inventory"
                   visibility="hidden"
                   deleteItemHandler={deleteItemHandler}
+                  obj="television"
                   />
           </div>
       }

@@ -6,10 +6,20 @@ import axios from 'axios';
 
 //Delete Item Component
 
-function DeleteItem({obj, page, deleteItemHandler}) {
+function DeleteItem({ array, page, deleteItemHandler}) {
 
     const {id} = useParams();
 
+    //Find item by id to us its name in the message below
+    function findItem(item) {
+        return item.id == id;
+    }
+
+    const obj = array.find(findItem);
+
+    console.log(obj);
+
+    //DELETE request
     const deleteHandler = (e) => {
         e.preventDefault();
 
@@ -30,8 +40,8 @@ function DeleteItem({obj, page, deleteItemHandler}) {
         <div className='delete__component'>
             <Link to='/inventories'><img src={closeIcon} alt="Close Icon" onClick={deleteItemHandler} /></Link>
             <div className="delete__prompt">
-                <h1>Delete {obj} {page == 'inventory' ? 'inventory item' : 'warehouse'}?</h1>
-                <p>Please confirm that you'd like to delete {obj} from the {page == 'inventory' ? 'inventory list' : 'list of warehouses'}.
+                <h1>Delete {obj.item_name} {page == 'inventory' ? 'inventory item' : 'warehouse'}?</h1>
+                <p>Please confirm that you'd like to delete {obj.item_name} from the {page == 'inventory' ? 'inventory list' : 'list of warehouses'}.
                     You won't be able to undo this action.</p>
 
                 <div className="button__wrap">
