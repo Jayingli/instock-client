@@ -125,16 +125,7 @@ const WarehouseAdd = () => {
 
     if (isValidForm()) {
       axios
-        .post(`${baseURL}/api/warehouses`, {
-          warehouse_name: warehouse_name,
-          address: address,
-          city: city,
-          country: country,
-          contact_name: contact_name,
-          contact_position: contact_position,
-          contact_phone: contact_phone,
-          contact_email: contact_email,
-        })
+        .post(`${baseURL}/api/warehouses`, warehouseState)
         .then((res) => {
           console.log(res);
         })
