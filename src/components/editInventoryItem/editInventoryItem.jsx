@@ -9,14 +9,8 @@ import { useEffect, useState } from "react";
 
 function EditInventoryItem() {
   // State
-  const [newFormData, setNewFormData] = useState({});
-  const [formData, setFormData] = useState({
-    item_name: "",
-    description: "",
-    category: "",
-    status: "",
-    warehouse_id: "",
-  });
+  // const [newFormData, setNewFormData] = useState({});
+  const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
 
@@ -37,16 +31,19 @@ function EditInventoryItem() {
         //Store inventory item in inventoryData
         const inventoryData = res.data;
 
-        const newObj = {
-          item_name: inventoryData.item_name,
-          description: inventoryData.description,
-          category: inventoryData.category,
-          status: inventoryData.status,
-          warehouse_id: inventoryData.warehouse_name,
-        };
+        console.log(res.data);
+
+        // const newObj = {
+        //   item_name: inventoryData.item_name,
+        //   description: inventoryData.description,
+        //   category: inventoryData.category,
+        //   status: inventoryData.status,
+        //   warehouse_id: inventoryData.warehouse_name,
+        //   quantity: inventoryData.quantity,
+        // };
         // console.log(newObj);
 
-        setFormData(newObj);
+        setFormData(inventoryData);
       });
   }, []);
 
@@ -91,7 +88,7 @@ function EditInventoryItem() {
   const itemEditHandler = (e) => {
     console.log(e.target.value);
     const { name, value } = e.target;
-    setNewFormData({ [name]: value });
+    setFormData({...formData, [name]: value });
     
   };
 
@@ -101,24 +98,22 @@ function EditInventoryItem() {
   const itemSubmitHandler = (e) => {
     e.preventDefault();
 
-    // PUT request to write the new info to the database?
+    // PUT request to write the new info to the database
     axios
-      .put(`http://localhost:5050/api/inventories/${id}`, { newFormData })
+      .put(`http://localhost:5050/api/inventories/${id}`, formData)
 
       .then((res) => {
         console.log(res.data);
 
-        const newObj = {
-          warehouse_id: newFormData.warehouse_name,
-          item_name: newFormData.item_name,
-          description: newFormData.description,
-          category: newFormData.category,
-          status: newFormData.status,
-          quantity: Number(res.quantity),
-        };
+        // const newObj = {
+        //   warehouse_id: formData.warehouse_id,
+        //   item_name: formData.item_name,
+        //   description: formData.description,
+        //   category: formData.category,
+        //   status: formData.status,
+        //   quantity: formData.quantity,
+        // };
 
-        // setNewFormData({newObj});
-        console.log(newObj);
       })
 
       .catch((err) => {
@@ -158,7 +153,7 @@ function EditInventoryItem() {
 
             <label htmlFor="category">Category</label>
             <div className="category">
-              <select name="categories__dropdown" id="categories" onChange={itemEditHandler}>
+              <select name="categories__dropdown" value={formData.category} id="categories" onChange={itemEditHandler}>
                 <option value={formData.category}>{formData.category}</option>
                 {categories.map((category) => {
                   if (category != formData.category) {
@@ -196,10 +191,10 @@ function EditInventoryItem() {
 
             <label htmlFor="warehouse">Warehouse</label>
             <div className="warehouse__name">
-              <select name="warehouses__dropdown" id="warehouses" onChange={itemEditHandler}>
-                <option value={formData.warehouse_id}>{formData.warehouse_id}</option>
+              <select name="warehouse_id" value={formData.warehouse_id} id="warehouses_dropdown" onChange={itemEditHandler}>
+                <option value={formData.warehouse_name}>{formData.warehouse_name}</option>
                 {warehouses.map((warehouse) => {
-                  if (warehouse != formData.warehouse_id) {
+                  if (warehouse != formData.warehouse_name) {
                     return <option value={warehouse}>{warehouse}</option>;
                   }
                 })}
