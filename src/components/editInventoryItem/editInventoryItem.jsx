@@ -35,7 +35,6 @@ function EditInventoryItem() {
         status: inventoryData.status,
         warehouse_id: inventoryData.warehouse_id, // warehouse_id
       };
-      console.log(newObj);
 
       setFormData(newObj);
     } catch (error) {
@@ -84,7 +83,6 @@ function EditInventoryItem() {
 
   // Change handler to take in form changes
   const itemEditHandler = (e) => {
-    console.log(e.target.value);
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -111,7 +109,6 @@ function EditInventoryItem() {
           quantity: res.data.quantity, // res.data.quantity
         };
 
-        // setNewFormData({newObj});
         console.log(newObj);
       })
       .catch((err) => {
@@ -128,7 +125,7 @@ function EditInventoryItem() {
         <h1>Edit Inventory Item</h1>
       </div>
 
-      <form action="submit" onClick={itemSubmitHandler}>
+      <form action="submit" onSubmit={itemSubmitHandler}>
         <div className="form__wrap">
           <div className="details__wrap">
             <h2>Item Details</h2>
@@ -151,14 +148,10 @@ function EditInventoryItem() {
 
             <label htmlFor="category">Category</label>
             <div className="category">
-              <select name="categories__dropdown" id="categories" onChange={itemEditHandler}>
-                <option value={formData.category}>{formData.category}</option>
-                {categories.map((category) => {
-                  if (category !== formData.category) {
-                    return <option key={category} value={category}>{category}</option>;
-                  }
-                  return null;
-                })}
+              <select name="categories__dropdown" value={formData.category} id="categories" onChange={itemEditHandler}>
+                {categories.map((category) => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -190,14 +183,10 @@ function EditInventoryItem() {
 
             <label htmlFor="warehouse">Warehouse</label>
             <div className="warehouse__name">
-              <select name="warehouses__dropdown" id="warehouses" onChange={itemEditHandler}>
-                <option value={formData.warehouse_id}>{formData.warehouse_id}</option>
-                {warehouses.map((warehouse) => {
-                  if (warehouse !== formData.warehouse_id) {
-                    return <option key={warehouse} value={warehouse}>{warehouse}</option>;
-                  }
-                  return null;
-                })}
+              <select name="warehouse_id" value={formData.warehouse_id} id="warehouses_dropdown" onChange={itemEditHandler}>
+                {warehouses.map((warehouse) => (
+                  <option key={warehouse} value={warehouse}>{warehouse}</option>
+                ))}
               </select>
             </div>
           </div>
