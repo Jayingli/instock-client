@@ -12,7 +12,6 @@ import './InventoryList.scss';
  * - Represents the whole list of inventory
  * - Includes item name, category, status, quantity, warehouse
  * - Has delete & editing functions for the inventory items
- * - Has a search bar & add new item button
  */
 
 function InventoryList() {
