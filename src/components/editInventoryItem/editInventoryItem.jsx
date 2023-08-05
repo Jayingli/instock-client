@@ -5,11 +5,10 @@ import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-//Edit Inventory Item Component
+// Edit Inventory Item Component
 
 function EditInventoryItem() {
   // State
-  const [newFormData, setNewFormData] = useState({});
   const [formData, setFormData] = useState({
     item_name: "",
     description: "",
@@ -20,102 +19,101 @@ function EditInventoryItem() {
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
 
-  //Pull down url
+  // Pull down url
   const { id } = useParams();
 
-  //GET request to get array of inventory items
-  useEffect(() => {
-    //GET array of all inventory items
-    const URL = "http://localhost:5050/api/";
+  // GET request to get the inventory item from the backend
+  const getInventoryItem = async (itemId) => {
+    try {
+      const response = await axios.get(`http://localhost:5050/api/inventories/${itemId}`);
+      const inventoryData = response.data;
 
-    axios
-      .get(`${URL}inventories/${id}`)
+      const newObj = {
+        item_name: inventoryData.item_name,
+        description: inventoryData.description,
+        category: inventoryData.category,
+        status: inventoryData.status,
+        warehouse_id: inventoryData.warehouse_id, // warehouse_id
+      };
+      console.log(newObj);
 
-      .then((res) => {
-        //Store inventory item in inventoryData
-        const inventoryData = res.data;
+      setFormData(newObj);
+    } catch (error) {
+      console.error("Error fetching inventory item:", error);
+    }
+  };
 
-        const newObj = {
-          item_name: inventoryData.item_name,
-          description: inventoryData.description,
-          category: inventoryData.category,
-          status: inventoryData.status,
-          warehouse_id: inventoryData.warehouse_name,
-        };
-        console.log(newObj);
+  // GET request to get array of all inventories
+  const getAllInventories = async () => {
+    try {
+      const response = await axios.get("http://localhost:5050/api/inventories");
+      const inventoryData = response.data;
 
-        setFormData(newObj);
+      const categoryData = [];
+      const warehouseData = [];
+
+      // For each object in the array, if category from obj is not included in categoryData array, push category to array
+      inventoryData.forEach((obj) => {
+        const objCategory = obj.category;
+        if (!categoryData.includes(objCategory)) {
+          categoryData.push(objCategory);
+        }
       });
-  }, []);
 
-  //GET request
-  useEffect(() => {
-    //GET array of all inventories
-    const URL = "http://localhost:5050/api/";
-
-    axios
-      .get(`${URL}inventories`)
-
-      .then((res) => {
-        //Store inventory array in inventoryData
-        const inventoryData = res.data;
-
-        const categoryData = [];
-        const warehouseData = [];
-
-        //For each object in the array, if category from obj is not included in categoryData array, push category to array
-        inventoryData.forEach((obj) => {
-          const objCategory = obj.category;
-          if (!categoryData.includes(objCategory)) {
-            categoryData.push(objCategory);
-          }
-        });
-
-        //For each object in the array, if warehouse name from obj is not included in warehouseData array, push warehouse to array
-        inventoryData.forEach((obj) => {
-          const objWarehouse = obj.warehouse_name;
-          if (!warehouseData.includes(objWarehouse)) {
-            warehouseData.push(objWarehouse);
-          }
-        });
-
-        //Setting State
-        setCategories(categoryData);
-        setWarehouses(warehouseData);
+      // For each object in the array, if warehouse name from obj is not included in warehouseData array, push warehouse to array
+      inventoryData.forEach((obj) => {
+        const objWarehouse = obj.warehouse_name;
+        if (!warehouseData.includes(objWarehouse)) {
+          warehouseData.push(objWarehouse);
+        }
       });
-  }, []);
 
-  //Change handler to take in form changes
+      // Setting State
+      setCategories(categoryData);
+      setWarehouses(warehouseData);
+    } catch (error) {
+      console.error("Error fetching all inventories:", error);
+    }
+  };
+
+  // Fetch the inventory item and all inventories on component mount
+  useEffect(() => {
+    getInventoryItem(id);
+    getAllInventories();
+  }, [id]);
+
+  // Change handler to take in form changes
   const itemEditHandler = (e) => {
     console.log(e.target.value);
     const { name, value } = e.target;
-    setNewFormData({ [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
-  //Change Handler to submit new form data
+  // Change Handler to submit new form data
   const itemSubmitHandler = (e) => {
     e.preventDefault();
 
-    // PUT request to write the new info to the database?
+    // PUT request to write the new info to the database
     axios
-      .put(`http://localhost:5050/api/inventories/${id}`, { newFormData })
-
+      .put(`http://localhost:5050/api/inventories/${id}`, formData)
       .then((res) => {
         console.log(res.data);
 
         const newObj = {
-          warehouse_id: e.warehouse_name,
-          item_name: e.item_name,
-          description: e.description,
-          category: e.category,
-          status: e.status,
-          quantity: res.quantity,
+          warehouse_id: formData.warehouse_id,
+          item_name: formData.item_name,
+          description: formData.description,
+          category: formData.category,
+          status: formData.status,
+          quantity: res.data.quantity, // res.data.quantity
         };
 
         // setNewFormData({newObj});
         console.log(newObj);
       })
-
       .catch((err) => {
         console.log(err);
       });
@@ -156,9 +154,10 @@ function EditInventoryItem() {
               <select name="categories__dropdown" id="categories" onChange={itemEditHandler}>
                 <option value={formData.category}>{formData.category}</option>
                 {categories.map((category) => {
-                  if (category != formData.category) {
-                    return <option value={category}>{category}</option>;
+                  if (category !== formData.category) {
+                    return <option key={category} value={category}>{category}</option>;
                   }
+                  return null;
                 })}
               </select>
             </div>
@@ -174,17 +173,17 @@ function EditInventoryItem() {
                   type="radio"
                   name="status"
                   value="In Stock"
-                  checked="true"
+                  checked={formData.status === "In Stock"}
                   onChange={itemEditHandler}
-                />{" "}
+                />
                 <label htmlFor="in stock">In stock</label>
                 <input
                   type="radio"
                   name="status"
                   value="Out of Stock"
-                  checked="false"
+                  checked={formData.status === "Out of Stock"}
                   onChange={itemEditHandler}
-                />{" "}
+                />
                 <label htmlFor="out of stock">Out of stock</label>
               </div>
             </div>
@@ -194,9 +193,10 @@ function EditInventoryItem() {
               <select name="warehouses__dropdown" id="warehouses" onChange={itemEditHandler}>
                 <option value={formData.warehouse_id}>{formData.warehouse_id}</option>
                 {warehouses.map((warehouse) => {
-                  if (warehouse != formData.warehouse_id) {
-                    return <option value={warehouse}>{warehouse}</option>;
+                  if (warehouse !== formData.warehouse_id) {
+                    return <option key={warehouse} value={warehouse}>{warehouse}</option>;
                   }
+                  return null;
                 })}
               </select>
             </div>
