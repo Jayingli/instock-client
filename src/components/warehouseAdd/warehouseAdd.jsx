@@ -4,23 +4,23 @@ import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import Button from "../Button/Button";
 import { useState } from "react";
 import axios from "axios";
+import errorIcon from "../../assets/icons/error-24px.svg";
 
 const WarehouseAdd = () => {
   //Variables
   const baseURL = process.env.REACT_APP_BASE_URL;
   let navigate = useNavigate();
 
-  console.log(baseURL);
   //States
   const [warehouseState, setWarehouseState] = useState({
-    warehouse_name: "",
-    address: "",
-    city: "",
-    country: "",
-    contact_name: "",
-    contact_position: "",
-    contact_phone: "",
-    contact_email: "",
+    warehouse_name: " ",
+    address: " ",
+    city: " ",
+    country: " ",
+    contact_name: " ",
+    contact_position: " ",
+    contact_phone: " ",
+    contact_email: " ",
   });
 
   // Destructuring states
@@ -114,6 +114,11 @@ const WarehouseAdd = () => {
     return true;
   };
 
+  //Error State
+  const errorFieldRequiredHide = { display: "none" };
+
+  const errorFieldRequiredShow = { display: "flex" };
+
   //Handle to submit form
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -138,9 +143,9 @@ const WarehouseAdd = () => {
         });
 
       //Once form is submitted, re-direct to Warehouses List page
-      navigate('/warehouses');
+      navigate("/warehouses");
     } else {
-    console.log("Form Invalid")
+      console.log("Form Invalid");
     }
   };
 
@@ -160,32 +165,85 @@ const WarehouseAdd = () => {
           <h2>Warehouse Details</h2>
           <label>Warehouse Name</label>
           <input
+            className={`warehouse__input ${
+              !warehouse_name ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="warehouse_name"
             placeholder="Warehouse Name"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={
+              !warehouse_name ? errorFieldRequiredShow : errorFieldRequiredHide
+            }
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>Street Address</label>
           <input
+            className={`warehouse__input ${
+              !address ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="address"
             placeholder="Address"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={!address ? errorFieldRequiredShow : errorFieldRequiredHide}
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>City</label>
           <input
+            className={`warehouse__input ${
+              !city ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="city"
             placeholder="City"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={!city ? errorFieldRequiredShow : errorFieldRequiredHide}
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>Country</label>
           <input
+            className={`warehouse__input ${
+              !country ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="country"
             placeholder="Country"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={!country ? errorFieldRequiredShow : errorFieldRequiredHide}
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
         </div>
 
         {/* Contact details */}
@@ -193,32 +251,93 @@ const WarehouseAdd = () => {
           <h2>Warehouse Contact</h2>
           <label>Contact Name</label>
           <input
+            className={`warehouse__input ${
+              !contact_name ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="contact_name"
             placeholder="Contact Name"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={
+              !contact_name ? errorFieldRequiredShow : errorFieldRequiredHide
+            }
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>Position</label>
           <input
+            className={`warehouse__input ${
+              !contact_position ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="contact_position"
             placeholder="Position"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={
+              !contact_position
+                ? errorFieldRequiredShow
+                : errorFieldRequiredHide
+            }
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>Phone Number</label>
           <input
+            className={`warehouse__input ${
+              !contact_phone ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="contact_phone"
             placeholder="Phone Number"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={
+              !contact_phone ? errorFieldRequiredShow : errorFieldRequiredHide
+            }
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
+
           <label>Email</label>
           <input
+            className={`warehouse__input ${
+              !contact_email ? "warehouse__input--error-state" : ""
+            }`}
             type="text"
             name="contact_email"
             placeholder="Email"
             onChange={handleOnChange}
           ></input>
+
+          {/* Error state field required */}
+          <div
+            className="form__error-state"
+            style={
+              !contact_email ? errorFieldRequiredShow : errorFieldRequiredHide
+            }
+          >
+            <img src={errorIcon} />
+            <p>This field is required</p>
+          </div>
         </div>
 
         {/* Button Container */}

@@ -1,2 +1,16 @@
 @use '../../styles/partials/variables';
 @use '../../styles/partials/mixins' as *;
+
+.warehouse{
+    &__input{
+        outline: none;
+        &:focus{
+            border: solid 1px variables.$primary-interactive-color;
+        }
+        &--error-state{
+            &:focus{
+                border:solid 1px variables.$label-outofstock-color;
+            }
+        }
+    }
+}
