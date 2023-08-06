@@ -15,6 +15,7 @@ function InventoryList() {
   //State
   const [listData, setListData] = useState([]);
   const [deleteVisibility, setDeleteVisibility] = useState(false);
+  const [style, setStyle] = useState(false);
 
   // console.log(listData);
 
@@ -38,11 +39,13 @@ function InventoryList() {
   const deleteItemHandler = (id) => {
 
     setDeleteVisibility(!deleteVisibility);
+    setStyle(!style);
 
     }
 
   return (
     <section className="inventory__list">
+      <div className={style && 'delete__background'}></div>
       <SearchHeader obj="item" page="Inventory" />
       {!deleteVisibility && 
       <div className="inventory__list--mobile">
@@ -99,7 +102,7 @@ function InventoryList() {
       </div>
       }
 
-      <div className="inventory__list--tabdesc">
+      <div className='inventory__list--tabdesc'>
         <div className="inventory__grid--container">
           <div className="grid__header--wrap">
             <div>
