@@ -1,326 +1,225 @@
-@use '../../styles/partials/variables';
+@use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-//Warehouse List Styling
-
-.warehouse__list--component {
-    display: flex;
-    flex-direction: column;
-    background-color: variables.$light-color;
-    border-radius: 5px;
-
-    .warehouse__list--mobile {
-        display: grid;
-        background-color: variables.$light-color;
+.warehouse-list {
+    &__table {
         width: 100%;
+    }
 
-        .warehouse__grid--mobile {
-            display: grid;
-            grid-template-columns: 6rem 6rem;
-            grid-template-rows: 3rem 3rem 3rem;
-            border-top: 1px solid variables.$secondary-border-color;
-            padding-bottom: .75rem;
+    &__header {
+        display: none;
 
-            .warehouse__list--item {
-                display: grid;
-                justify-content: space-between;
-                width: 100%;
-                padding: .5rem 0 0 1rem;
-                text-align: left;
-                grid-column: 1 / span 2;
-                grid-row: 1 / span 3;
-
-
-                .button__wrap {
-                    margin-bottom: 1rem;
-                    display: flex;
-                    justify-content: space-between;
-
-                    img {
-                        font-size: 11px;
-                        line-height: 16px;
-                        height: 1rem;
-                        width: 1rem;
-                    }
-                }
-
-                .warehouse__info--wrap {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-
-                    div {
-                        width: 50%;
-                        display: grid;
-                    }
-
-                    .warehouse__div {
-
-                        .warehouse__name {
-                            display: flex;
-                            flex-direction: row;
-                            width: 100% !important;
-
-                            a {
-                                margin: 0
-                            }
-
-                            img {
-                                margin-bottom: -.4rem;
-                            }
-                        }
-                    }
-
-                    h4 {
-                        font-size: 11px;
-                        line-height: 16px;
-                        color: variables.$secondary-text-color;
-                        margin: .5rem 0 .25rem 0;
-                        vertical-align: top;
-                        text-transform: uppercase;
-
-                    }
-
-
-                    p {
-                        font-size: 11px;
-                        margin: 0 0 .25rem 0;
-                        vertical-align: top;
-
-
-                    }
-
-                    a {
-                        font-size: 11px;
-                        margin: 0 0 .25rem 0;
-                        vertical-align: top;
-                        text-decoration: none;
-                        color: variables.$primary-interactive-color;
-                        font-weight: bold;
-
-                    }
-
-                    .address {
-                        margin-right: 1.5rem;
-                    }
-
-                }
-            }
-
+        @include tablet {
+            display: flex;
+            background-color: $primary-background-color;
+            padding: 0.5rem 0;
         }
     }
-
-    .warehouse__list--tabdesc {
-        display: none;
+    
+    &__row-header {
+        @include tablet-padding();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
-    @include tablet {
+    &__row-body {
+        @include mobile-padding();
         display: flex;
         flex-direction: column;
-        background-color: variables.$light-color;
-        padding: 0 0 .5rem 0;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $secondary-border-color;
 
-        .warehouse__list--mobile {
-            display: none;
+        &:last-child {
+            border-bottom: none;
         }
 
-        .warehouse__list--tabdesc {
-            background-color: variables.$light-color;
-            display: grid;
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            width: 100%;
+            height: 84px;
+            padding: 0.75rem 2rem 1rem;
 
-
-            .warehouse__grid--container {
-                display: grid;
-                grid-template-rows: 2rem 4rem 4rem 4rem 4rem;
-
-                .grid__header--wrap {
-                    display: flex;
-                    padding-left: 1rem;
-                    grid-column: 1 / span 5;
-                    background-color: variables.$primary-background-color;
-
-                    div {
-                        display: flex;
-                        width: 100%;
-
-
-                        h4 {
-                            width: auto;
-                            font-size: 11px;
-                            line-height: 16px;
-                            color: variables.$secondary-text-color;
-                            margin-right: .5rem;
-
-                        }
-
-                        img {
-                            margin-top: .6rem;
-                            height: 1rem;
-                        }
-                    }
-
-                    div:last-child {
-                        h4 {
-                            margin-left: 3rem;
-                        }
-                    }
-                }
-
-                .warehouse__list--item {
-                    display: flex;
-                    grid-column: 1 / span 5;
-                    border-top: 1px solid variables.$secondary-border-color;
-                    padding: 0 1rem;
-                    align-items: center;
-
-                    div {
-
-                        .forward__arrow {
-                            margin-bottom: -.4rem;
-                        }
-
-                        a {
-                            margin-bottom: 1rem;
-                            align-self: center;
-
-                        }
-                    }
-
-
-                    p {
-                        width: 7rem;
-                        font-size: 11px;
-                        margin-bottom: 0;
-
-                    }
-
-                    a {
-                        font-size: 11px;
-                        text-decoration: none;
-                        color: variables.$primary-interactive-color;
-                        margin-bottom: .5rem;
-                        font-weight: bold;
-
-                        p {
-                            margin: 0;
-                        }
-
-                    }
-
-                    .button__wrap {
-                        display: flex;
-                        justify-content: center;
-                        margin-left: 1.25rem;
-
-                        img {
-                            font-size: 11px;
-                            height: 1.25rem;
-                            margin: 1rem 0 0 1rem;
-                        }
-                    }
-
-                }
-
-                .warehouse__list--item:hover {
-                    background-color: variables.$primary-background-color;
-                    color: variables.$primary-text-color;
-                }
+            &:hover {
+                background-color: rgba(46,102,229,0.07);
             }
         }
     }
 
-    @include desktop {
+    &__column-header {
         display: flex;
-        padding: 0 0 .5rem 0;
-        align-self: center;
-        margin: 0 4rem 0 4rem;
+        justify-content: center;
+        align-items: center;
+        padding: 0.125rem 0;
+    }
+    
+    &__column-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
 
-        .warehouse__list--tabdesc {
-            background-color: variables.$light-color;
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__data {
+        padding: 0.75rem 0;
+        height: 56px;
+
+        @include tablet {
             display: flex;
-            flex-direction: column;
-            width: 100%;
+            align-items: center;
+            flex: 1;
+            padding: 2rem 0;
+        }
+    }
 
-            .warehouse__grid--container {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
+    &__title {
+        @include tablet-text-tableheader-h4();
+        text-transform: uppercase;
+    }
 
-                .grid__header--wrap {
-                    text-transform: uppercase;
-                    display: grid;
-                    padding: 0 1rem 0 2rem;
-                    grid-template-columns: repeat(5, 1fr);
-                    align-items: center;
-                    background-color: variables.$primary-background-color;
+    &__icon {
+        display: none;
 
-                    div {
-                        display: flex;
+        @include tablet {
+            display: flex;
+            width: 16px;
+            margin-left: 0.25rem;
+        }
+    }
 
-                        h4 {
-                            width: auto;
-                            font-size: 11px;
-                            line-height: 16px;
-                            color: variables.$secondary-text-color;
-                            margin-right: .5rem;
+    &__actions {
+        display: none;
 
-                        }
+        @include tablet {
+            display: flex;
+        }
+    }
 
-                        img {
-                            margin-top: .5rem;
-                        }
+    &__title-mobile {
+        @include mobile-text-tableheader-h4();
+        text-transform: uppercase;
+        padding-bottom: 0.125rem;
 
-                    }
+        @include tablet {
+            display: none;
+        }
+    }
 
-                    div:last-child {
-                        h4 {
-                            margin-left: 4.5rem;
-                        }
-                    }
+    &__link {
+        display: flex;
+        align-items: center;
+        color: $primary-interactive-color;
+        text-decoration: none;
 
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
-                }
+    &__link-icon {
+        width: 22px;
+        padding-left: 0.25rem;
+    }
 
-                .warehouse__list--item {
-                    display: grid;
-                    padding: 0 1rem 0 2rem;
-                    grid-template-columns: repeat(5, 1fr);
-                    align-items: center;
-                    border-bottom: 1px solid variables.$secondary-border-color;
+    &__name {
+        @include mobile-text-tableheader-h4();
 
-                    div {
+        @include tablet {
+            @include tablet-text-label-h3();
+        }
+    }
 
-                        .forward__arrow {
-                            margin-bottom: -.4rem;
-                        }
+    &__address {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
 
-                        a {
-                            margin-bottom: 1rem;
-                            align-self: center;
-
-                        }
-                    }
-
-                    p {
-                        font-size: 11px;
-                    }
-
-                    .contact__phone {
-                        margin: 0;
-                    }
-
-                    a {
-                        font-size: 11px;
-                        margin: 0.5rem 0 .25rem 0;
-                        justify-self: center;
-                        width: 8rem;
-                    }
-
-                }
-            }
-
-
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -1.5rem;
         }
 
+        @include desktop {
+            margin-left: -0.75rem;
+        }
+    }
+
+    &__contact-name {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -1.5rem;
+        }
+
+        @include desktop {
+            margin-left: -2.25rem;
+        }
+    }
+
+    &__contact-info {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -2rem;
+        }
+    }
+
+    &__email {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+        color: $primary-text-color;
+        text-decoration: none;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__action-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+        padding-top: 0.75rem;
+    }
+
+    &__delete {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+            margin-right: 1rem;
+        }
+    }
+
+    &__edit {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+        }
     }
 }

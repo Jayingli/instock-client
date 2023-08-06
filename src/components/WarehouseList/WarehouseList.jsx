@@ -1,174 +1,122 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Warehouse from "../../Pages/warehouse/warehouse";
-
-import "../../styles/partials/_global.scss";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import searchIcon from "../../assets/icons/search-24px.svg";
-import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
+import forwardArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-import SearchHeader from '../SearchHeader/SearchHeader';
 import "./WarehouseList.scss";
 
 /* 
  * Warehouse List Component
- * 
+ * - Represents the whole list of warehouses
+ * - Includes warehouse name, address, contact name, contact info
+ * - Has delete & editing functions for the each warehouse
  */
 
 function WarehouseList() {
-  // console.log(warehouseData);
+    //State
+    const [listData, setListData] = useState([]);
 
-  //State
-  const [listData, setListData] = useState([]);
+    //GET request
+    useEffect(() => {
+        //GET array of all warehouses
+        const warehousesURL = "http://localhost:5050/api/warehouses";
+        axios.get(warehousesURL)
+          .then((response) => {
+            setListData(response.data);
+          });
+    }, []);
 
-  useEffect(() => {
-    //GET array of all warehouses
-    const URL = "http://localhost:5050/api/";
-
-    axios
-      .get(URL + "warehouses")
-
-      .then((res) => {
-        //Store warehouse array in warehouseData
-        const warehouseData = res.data;
-
-        //Set listData to the array of warehouses
-        setListData(warehouseData);
-      });
-  }, []);
-
-  return (
-    <div className="warehouse__list--component">
-      <SearchHeader 
-        obj='warehouse'
-        page='Warehouses'
-      />
-
-      {/* Mobile view set up */}
-      <div className="warehouse__list--mobile">
-        {listData.map((warehouse) => {
-          return (
-            <div className="warehouse__grid--mobile" key={warehouse.id}>
-              <div className="warehouse__list--item">
-                <div className="warehouse__info--wrap">
-                  <div className="warehouse__div">
-                    <h4>Warehouse</h4>
-                    <div className="warehouse__name">
-                      <Link to={`/warehouses/${warehouse.id}`}>
-                        <p>
-                          {warehouse.warehouse_name}
-                          <img src={forwardArrow} alt="forward arrow" />
-                        </p>
-                      </Link>
-                    </div>
-
-                    <h4>Address</h4>
-                    <p className="address">{warehouse.address}</p>
-                    <p>
-                      {warehouse.city}, {warehouse.country}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4>Contact Name</h4>
-                    <p>{warehouse.contact_name}</p>
-
-                    <h4>Contact Information</h4>
-                    <p>{warehouse.contact_phone}</p>
-
-                    <a href={`mailto: ${warehouse.contact_email}`}>
-                      {warehouse.contact_email}
-                    </a>
-                  </div>
-                </div>
-                <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Tablet/Desktop view setup */}
-      <div className="warehouse__list--tabdesc">
-        <div className="warehouse__grid--container">
-          <div className="grid__header--wrap">
-            <div>
-              <h4>Warehouse</h4>
-              <img src={sortIcon} alt="" />
-            </div>
-
-            <div>
-              <h4>Contact Name</h4>
-              <img src={sortIcon} alt="" />
-            </div>
-
-            <div>
-              <h4>Address</h4>
-              <img src={sortIcon} alt="" />
-            </div>
-
-            <div>
-              <h4>Contact Information</h4>
-              <img src={sortIcon} alt="" />
-            </div>
-
-            <div>
-              <h4>Actions</h4>
-            </div>
-          </div>
-
-          {/* Map function to generate cards based on server information */}
-          {listData.map((warehouse) => {
-            return (
-              <div className="warehouse__list--item" key={warehouse.id}>
-                <div>
-                  <Link to={`/warehouses/${warehouse.id}`}>
-                    <p>
-                      {warehouse.warehouse_name}
-                      <img
-                        className="forward__arrow"
-                        src={forwardArrow}
-                        alt="forward arrow"
-                      />
-                    </p>
-                  </Link>
-                </div>
-
-                <div>
-                  <p className="address">{warehouse.address}</p>
-                  <p>
-                    {warehouse.city}, {warehouse.country}
-                  </p>
-                </div>
-
-                <div>
-                  <p>{warehouse.contact_name}</p>
-                </div>
-
-                <div>
-                  <p className="contact__phone">{warehouse.contact_phone}</p>
-                  <a href={`mailto: ${warehouse.contact_email}`}>
-                    {warehouse.contact_email}
-                  </a>
-                </div>
-
-                <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
-                  <img src={editIcon} alt="Edit Warehouse Button" />
-                </div>
-              </div>
-            );
-          })}
+    return (
+        <div className="warehouse-list">
+            <table className="warehouse-list__table">
+                <thead className="warehouse-list__header">
+                    <tr className="warehouse-list__row-header">
+                        <th>
+                            <div className="warehouse-list__column-header">
+                                <h2 className="warehouse-list__title">Warehouse</h2>
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                            </div>
+                        </th>
+                        <th>
+                            <div className="warehouse-list__column-header">
+                                <h2 className="warehouse-list__title">Address</h2>
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                            </div>
+                        </th>
+                        <th>
+                            <div className="warehouse-list__column-header">
+                                <h2 className="warehouse-list__title">Contact Name</h2>
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                            </div>
+                        </th>
+                        <th>
+                            <div className="warehouse-list__column-header">
+                                <h2 className="warehouse-list__title">Contact Information</h2>
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                            </div>
+                        </th>
+                        <th>
+                            <div className="warehouse-list__column-header">
+                                <h2 className="warehouse-list__title">Actions</h2>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listData.map((warehouse) => (
+                        <tr className="warehouse-list__row-body" key={warehouse.id}>
+                            <div className="warehouse-list__content">
+                                <div className="warehouse-list__column-body">
+                                    <td className="warehouse-list__data">
+                                        <h2 className="warehouse-list__title-mobile">Warehouse</h2>
+                                        <div>
+                                            <Link className="warehouse-list__link" to={`/warehouses/${warehouse.id}`}>
+                                                <p className="warehouse-list__name">{warehouse.warehouse_name}</p>
+                                                <img
+                                                    className="warehouse-list__link-icon"
+                                                    src={forwardArrowIcon}
+                                                    alt="Foward Arrow Icon"
+                                                />
+                                            </Link>
+                                        </div>
+                                    </td>
+                                    <td className="warehouse-list__data">
+                                        <h2 className="warehouse-list__title-mobile">Address</h2>
+                                        <p className="warehouse-list__address">{warehouse.address}<br />
+                                            {warehouse.city}, {warehouse.country}
+                                        </p>
+                                    </td>
+                                </div>
+                                <div className="warehouse-list__column-body">
+                                    <td className="warehouse-list__data">
+                                        <h2 className="warehouse-list__title-mobile">Contact Name</h2>
+                                        <p className="warehouse-list__contact-name">{warehouse.contact_name}</p>
+                                    </td>
+                                    <td className="warehouse-list__data">
+                                        <h2 className="warehouse-list__title-mobile">Contact Information</h2>
+                                        <p className="warehouse-list__contact-info">{warehouse.contact_phone}<br />
+                                            <a className="warehouse-list__email" href={`mailto: ${warehouse.contact_email}`}>
+                                            {warehouse.contact_email}</a>
+                                        </p>
+                                    </td>
+                                </div>
+                            </div>
+                            <div>
+                                <td className="warehouse-list__action-icons">
+                                    <div className="warehouse-list__buttons">
+                                        <img className="warehouse-list__delete" src={deleteIcon} alt="Delete Warehouse Button" />
+                                        <img className="warehouse-list__edit" src={editIcon} alt="Edit Warehouse Button" />
+                                    </div>
+                                </td>
+                            </div>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
 export default WarehouseList;

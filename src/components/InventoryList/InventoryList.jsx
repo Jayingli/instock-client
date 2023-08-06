@@ -79,7 +79,8 @@ function InventoryList() {
                                         <h2 className="inventory-list__title-mobile">Inventory Item</h2>
                                         <div>
                                             <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
-                                                <p className="inventory-list__name">{item.item_name}</p><img className="inventory-list__link-icon" src={forwardArrowIcon} alt="forward arrow" />
+                                                <p className="inventory-list__name">{item.item_name}</p>
+                                                <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
                                             </Link>
                                         </div>
                                     </td>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
 import AddNewWarehouse from '../../components/AddNewWarehouse/AddNewWarehouse';
-import InventoryList from '../../components/InventoryList/InventoryList';
+import WarehouseList from '../../components/WarehouseList/WarehouseList';
 import './WarehousesPage.scss';
 
 function WarehousesPage() {
@@ -39,8 +39,8 @@ function WarehousesPage() {
                 // Render the AddNewWarehouse component when "showAddWarehouse" is true
                 <AddNewWarehouse onCancelAddWarehouse={handleCancelAddWarehouse} />
             ) : (
-                // Render the InventoryList component when "showAddWarehouse" is false
-                <InventoryList />
+                // Render the WarehouseList component when "showAddWarehouse" is false
+                <WarehouseList />
             )}
         </div>   
     );
