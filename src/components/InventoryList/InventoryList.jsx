@@ -113,12 +113,12 @@ function InventoryList() {
                                     </td>
                                 </div>
                             </div>
-                            <div className="inventory-list__action-icons">
-                                <td className="inventory-list__data">
+                            <div>
+                                <td className="inventory-list__action-icons">
                                     <div className="inventory-list__buttons">
                                         <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button" />
+                                        <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
                                         {/* <Link to={`/inventories/${item.id}/edit`}> */}
-                                            <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
                                         {/* </Link> */}
                                     </div>
                                 </td>
