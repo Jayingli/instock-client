@@ -188,11 +188,9 @@ function WarehouseList() {
         {deleteVisibility && (
           <div className="delete__component--wrap">
             <DeleteWarehouse
-              array={listData}
               page="warehouse"
               visibility="hidden"
               deleteItemHandler={deleteItemHandler}
-              obj={warehouse.id}
             />
           </div>
         )}

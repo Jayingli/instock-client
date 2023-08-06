@@ -2,21 +2,41 @@ import { Link, useParams } from "react-router-dom";
 import "../deleteWarehouse/deleteWarehouse.scss";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
 //Delete Item Component
 
-function DeleteWarehouse({ obj, page, deleteItemHandler }) {
+function DeleteWarehouse({ arr, page, deleteItemHandler }) {
   //State
   const { id } = useParams();
+  const [listData, setListData] = useState([]);
+  const [wobj, setWobj] = useState([]);
+  console.log(arr);
 
+  useEffect(() => {
+    //GET array of all warehouses
+    const URL = "http://localhost:5050/api/";
+
+    axios
+      .get(URL + "warehouses")
+
+      .then((res) => {
+        //Store warehouse array in warehouseData
+        const warehouseData = res.data;
+        const obj = warehouseData.find((warehouse) => warehouse.id == id);
+        setWobj(obj);
+
+        //Set listData to the array of warehouses
+        setListData(warehouseData);
+      });
+  }, []);
   //Find item by id to us its name in the message below
-  function findWarehouse(item) {
-    return item.id == id;
-  }
+  //   function findWarehouse(item) {
+  //     return item.id == id;
+  //   }
 
-  //   const obj = array.find(findWarehouse);
-
-  console.log(obj);
+  //   console.log(obj);
 
   const deleteHandler = (e) => {
     e.preventDefault();
@@ -40,12 +60,13 @@ function DeleteWarehouse({ obj, page, deleteItemHandler }) {
       </Link>
       <div className="delete__prompt">
         <h1>
-          Delete {obj} {page == "inventory" ? "inventory item" : "warehouse"}?
+          Delete {wobj.warehouse_name}{" "}
+          {page == "inventory" ? "inventory item" : "warehouse"}?
         </h1>
         <p>
-          Please confirm that you'd like to delete {obj} from the{" "}
-          {page == "inventory" ? "inventory list" : "list of warehouses"}. You
-          won't be able to undo this action.
+          Please confirm that you'd like to delete {wobj.warehouse_name} from
+          the {page == "inventory" ? "inventory list" : "list of warehouses"}.
+          You won't be able to undo this action.
         </p>
 
         <div className="button__wrap">
