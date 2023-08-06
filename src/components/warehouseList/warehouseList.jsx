@@ -10,8 +10,8 @@ import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
-import SearchHeader from '../searchHeader/searchHeader';
-// 
+import SearchHeader from "../searchHeader/searchHeader";
+//
 //Warehouse List Component
 
 function WarehouseList() {
@@ -20,12 +20,16 @@ function WarehouseList() {
   //State
   const [listData, setListData] = useState([]);
 
+  //Query States
+  const [sortBy, setSortBy] = useState("");
+  const [orderBy, setOrderBy] = useState("");
+
   useEffect(() => {
     //GET array of all warehouses
-    const URL = "http://localhost:8000/api/";
+    const baseURL = process.env.REACT_APP_BASE_URL;
 
     axios
-      .get(URL + "warehouses")
+      .get(`${baseURL}/api/warehouses?sort_by=${sortBy}&order_by=${orderBy}`)
 
       .then((res) => {
         //Store warehouse array in warehouseData
@@ -34,14 +38,42 @@ function WarehouseList() {
         //Set listData to the array of warehouses
         setListData(warehouseData);
       });
-  }, []);
+  }, [sortBy, orderBy]);
+
+  //Query change handler
+  const orderByToggle = () => {
+    if (orderBy === "asc") {
+      setOrderBy("desc");
+    } else {
+      setOrderBy("asc");
+    }
+  };
+
+  const sortHandlerWarehouse = () => {
+    orderByToggle();
+    setSortBy("warehouse_name");
+  };
+
+  const sortHandlerContactName = () => {
+    orderByToggle();
+    setSortBy("contact_name");
+  };
+
+  const sortHandlerAddress = () => {
+    orderByToggle();
+    setSortBy("address");
+  };
+  const sortHandlerContactInformation = () => {
+    orderByToggle();
+    setSortBy("contact_email");
+  };
 
   return (
     <div className="warehouse__list--component">
-      <SearchHeader 
-        obj='warehouse'
-        page='Warehouses'
-        routeTo = '/warehouses/new'
+      <SearchHeader
+        obj="warehouse"
+        page="Warehouses"
+        routeTo="/warehouses/new"
       />
 
       {/* Mobile view set up */}
@@ -97,22 +129,26 @@ function WarehouseList() {
           <div className="grid__header--wrap">
             <div>
               <h4>Warehouse</h4>
-              <img src={sortIcon} alt="" />
+              <img src={sortIcon} alt="" onClick={sortHandlerWarehouse} />
             </div>
 
             <div>
               <h4>Contact Name</h4>
-              <img src={sortIcon} alt="" />
+              <img src={sortIcon} alt="" onClick={sortHandlerContactName} />
             </div>
 
             <div>
               <h4>Address</h4>
-              <img src={sortIcon} alt="" />
+              <img src={sortIcon} alt="" onClick={sortHandlerAddress} />
             </div>
 
             <div>
               <h4>Contact Information</h4>
-              <img src={sortIcon} alt="" />
+              <img
+                src={sortIcon}
+                alt=""
+                onClick={sortHandlerContactInformation}
+              />
             </div>
 
             <div>
