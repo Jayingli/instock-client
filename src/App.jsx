@@ -10,6 +10,7 @@ import Inventory from "./pages/inventory/inventory";
 import WarehouseDetails from "./components/warehouseDetails/warehouseDetails";
 import EditInventoryItem from "./components/editInventoryItem/editInventoryItem";
 import EditWarehouse from "./components/editWarehouse/editWarehouse";
+import DeleteWarehouse from "./components/deleteWarehouse/deleteWarehouse";
 /*
  * App.jsx
  * - Represents the main component of the application
@@ -31,6 +32,11 @@ function App() {
           {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
 
           <Route path="/warehouses/update/:id" element={<EditWarehouse />} />
+
+          <Route
+            path="/warehouses/update/:id/delete"
+            element={<DeleteWarehouse />}
+          />
           {/* Single Warehouse Page */}
 
           <Route path="/warehouses/:id" element={<WarehouseDetails />} />

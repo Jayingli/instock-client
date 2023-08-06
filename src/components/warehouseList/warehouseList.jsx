@@ -11,6 +11,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 import SearchHeader from "../searchHeader/searchHeader";
+import DeleteWarehouse from "../deleteWarehouse/deleteWarehouse";
 //
 //Warehouse List Component
 
@@ -19,6 +20,8 @@ function WarehouseList() {
 
   //State
   const [listData, setListData] = useState([]);
+  const [deleteVisibility, setDeleteVisibility] = useState(false);
+  const [style, setStyle] = useState(false);
 
   useEffect(() => {
     //GET array of all warehouses
@@ -36,8 +39,14 @@ function WarehouseList() {
       });
   }, []);
 
+  const deleteItemHandler = (id) => {
+    setDeleteVisibility(!deleteVisibility);
+    setStyle(!style);
+  };
+
   return (
     <div className="warehouse__list--component">
+      <div className={style && "delete__background"}></div>
       <SearchHeader obj="warehouse" page="Warehouses" />
 
       {/* Mobile view set up */}
@@ -78,7 +87,13 @@ function WarehouseList() {
                   </div>
                 </div>
                 <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <Link to={`/warehouses/update/${warehouse.id}/delete`}>
+                    <img
+                      src={deleteIcon}
+                      alt="Delete Warehouse Button"
+                      onClick={deleteItemHandler}
+                    />
+                  </Link>
                   <Link to={`/warehouses/update/${warehouse.id}`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
@@ -154,7 +169,13 @@ function WarehouseList() {
                 </div>
 
                 <div className="button__wrap">
-                  <img src={deleteIcon} alt="Delete Warehouse Button" />
+                  <Link to={`/warehouses/update/${warehouse.id}/delete`}>
+                    <img
+                      src={deleteIcon}
+                      alt="Delete Warehouse Button"
+                      onClick={deleteItemHandler}
+                    />
+                  </Link>
                   <Link to={`/warehouses/update/${warehouse.id}`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
@@ -164,6 +185,17 @@ function WarehouseList() {
           })}
         </div>
       </div>
+      {deleteVisibility && (
+        <div className="delete__component--wrap">
+          <DeleteWarehouse
+            array={listData}
+            page="warehouse"
+            visibility="hidden"
+            deleteItemHandler={deleteItemHandler}
+            obj="Boston"
+          />
+        </div>
+      )}
     </div>
   );
 }
