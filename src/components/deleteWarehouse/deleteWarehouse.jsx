@@ -9,6 +9,15 @@ function DeleteWarehouse({ obj, page, deleteItemHandler }) {
   //State
   const { id } = useParams();
 
+  //Find item by id to us its name in the message below
+  function findWarehouse(item) {
+    return item.id == id;
+  }
+
+  //   const obj = array.find(findWarehouse);
+
+  console.log(obj);
+
   const deleteHandler = (e) => {
     e.preventDefault();
 

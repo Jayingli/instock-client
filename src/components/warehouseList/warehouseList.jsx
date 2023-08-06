@@ -176,6 +176,7 @@ function WarehouseList() {
                       onClick={deleteItemHandler}
                     />
                   </Link>
+
                   <Link to={`/warehouses/update/${warehouse.id}`}>
                     <img src={editIcon} alt="Edit Warehouse Button" />
                   </Link>
@@ -184,18 +185,18 @@ function WarehouseList() {
             );
           })}
         </div>
+        {deleteVisibility && (
+          <div className="delete__component--wrap">
+            <DeleteWarehouse
+              array={listData}
+              page="warehouse"
+              visibility="hidden"
+              deleteItemHandler={deleteItemHandler}
+              obj={warehouse.id}
+            />
+          </div>
+        )}
       </div>
-      {deleteVisibility && (
-        <div className="delete__component--wrap">
-          <DeleteWarehouse
-            array={listData}
-            page="warehouse"
-            visibility="hidden"
-            deleteItemHandler={deleteItemHandler}
-            obj="Boston"
-          />
-        </div>
-      )}
     </div>
   );
 }
