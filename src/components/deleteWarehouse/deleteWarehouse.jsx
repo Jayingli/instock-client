@@ -5,14 +5,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-//Delete Item Component
+//Delete Warehouse Component
 
-function DeleteWarehouse({ arr, page, deleteItemHandler }) {
+function DeleteWarehouse({ page, deleteItemHandler }) {
   //State
   const { id } = useParams();
   const [listData, setListData] = useState([]);
   const [wobj, setWobj] = useState([]);
-  console.log(arr);
 
   useEffect(() => {
     //GET array of all warehouses
@@ -31,12 +30,6 @@ function DeleteWarehouse({ arr, page, deleteItemHandler }) {
         setListData(warehouseData);
       });
   }, []);
-  //Find item by id to us its name in the message below
-  //   function findWarehouse(item) {
-  //     return item.id == id;
-  //   }
-
-  //   console.log(obj);
 
   const deleteHandler = (e) => {
     e.preventDefault();
