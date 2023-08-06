@@ -6,10 +6,10 @@
         display: flex;
         align-items: baseline;
         border-bottom: 1px solid $secondary-border-color;
-        padding: 24px 16px;
+        padding: 1.5rem 1rem;
 
         @include tablet {
-            padding: 23px 32px;    
+            padding: 1.4375rem 2rem;    
         }
     }
 
@@ -34,7 +34,7 @@
         
         @include tablet {
             @include tablet-text-pageheader-h1();
-            margin-top: 8px;
+            margin-top: 0.5rem;
         }
     }
 }

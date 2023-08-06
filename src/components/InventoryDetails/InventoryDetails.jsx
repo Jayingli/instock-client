@@ -71,9 +71,7 @@ function InventoryDetails() {
                                         </div>
 
                                         <div className="inventory-details__edit-mobile">
-                                            <Link to={`/inventories/${item.id}/edit`}>
-                                                <img className="inventory-details__edit-icon" src={editIcon} alt="Edit Icon" />
-                                            </Link>
+                                            <img className="inventory-details__edit-icon" src={editIcon} alt="Edit Icon" onClick={handleEditItemClick}/>
                                         </div>
 
                                         <div className="inventory-details__edit-tablet">

@@ -2,7 +2,7 @@
 @use '../../styles/partials/mixins' as *;
 
 .button {
-    @include mobile-text-label-h3();
+    @include mobile-text-tableheader-h4();
     display: flex;
     justify-content: center;
     align-items: center;

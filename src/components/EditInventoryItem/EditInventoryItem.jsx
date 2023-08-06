@@ -10,16 +10,16 @@ import "./EditInventoryItem.scss";
 
 function EditInventoryItem({ onCancelEditItem }) {
     return (
-        <div className="add-inventory">
-            <div className="add-inventory__heading">
+        <div className="edit-inventory">
+            <div className="edit-inventory__heading">
                 <img
-                    className="add-inventory__icon"
+                    className="edit-inventory__icon"
                     src={backArrowIcon}
                     alt="Back Arrow Icon"
-                    // Call the onCancelAddItem function when back arrow is clicked to return to see inventory list
+                    // Call the onCancelEditItem function when back arrow is clicked to return to see inventory details
                     onClick={onCancelEditItem} 
                 />
-                <h2 className="add-inventory__title">Edit Inventory Item</h2>
+                <h2 className="edit-inventory__title">Edit Inventory Item</h2>
             </div>
 
             {/* <InventoryForm onCancelAddItem={onCancelAddItem} /> */}

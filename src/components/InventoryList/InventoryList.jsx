@@ -35,13 +35,13 @@ function InventoryList() {
                     <tr className="inventory-list__row">
                         <div className="inventory-list__column">
                             <th>
-                                <div className="inventory-list__item">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">Inventory Item</h2>
                                     <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                                 </div>
                             </th>
                             <th>
-                                <div className="inventory-list__category">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">Category</h2>
                                     <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                                 </div>
@@ -49,25 +49,25 @@ function InventoryList() {
                         </div>
                         <div className="inventory-list__column">
                             <th>
-                                <div className="inventory-list__status">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">Status</h2>
                                     <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                                 </div>
                             </th>
                             <th>
-                                <div className="inventory-list__qty">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">QTY</h2>
                                     <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                                 </div>
                             </th>
                             <th>
-                                <div className="inventory-list__warehouse">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">Warehouse</h2>
                                     <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                                 </div>
                             </th>
                             <th>
-                                <div className="inventory-list__actions">
+                                <div className="inventory-list__column-header">
                                     <h2 className="inventory-list__title">Actions</h2>
                                 </div>
                             </th>
@@ -77,50 +77,52 @@ function InventoryList() {
                 <tbody>
                     {listData.map((item) => (
                         <tr className="inventory-list__row" key={item.id}>
-                            <div className="inventory-list__container">
-                            <div className="inventory-list__column">
-                                <td className="inventory-list__data">
-                                    <div className="inventory-list__item">
-                                        <div className="inventory__div">
-                                            <h2 className="inventory-list__title-mobile">Inventory Item</h2>
-                                            <div className="inventory-list__name">
-                                                <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
-                                                    <p className="inventory-list__paragraph">{item.item_name}</p><img className="inventory-list__link-icon" src={forwardArrowIcon} alt="forward arrow" />
-                                                </Link>
+                            <div className="inventory-list__content">
+                                <div className="inventory-list__column-body">
+                                    <td className="inventory-list__data">
+                                        <div className="inventory-list__item">
+                                            <div className="inventory__div">
+                                                <h2 className="inventory-list__title-mobile">Inventory Item</h2>
+                                                <div>
+                                                    <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
+                                                        <p className="inventory-list__name">{item.item_name}</p><img className="inventory-list__link-icon" src={forwardArrowIcon} alt="forward arrow" />
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td className="inventory-list__data">
-                                    <h2 className="inventory-list__title-mobile">Category</h2>
-                                    <p className="inventory-list__paragraph">{item.category}</p>
-                                </td>
+                                    </td>
+                                    <td className="inventory-list__data">
+                                        <h2 className="inventory-list__title-mobile">Category</h2>
+                                        <p className="inventory-list__paragraph">{item.category}</p>
+                                    </td>
+                                </div>
+                                <div className="inventory-list__column-body">
+                                    <td className="inventory-list__data">
+                                        <h2 className="inventory-list__title-mobile">Status</h2>
+                                        <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                                            <p className="inventory-list__status">{item.status}</p>
+                                        </div>
+                                    </td>
+                                    <td className="inventory-list__data">
+                                        <h2 className="inventory-list__title-mobile">Qty</h2>
+                                        <p className="inventory-list__paragraph">{item.quantity}</p>
+                                    </td>
+                                    <td className="inventory-list__data">
+                                        <h2 className="inventory-list__title-mobile">Warehouse</h2>
+                                        <p className="inventory-list__paragraph">{item.warehouse_name}</p>
+                                    </td>
+                                </div>
                             </div>
-                            <div className="inventory-list__column">
-                                <td className="inventory-list__data">
-                                    <h2 className="inventory-list__title-mobile">Status</h2>
-                                    <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
-                                        <p className="inventory-list__status">{item.status}</p>
-                                    </div>
-                                </td>
-                                <td className="inventory-list__data">
-                                    <h2 className="inventory-list__title-mobile">Quantity</h2>
-                                    <p className="inventory-list__paragraph">{item.quantity}</p>
-                                </td>
-                                <td className="inventory-list__data">
-                                    <h2 className="inventory-list__title-mobile">Warehouse</h2>
-                                    <p className="inventory-list__paragraph">{item.warehouse_name}</p>
-                                </td>
-                            </div>
-                            </div>
+                            <div className="inventory-list__action-icons">
                                 <td className="inventory-list__data">
                                     <div className="inventory-list__buttons">
                                         <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button" />
-                                        <Link to={`/inventories/${item.id}/edit`}>
+                                        {/* <Link to={`/inventories/${item.id}/edit`}> */}
                                             <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
-                                        </Link>
+                                        {/* </Link> */}
                                     </div>
                                 </td>
+                            </div>
                         </tr>
                     ))}
                 </tbody>

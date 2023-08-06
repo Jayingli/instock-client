@@ -57,6 +57,7 @@
         padding: 0.375rem;
         border-radius: 1.875rem;
         background-color: $primary-interactive-color;
+        cursor: pointer;
 
         &:hover {
             background-color: $secondary-background-hover-color;
