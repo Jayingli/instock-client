@@ -17,20 +17,37 @@
         }
     }
     
-    &__row {
+    &__row-header {
+        @include tablet-padding();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__row-body {
         @include mobile-padding();
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding-bottom: 16px;
+        padding-bottom: 1rem;
         border-bottom: 1px solid $secondary-border-color;
 
         @include tablet {
             @include tablet-padding();
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
+            height: 58px;
+
+            &:hover {
+                background-color: rgba(46,102,229,0.07);
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 
@@ -38,7 +55,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: calc(100% / 6);
+        padding: 2px 0;
     }
     
     &__column-body {
@@ -55,13 +72,16 @@
         padding: 0.5rem 0;
         height: 52px;
 
-        // @include tablet {
-        //     width: 20%;
-        // }
+        @include tablet {
+            display: flex;
+            align-items: baseline;
+            flex: 1;
+            padding: 2rem 0;
+        }
     }
 
     &__title {
-        @include mobile-text-tableheader-h4();
+        @include tablet-text-tableheader-h4();
         text-transform: uppercase;
     }
 
@@ -70,6 +90,8 @@
 
         @include tablet {
             display: flex;
+            width: 16px;
+            margin-left: 4px;
         }
     }
 
@@ -104,25 +126,43 @@
 
     &__link-icon {
         width: 22px;
-        padding-left: 4px;
+        padding-left: 0.25rem;
     }
 
     &__name {
         @include mobile-text-tableheader-h4();
 
         @include tablet {
-            @include tablet-text-tableheader-h4();
+            @include tablet-text-label-h3();
         }
     }
 
     &__in-stock {
         @include in-stock-styles();
         display: inline-block;
+        
+        @include tablet {
+            margin-left: -1.5rem;
+            margin-top: -0.25rem;
+        }
+
+        @include desktop {
+            margin-left: -3.25rem;
+        }
     }
 
     &__out-of-stock {
         @include out-of-stock-styles();
         display: inline-block;
+
+        @include tablet {
+            margin-left: -1.5rem;
+            margin-top: -0.25rem;
+        }
+
+        @include desktop {
+            margin-left: -3.25rem;
+        }
     }
 
     &__status {
@@ -131,12 +171,45 @@
 
     &__paragraph {
         @include mobile-text-bodysmall-p3();
-        padding-bottom:12px;
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+        }
+    }
+
+    &__qty {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -0.5rem;
+        }
+
+        @include desktop {
+            margin-left: -2rem;
+        }
+    }
+
+    &__warehouse {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -1.25rem;
+        }
+
+        @include desktop {
+            margin-left: -2rem;
+        }
     }
 
     &__content {
         display: flex;
         justify-content: space-between;
+        width: 100%;
     }
 
     &__action-icons {
@@ -146,19 +219,12 @@
         width: 100%;
     }
 
-    // &__action-data {
-    //     display: flex;
-    //     justify-content: space-between;
-    //     align-items: baseline;
-    //     width: 100%;
-    //     padding: 8px 0;
-    // }
-
     &__buttons {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         width: 100%;
+        padding-top: 0.75rem;
     }
 
     &__delete {
@@ -166,6 +232,7 @@
 
         @include tablet {
             width: 22px;
+            margin-right: 1rem;
         }
     }
 
