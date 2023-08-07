@@ -107,14 +107,14 @@ function WarehouseDetails() {
                                         </div>
 
                                         <div className="warehouse-details__contact">
-                                            <div>
+                                            <div className="warehouse-details__column">
                                                 <h2 className="warehouse-details__subtitle">Contact Name:</h2>
                                                 <p className="warehouse-details__paragraph">{warehouse.contact_name}<br/>
                                                     {warehouse.contact_position}
                                                 </p>
                                             </div>
 
-                                            <div>
+                                            <div className="warehouse-details__column">
                                                 <h2 className="warehouse-details__subtitle">Contact Information:</h2>
                                                 <p className="warehouse-details__paragraph">{warehouse.contact_phone}<br/>
                                                     <a className="warehouse-details__email" href={`mailto: ${warehouse.contact_email}`}>

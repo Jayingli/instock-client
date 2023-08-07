@@ -55,6 +55,49 @@ function WarehouseInventoryList() {
 
   return (
       <div className="warehouse-inventory-list">
+          {/* Mobile View */}
+          {inventoryfilteredData.map((item) => (
+              <div className="warehouse-inventory-list__mobile" key={item.id}>
+                  <div className="warehouse-inventory-list__mobile-container">
+                      <div className="warehouse-inventory-list__mobile-column">
+                          <div>
+                                <h2 className="warehouse-inventory-list__mobile-title">Inventory Item</h2>
+                                <Link className="warehouse-inventory-list__link" to={`/inventories/${item.id}`}>
+                                    <p className="warehouse-inventory-list__name">{item.item_name}</p>
+                                    <img className="warehouse-inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
+                                </Link>
+                          </div>
+                          <div className="warehouse-inventory-list__mobile-category">
+                              <h2 className="warehouse-inventory-list__mobile-title">Category</h2>
+                              <p className="warehouse-inventory-list__paragraph">{item.category}</p>
+                          </div>
+                      </div>
+                      <div className="warehouse-inventory-list__mobile-column">
+                          <div>
+                              <h2 className="warehouse-inventory-list__mobile-title">Status</h2>
+                              <div className={item.status === 'In Stock' ? 'warehouse-inventory-list__in-stock' : 'warehouse-inventory-list__out-of-stock'}>
+                                  <p className="warehouse-inventory-list__status">{item.status}</p>
+                              </div>
+                          </div>
+                          <div className="warehouse-inventory-list__mobile-qty">
+                              <h2 className="warehouse-inventory-list__mobile-title">Qty</h2>
+                              <p className="warehouse-inventory-list__paragraph">{item.quantity}</p> 
+                          </div>
+                      </div>
+                  </div>
+                  <div>
+                      <div className="warehouse-inventory-list__buttons">
+                          <Link to={`/inventories/${item.id}/delete`} >
+                                <img className="warehouse-inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"/>
+                            </Link>
+                          <Link to={`/inventories/${item.id}/edit`}>
+                                <img className="warehouse-inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
+                          </Link>
+                      </div>
+                  </div>
+              </div>
+          ))}
+          {/* Tablet / Desktop View */}
           <table className="warehouse-inventory-list__table">
               <thead className="warehouse-inventory-list__header">
                   <tr className="warehouse-inventory-list__row-header">
@@ -90,10 +133,10 @@ function WarehouseInventoryList() {
                   </tr>
               </thead>
               <tbody>
-              {inventoryfilteredData.map((item) => (
+                  {inventoryfilteredData.map((item) => (
                       <tr className="warehouse-inventory-list__row-body" key={item.id}>
-                          <div className="warehouse-inventory-list__content">
-                              <div className="warehouse-inventory-list__column-body">
+                          {/* <div className="warehouse-inventory-list__content">
+                              <div className="warehouse-inventory-list__column-body"> */}
                                   <td className="warehouse-inventory-list__data">
                                       <h2 className="warehouse-inventory-list__title-mobile">Inventory Item</h2>
                                       <div>
@@ -107,8 +150,8 @@ function WarehouseInventoryList() {
                                       <h2 className="warehouse-inventory-list__title-mobile">Category</h2>
                                       <p className="warehouse-inventory-list__paragraph">{item.category}</p>
                                   </td>
-                              </div>
-                              <div className="warehouse-inventory-list__column-body">
+                              {/* </div>
+                              <div className="warehouse-inventory-list__column-body"> */}
                                   <td className="warehouse-inventory-list__data">
                                       <h2 className="warehouse-inventory-list__title-mobile">Status</h2>
                                       <div className={item.status === 'In Stock' ? 'warehouse-inventory-list__in-stock' : 'warehouse-inventory-list__out-of-stock'}>
@@ -119,9 +162,9 @@ function WarehouseInventoryList() {
                                       <h2 className="warehouse-inventory-list__title-mobile">Qty</h2>
                                       <p className="warehouse-inventory-list__qty">{item.quantity}</p>
                                   </td>
-                              </div>
-                          </div>
-                          <div>
+                              {/* </div> */}
+                          {/* </div> */}
+                          {/* <div> */}
                               <td className="warehouse-inventory-list__action-icons">
                                   <div className="warehouse-inventory-list__buttons">
                                       <Link to={`/inventories/${item.id}/delete`} >
@@ -132,7 +175,7 @@ function WarehouseInventoryList() {
                                       </Link>
                                   </div>
                               </td>
-                          </div>
+                          {/* </div> */}
                       </tr>
                   ))}
               </tbody>
