@@ -3,17 +3,68 @@
 
 
 .warehouse-inventory-list {
-    &__table {
-        width: 100%;
+    &__mobile {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid $secondary-border-color;
+        
+        @include tablet {
+          display: none;
+        }
     }
 
-    &__header {
+    &__mobile-title {
+        @include mobile-text-tableheader-h4();
+        text-transform: uppercase;
+        padding-bottom: 0.125rem;
+    }
+
+    &__mobile-container {
+        display: flex;
+        height: 80px;
+    }
+
+    &__mobile-column {
+        flex: 1;
+    }
+
+    &__mobile-category {
+        padding: 1rem 0;
+    }
+
+    &__mobile-qty {
+      padding: 0.5rem 0;
+    }
+
+    &__table {
         display: none;
 
         @include tablet {
             display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    &__header {
+        @include tablet {
+            display: flex;
             background-color: $primary-background-color;
             padding: 0.5rem 0;
+        }
+    }
+
+    &__title {
+        @include tablet-text-tableheader-h4();
+        text-transform: uppercase;
+    }
+
+    &__icon {
+        @include tablet {
+            display: flex;
+            width: 16px;
+            margin-left: 0.25rem;
         }
     }
     
@@ -25,31 +76,30 @@
         width: 100%;
     }
 
+    &__tbody {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
     &__row-body {
-        @include mobile-padding();
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid $secondary-border-color;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
         @include tablet {
             @include tablet-padding();
-            flex-direction: row;
+            display: flex;
             justify-content: space-between;
-            align-items: center;
-            width: 100%;
+            align-items: baseline;
             height: 58px;
-
+            border-bottom: 1px solid $secondary-border-color;
+          
             &:hover {
                 background-color: rgba(46,102,229,0.07);
             }
+
+            &:last-child {
+              border-bottom: none;
+            }
         }
-    }
+      }
 
     &__column-header {
         display: flex;
@@ -57,65 +107,19 @@
         align-items: center;
         padding: 0.125rem 0;
     }
-    
-    &__column-body {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
-        @include tablet {
-            flex-direction: row;
-        }
-    }
 
     &__data {
-        padding: 0.75rem 0;
-        height: 52px;
-
         @include tablet {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             flex: 1;
-            padding: 2rem 0;
-        }
-    }
-
-    &__title {
-        @include tablet-text-tableheader-h4();
-        text-transform: uppercase;
-    }
-
-    &__icon {
-        display: none;
-
-        @include tablet {
-            display: flex;
-            width: 16px;
-            margin-left: 0.25rem;
-        }
-    }
-
-    &__actions {
-        display: none;
-
-        @include tablet {
-            display: flex;
-        }
-    }
-
-    &__title-mobile {
-        @include mobile-text-tableheader-h4();
-        text-transform: uppercase;
-        padding-bottom: 0.125rem;
-
-        @include tablet {
-            display: none;
         }
     }
 
     &__link {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         color: $primary-interactive-color;
         text-decoration: none;
 
@@ -142,12 +146,11 @@
         display: inline-block;
         
         @include tablet {
-            margin-left: -1.5rem;
-            margin-top: -0.25rem;
+            margin-left: 2rem;
         }
 
         @include desktop {
-            margin-left: -3.25rem;
+          margin-left: 5rem;
         }
     }
 
@@ -156,17 +159,17 @@
         display: inline-block;
 
         @include tablet {
-            margin-left: -1.5rem;
-            margin-top: -0.25rem;
+            margin-left: 2rem;
         }
 
         @include desktop {
-            margin-left: -3.25rem;
+            margin-left: 5rem;
         }
     }
 
     &__status {
         @include status-styles();
+        font-size: 0.625rem;
     }
 
     &__paragraph {
@@ -178,45 +181,32 @@
         }
     }
 
+    &__category {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: 3rem;
+        }
+
+        @include desktop {
+          margin-left: 3.5rem;
+        }
+    }
+
     &__qty {
         @include mobile-text-bodysmall-p3();
         padding-bottom: 0.75rem;
 
         @include tablet {
             @include tablet-text-bodymedium-p2();
-            margin-left: -0.5rem;
+            margin-left: 4.25rem;
         }
 
         @include desktop {
-            margin-left: -2rem;
+            margin-left: 7rem;
         }
-    }
-
-    &__warehouse {
-        @include mobile-text-bodysmall-p3();
-        padding-bottom: 0.75rem;
-
-        @include tablet {
-            @include tablet-text-bodymedium-p2();
-            margin-left: -1.25rem;
-        }
-
-        @include desktop {
-            margin-left: -2rem;
-        }
-    }
-
-    &__content {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    &__action-icons {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        width: 100%;
     }
 
     &__buttons {
@@ -224,7 +214,13 @@
         justify-content: space-between;
         align-items: baseline;
         width: 100%;
-        padding-top: 0.75rem;
+        padding-top: 1.25rem;
+
+        @include tablet {
+          justify-content: flex-end;
+          padding: 0;
+          margin-top: 12px;
+        }
     }
 
     &__delete {

@@ -4,7 +4,6 @@ import axios from "axios";
 import Button from "../Button/Button";
 import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
 import "./EditWarehouse.scss";
-import "../AddNewWarehouse/AddNewWarehouse.scss";
 
 /*
  * Edit Warehouse Component
@@ -160,40 +159,40 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
             </div>
 
             {/* Warehouse details */}
-            <form className="add-warehouse__form" onSubmit={handleSubmit}>
-                <div className="add-warehouse__content">
-                    <div className="add-warehouse__section">
-                        <h3 className="add-warehouse__subtitle">Warehouse Details</h3>
-                        <label className="add-warehouse__label" htmlFor="warehouse_name">Warehouse Name</label>
+            <form className="edit-warehouse__form" onSubmit={handleSubmit}>
+                <div className="edit-warehouse__content">
+                    <div className="edit-warehouse__section">
+                        <h3 className="edit-warehouse__subtitle">Warehouse Details</h3>
+                        <label className="edit-warehouse__label" htmlFor="warehouse_name">Warehouse Name</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="warehouse_name"
                             value={formData.warehouse_name}
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="address">Street Address</label>
+                        <label className="edit-warehouse__label" htmlFor="address">Street Address</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="address"
                             value={formData.address}
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="city">City</label>
+                        <label className="edit-warehouse__label" htmlFor="city">City</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="city"
                             value={formData.city}
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="country">Country</label>
+                        <label className="edit-warehouse__label" htmlFor="country">Country</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="country"
                             value={formData.country}
@@ -202,11 +201,11 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
                     </div>
 
                     {/* Contact details */}
-                    <div className="add-warehouse__section">
-                        <h3 className="add-warehouse__subtitle">Contact Details</h3>
-                        <label className="add-warehouse__label" htmlFor="contact_name">Contact Name</label>
+                    <div className="edit-warehouse__section">
+                        <h3 className="edit-warehouse__subtitle">Contact Details</h3>
+                        <label className="edit-warehouse__label" htmlFor="contact_name">Contact Name</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="contact_name"
                             id="contact_name"
@@ -214,9 +213,9 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="contact_position">Position</label>
+                        <label className="edit-warehouse__label" htmlFor="contact_position">Position</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="contact_position"
                             id="contact_position"
@@ -224,9 +223,9 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="contact_phone">Phone Number</label>
+                        <label className="edit-warehouse__label" htmlFor="contact_phone">Phone Number</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="contact_phone"
                             id="contact_phone"
@@ -234,9 +233,9 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
                             onChange={handleChange}
                         ></input>
 
-                        <label className="add-warehouse__label" htmlFor="contact_email">Email</label>
+                        <label className="edit-warehouse__label" htmlFor="contact_email">Email</label>
                         <input
-                            className={"add-warehouse__input"}
+                            className={"edit-warehouse__input"}
                             type="text"
                             name="contact_email"
                             id="contact_email"
@@ -247,7 +246,7 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
                 </div>
 
                 {/* Form Buttons */}
-                <div className="add-warehouse__buttons">
+                <div className="edit-warehouse__buttons">
                     <Link to="/warehouses" className="edit-warehouse__link">
                         <Button variant="secondary" text="Cancel"/>
                     </Link>

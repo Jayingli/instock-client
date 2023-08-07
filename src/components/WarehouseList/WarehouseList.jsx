@@ -12,6 +12,7 @@ import "./WarehouseList.scss";
  * - Represents the whole list of warehouses
  * - Includes warehouse name, address, contact name, contact info
  * - Has delete & editing functions for the each warehouse
+ * - Sorts data in ascending/descending order when the sort icon is clicked
  */
 
 function WarehouseList() {

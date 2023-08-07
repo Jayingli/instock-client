@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import editIcon from "../../assets/icons/edit-white-24px.svg";
 import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
@@ -60,7 +59,7 @@ function InventoryDetails() {
                                 <div>
                                     <div className="inventory-details__header">
                                         <div className="inventory-details__heading">
-                                            <Link to="/inventories">
+                                            <Link to={`/inventories?from=warehouse`}>
                                                 <img
                                                     className="inventory-details__icon"
                                                     src={backArrowIcon}

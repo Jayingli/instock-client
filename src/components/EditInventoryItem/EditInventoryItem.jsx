@@ -230,7 +230,7 @@ function EditInventoryItem() {
                         <option className="inventory-form__placeholder" value={formData.category}>{formData.category}</option>
                         {categories.map((category) => {
                             if (category !== formData.category) {
-                            return <option value={category}>{category}</option>;
+                            return <option key={category} value={category}>{category}</option>;
                         }
                             return null;
                         })}
@@ -303,7 +303,7 @@ function EditInventoryItem() {
                         </option>
                         {warehouses.map((warehouse) => {
                             if (warehouse !== formData.warehouse_name) {
-                            return <option value={warehouse}>{warehouse}</option>;
+                            return <option key={warehouse} value={warehouse}>{warehouse}</option>;
                         }
                             return null;
                         })}

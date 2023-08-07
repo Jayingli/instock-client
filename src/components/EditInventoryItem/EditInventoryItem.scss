@@ -40,5 +40,10 @@
 
     &__link {
         text-decoration: none;
+        width: 100%;
+        
+        @include tablet {
+            width: auto;
+        }
     }
 }
