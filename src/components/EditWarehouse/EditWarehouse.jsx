@@ -24,38 +24,126 @@ function EditWarehouse() {
     const URL = `http://localhost:5050/api/warehouses/${id}`;
     axios.get(URL).then((res) => {
         //Store Warehouse data in data
-        const data = res.data;
+        const data = res.data[0];
+
+        // Data variables
+        const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email}= data;
 
         //set FormData to the warehouse object
-        setFormData(data[0]);
+        setFormData({  
+        warehouse_name: warehouse_name,
+        address: address,
+        city: city,
+        country: country,
+        contact_name: contact_name,
+        contact_position: contact_position,
+        contact_phone: contact_phone,
+        contact_email: contact_email
+    });
     });
     }, []);
 
+    //Handle Change
     const handleChange = (e) => {
         const { name, value } = e.target;
+        const valuePhoneDash = value.replace(/^(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+
+        //If the state change is contact_phone, it will modify the phone number by adding dashes, so the server can accept it
+        if (name === "contact_phone") {
+            return setFormData({
+                ...formData,
+                [name]: valuePhoneDash,
+            });
+        };
         setFormData((prevFormData) => {
             return { ...prevFormData, [name]: value };
         });
     };
 
+// Form data variables
+const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email}= formData;
+
+    //Form Validation
+
+    //Empty Fields
+    const isFieldsValid = () => {
+        if (
+        !warehouse_name ||
+        !address ||
+        !city ||
+        !country ||
+        !contact_name ||
+        !contact_position ||
+        !contact_phone ||
+        !contact_email
+        ) {
+        return false;
+        } else {
+        return true;
+        }
+    };
+
+    // Phone Number validation
+    const isPhoneValid = () => {
+        const phoneValidator = /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d*)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/igm;
+
+        if (!phoneValidator.test(contact_phone)) {
+        return false;
+        } else {
+        return true;
+        }
+    };
+
+    // Email Validation
+    const isEmailValid = () => {
+        if (!contact_email.includes("@")) {
+        return false;
+        } else {
+        return true;
+        }
+    };
+
+    // Final validation
+    const isValidForm = () => {
+        if (!isFieldsValid()) {
+        return false;
+        }
+        if (!isEmailValid()) {
+        return false;
+        }
+        if (!isPhoneValid()) {
+        return false;
+        }
+        if (!isEmailValid()) {
+        return false;
+        }
+        return true;
+    };
+
+
+    //Submit handle
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
 
-        const URL = `http://localhost:5050/api/warehouses/${id}`;
-        //PUT request to write the new info to the database?
-        axios
-            .put(URL, formData)
-            .then((res) => {
-            console.log(res.data);
-            console.log("Updated");
-            })
-            .catch((err) => {
-            console.log(err);
-            });
-
-        //Once form is submitted, re-direct to Warehouses List page
-        navigate("/warehouses");
+        if(isValidForm()){
+            const URL = `http://localhost:5050/api/warehouses/${id}`;
+            //PUT request to write the new info to the database?
+            axios
+                .put(URL, formData)
+                .then((res) => {
+                console.log(res.data);
+                console.log("Updated");
+                })
+                .catch((err) => {
+                console.log(err);
+                });
+    
+            //Once form is submitted, re-direct to Warehouses List page
+            navigate("/warehouses");
+        }else{
+         console.log('Form invalid')
+        }
     };
 
     return (

@@ -34,10 +34,11 @@ function InventoryList() {
     }, []);
 
     const deleteItemHandler = (id) => {
-        setDeleteVisibility(!deleteVisibility);
-        setStyle(!style);
+        // setDeleteVisibility(!deleteVisibility);
+        // setStyle(!style);
         setSelectedItemId(id); // Save the selected itemId in the state
-        console.log(deleteVisibility);
+        setDeleteVisibility(true); // Show the DeleteInventory modal
+        setStyle(!style);
     }
 
     return (
@@ -122,7 +123,7 @@ function InventoryList() {
                                 <td className="inventory-list__action-icons">
                                     <div className="inventory-list__buttons">
                                         <Link to={`/inventories/${item.id}/delete`} >
-                                            <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"onClick={() => deleteItemHandler(item.id)}/>
+                                            <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button" onClick={deleteItemHandler}/>
                                         </Link>
                                         <Link to={`/inventories/${item.id}/edit`}>
                                             <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
@@ -135,13 +136,32 @@ function InventoryList() {
                 </tbody>
             </table>
             {/* Passing the listData array as the array prop to DeleteInventory */}
-      {deleteVisibility && (
-        <DeleteInventory
-          array={listData} // Pass the 'listData' as the 'array' prop
-          itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
-          onCancelDelete={() => setDeleteVisibility(false)}
-        />
-      )}
+        {/* {deleteVisibility && (
+            <DeleteInventory
+            array={listData} // Pass the 'listData' as the 'array' prop
+            itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
+            onCancelDelete={() => setDeleteVisibility(false)}
+            />
+        )} */}
+
+            {/* {deleteVisibility && 
+                <div className="delete__component--wrap">
+                    <DeleteItem 
+                        array={listData}
+                        page="inventory"
+                        visibility="hidden"
+                        deleteItemHandler={deleteItemHandler}
+                        obj="television"
+                    />
+                </div>
+            } */}
+            {deleteVisibility && (
+            <DeleteInventory
+                array={listData} // Pass the 'listData' as the 'array' prop
+                itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
+                deleteItemHandler={() => setDeleteVisibility(false)}
+            />
+        )}
         </div>
     );
 }

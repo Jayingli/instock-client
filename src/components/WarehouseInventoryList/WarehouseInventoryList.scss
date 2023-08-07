@@ -1,338 +1,246 @@
-@use "../../styles/partials/_variables";
-@use "../../styles/partials/mixins" as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
-//Inventory Styling
 
-.warehouseinventory__list {
-  display: flex;
-  flex-direction: column;
-  // padding: 1rem 1rem 0 1rem;
-  border-radius: 5px;
-  width: 100%;
-  // background-color: variables.$light-color;
-  // box-sizing: border-box;
-
-  .inventory__list--mobile {
-    display: grid;
-    width: 100%;
-    background-color: variables.$light-color;
-
-    .inventory__grid--mobile {
-      // padding: .5rem .75rem 1rem .75rem;
-      display: grid;
-      grid-template-columns: 6rem 6rem;
-      grid-template-rows: 3rem 3rem 3rem;
-      border-top: 1px solid variables.$secondary-border-color;
-      padding-bottom: 0.75rem;
-
-      .inventory__grid--item {
-        display: grid;
+.warehouse-inventory-list {
+    &__table {
         width: 100%;
-        grid-column: 1 / span 2;
-        grid-row: 1 / span 3;
-        padding: 0.5rem 0 0 1rem;
-        text-align: left;
-
-        .item__info--wrap {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-
-          div {
-            width: 50%;
-            display: grid;
-          }
-
-          .inventory__div {
-            margin-right: 2rem;
-            display: grid;
-
-            h4 {
-              line-height: 5px;
-              margin-bottom: 0;
-              height: 5px;
-            }
-
-            .inventory__name {
-              display: flex;
-              flex-direction: row;
-              width: 100% !important;
-
-              a {
-                top: 1rem;
-                line-height: 10px;
-              }
-
-              img {
-                margin-bottom: -0.3rem;
-                width: 1rem;
-              }
-            }
-          }
-
-          h4 {
-            font-size: 11px;
-            line-height: 5px !important;
-            color: variables.$secondary-text-color;
-            margin: 0.5rem 0 0.25rem 0;
-            vertical-align: top;
-            text-transform: uppercase;
-          }
-
-          p {
-            font-size: 11px;
-            margin: 0 0 0.25rem 0;
-            vertical-align: top;
-          }
-
-          a {
-            font-size: 11px;
-            margin: 0 0 2rem 0;
-            height: 5px;
-            vertical-align: top;
-            text-decoration: none;
-            color: variables.$primary-interactive-color;
-            font-weight: bold;
-
-            // p {
-
-            //     .img {
-            //         margin-bottom: 4rem;
-            //     }
-            // }
-          }
-        }
-
-        .button__wrap {
-          margin-bottom: 1rem;
-          display: flex;
-          justify-content: space-between;
-
-          img {
-            font-size: 11px;
-            line-height: 16px;
-            height: 1rem;
-            width: 1rem;
-          }
-        }
-      }
-    }
-  }
-
-  .inventory__list--tabdesc {
-    display: none;
-  }
-
-  @include tablet {
-    display: flex;
-    flex-direction: column;
-    background-color: variables.$light-color;
-    padding: 0 0 0.5rem 0;
-
-    .inventory__list--mobile {
-      display: none;
     }
 
-    .inventory__list--tabdesc {
-      background-color: variables.$light-color;
-      display: grid;
+    &__header {
+        display: none;
 
-      .inventory__grid--container {
-        display: grid;
-        grid-template-rows: 2rem 3rem 3rem 3rem 3rem 3rem;
-        grid-template-columns: 6.9rem 6.9rem 6.9rem 6.9rem 6.9rem 2rem;
-
-        .grid__header--wrap {
-          display: flex;
-          padding-left: 1rem;
-          grid-column: 1 / span 6;
-          background-color: variables.$primary-background-color;
-
-          div {
+        @include tablet {
             display: flex;
+            background-color: $primary-background-color;
+            padding: 0.5rem 0;
+        }
+    }
+    
+    &__row-header {
+        @include tablet-padding();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__row-body {
+        @include mobile-padding();
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $secondary-border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include tablet {
+            @include tablet-padding();
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
+            height: 58px;
 
-            h4 {
-              width: auto;
-              font-size: 11px;
-              line-height: 16px;
-              color: variables.$secondary-text-color;
-              margin-right: 0.5rem;
+            &:hover {
+                background-color: rgba(46,102,229,0.07);
             }
-
-            img {
-              margin-top: 0.6rem;
-              height: 1rem;
-            }
-          }
-
-          div:last-child {
-            h4 {
-              margin-left: 2rem;
-            }
-          }
         }
-
-        .inventory__grid--item {
-          display: grid;
-          grid-template-columns: 6rem 6rem 6rem 6rem 6rem 3rem;
-          grid-column: 1 / span 6;
-          border-top: 1px solid variables.$secondary-border-color;
-          padding: 0 1rem;
-          align-items: center;
-
-          .inventory__item {
-            display: flex;
-
-            a {
-              margin-top: 1rem;
-              align-self: center;
-
-              p {
-                display: flex;
-                justify-content: baseline;
-                align-items: center;
-
-                .forward__arrow {
-                  margin-bottom: 4rem;
-                }
-              }
-            }
-          }
-
-          p {
-            width: 7rem;
-            font-size: 11px;
-            margin-bottom: 0;
-          }
-
-          a {
-            font-size: 11px;
-            text-decoration: none;
-            color: variables.$primary-interactive-color;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-
-            p {
-              margin: 0;
-            }
-
-            // img {
-            //     margin-top: 1rem;
-            // }
-          }
-
-          .button__wrap {
-            display: flex;
-            justify-content: center;
-            margin: 0 0 1rem 1.25rem;
-
-            img {
-              font-size: 11px;
-              height: 1.25rem;
-              margin: 1rem 0 0 1rem;
-            }
-
-            a {
-              margin: 0;
-            }
-          }
-        }
-
-        .inventory__list--item:hover {
-          background-color: variables.$primary-background-color;
-          color: variables.$primary-text-color;
-        }
-      }
     }
-  }
 
-  @include desktop {
-    display: flex;
-    padding: 0 0 0.5rem 0;
-    align-self: center;
-    margin: 0 5.5rem 0 5.5rem;
-
-    .inventory__list--tabdesc {
-      background-color: variables.$light-color;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-
-      .inventory__grid--container {
-        display: grid;
-        grid-template-columns: 9.5rem 9.5rem 9.5rem 9.5rem 9.5rem 4rem;
-        grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
-
-        .grid__header--wrap {
-          text-transform: uppercase;
-          display: grid;
-          padding: 0 1rem 0 2rem;
-          grid-template-columns: repeat(6, 1fr);
-          align-items: center;
-          background-color: variables.$primary-background-color;
-
-          div {
-            display: flex;
-
-            h4 {
-              width: auto;
-              font-size: 11px;
-              line-height: 16px;
-              color: variables.$secondary-text-color;
-              margin-right: 0.5rem;
-            }
-
-            img {
-              margin-top: 0.5rem;
-            }
-          }
-
-          div:last-child {
-            h4 {
-              margin-left: 4.5rem;
-            }
-          }
-        }
-
-        .inventory__grid--item {
-          display: grid;
-          padding: 0 1rem 0 2rem;
-          grid-template-columns: 8.1rem 8.1rem 8.1rem 8.1rem 8.1rem 8rem;
-          align-items: center;
-          border-top: 1px solid variables.$secondary-border-color;
-
-          div {
-            .forward__arrow {
-              margin-bottom: -0.4rem;
-            }
-
-            a {
-              margin-bottom: 1rem;
-              align-self: center;
-            }
-          }
-
-          p {
-            font-size: 11px;
-          }
-
-          .contact__phone {
-            margin: 0;
-          }
-
-          a {
-            font-size: 11px;
-            margin: 0.5rem 0 0.25rem 0;
-            justify-self: center;
-            width: 8rem;
-          }
-
-          .button__wrap {
-            margin-left: 2.5rem;
-          }
-        }
-      }
+    &__column-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.125rem 0;
     }
-  }
+    
+    &__column-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__data {
+        padding: 0.75rem 0;
+        height: 52px;
+
+        @include tablet {
+            display: flex;
+            align-items: baseline;
+            flex: 1;
+            padding: 2rem 0;
+        }
+    }
+
+    &__title {
+        @include tablet-text-tableheader-h4();
+        text-transform: uppercase;
+    }
+
+    &__icon {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            width: 16px;
+            margin-left: 0.25rem;
+        }
+    }
+
+    &__actions {
+        display: none;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__title-mobile {
+        @include mobile-text-tableheader-h4();
+        text-transform: uppercase;
+        padding-bottom: 0.125rem;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        color: $primary-interactive-color;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__link-icon {
+        width: 22px;
+        padding-left: 0.25rem;
+    }
+
+    &__name {
+        @include mobile-text-tableheader-h4();
+
+        @include tablet {
+            @include tablet-text-label-h3();
+        }
+    }
+
+    &__in-stock {
+        @include in-stock-styles();
+        display: inline-block;
+        
+        @include tablet {
+            margin-left: -1.5rem;
+            margin-top: -0.25rem;
+        }
+
+        @include desktop {
+            margin-left: -3.25rem;
+        }
+    }
+
+    &__out-of-stock {
+        @include out-of-stock-styles();
+        display: inline-block;
+
+        @include tablet {
+            margin-left: -1.5rem;
+            margin-top: -0.25rem;
+        }
+
+        @include desktop {
+            margin-left: -3.25rem;
+        }
+    }
+
+    &__status {
+        @include status-styles();
+    }
+
+    &__paragraph {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+        }
+    }
+
+    &__qty {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -0.5rem;
+        }
+
+        @include desktop {
+            margin-left: -2rem;
+        }
+    }
+
+    &__warehouse {
+        @include mobile-text-bodysmall-p3();
+        padding-bottom: 0.75rem;
+
+        @include tablet {
+            @include tablet-text-bodymedium-p2();
+            margin-left: -1.25rem;
+        }
+
+        @include desktop {
+            margin-left: -2rem;
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__action-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+        padding-top: 0.75rem;
+    }
+
+    &__delete {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+            margin-right: 1rem;
+        }
+    }
+
+    &__edit {
+        width: 20px;
+
+        @include tablet {
+            width: 22px;
+        }
+    }
 }

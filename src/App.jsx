@@ -60,7 +60,7 @@ function App() {
                         <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
 
                         {/* Delete Single Inventory Item */}
-                        <Route path="/inventories/:id/delete" element={<DeleteInventory />} />
+                        <Route path="/inventories/:id/delete" element={<InventoryPage />} />
 
                         {/* Catch-all to redirect to Home Page */}
                         <Route path="*" element={<Navigate to="/" />} />

@@ -60,8 +60,8 @@ function WarehouseDetails() {
                         // If warehouse id is equal to url id, build component below with that data
                         if (warehouse.id == id) {
                             return (
-                                <div>
-                                    <div className="warehouse-details__header">
+                                <div key={warehouse.id}>
+                                    <div className="warehouse-details__header" >
                                         <div className="warehouse-details__heading">
                                             <Link to="/warehouses">
                                                 <img
