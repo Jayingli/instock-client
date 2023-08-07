@@ -3,14 +3,10 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
-
-
 import InventoryDetails from './components/InventoryDetails/InventoryDetails';
 import EditInventoryItem from './components/EditInventoryItem/EditInventoryItem';
-import DeleteInventory from './components/DeleteInventory/DeleteInventory';
 import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
 import EditWarehouse from './components/EditWarehouse/EditWarehouse';
-import DeleteWarehouse from './components/DeleteWarehouse/DeleteWarehouse';
 import './App.scss';
 
 
@@ -35,20 +31,12 @@ function App() {
 
                         {/* Warehouses Page */}
                         <Route path="/warehouses" element={<WarehousesPage />} />
-                        {/* <Route path="/warehouses" element={<AddNewInventoryItem  />} /> */}
 
                         {/* Single Warehouse Page */}
-                        {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
                         <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
                         {/* Edit Single Warehouse */}
                         <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
-
-                        {/* Delete Single Warehouse */}
-                        {/* <Route path="/warehouses/:id/delete" element={<DeleteWarehouse/>} /> */}
-
-                        {/* Inventories of Individual Warehouse Page*/}
-                        {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
 
                         {/* Inventory Page */}
                         <Route path="/inventories" element={<InventoryPage />} />

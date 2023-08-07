@@ -16,13 +16,11 @@ import './InventoryList.scss';
  */
 
 function InventoryList() {
-    //State
+    //States
     const [listData, setListData] = useState([]);
     const [deleteVisibility, setDeleteVisibility] = useState(false);
-    const [style, setStyle] = useState(false);
     const [selectedItemId, setSelectedItemId] = useState(null); // Add this state variable
 
-    
     //GET request
     useEffect(() => {
         //GET array of all inventories
@@ -32,21 +30,6 @@ function InventoryList() {
                 setListData(response.data);
             });
     }, []);
-
-    // const deleteItemHandler = (id) => {
-    //     // setDeleteVisibility(!deleteVisibility);
-    //     // setStyle(!style);
-    //     setSelectedItemId(id); // Save the selected itemId in the state
-    //     setDeleteVisibility(true); // Show the DeleteInventory modal
-    //     setStyle(!style);
-    // }
-
-    // const deleteItemHandler = (id) => {
-
-    //     setDeleteVisibility(!deleteVisibility);
-    //     setStyle(!style);
-    
-    // }
 
        // Function to handle when the delete button is clicked
        const deleteItemHandler = (id) => {
