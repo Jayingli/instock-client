@@ -1,13 +1,24 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
+import InventoryPage from './pages/InventoryPage/InventoryPage';
+
+
+import InventoryDetails from './components/InventoryDetails/InventoryDetails';
+import EditInventoryItem from './components/EditInventoryItem/EditInventoryItem';
+import DeleteInventory from './components/DeleteInventory/DeleteInventory';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
+import DeleteWarehouse from './components/DeleteWarehouse/DeleteWarehouse';
 import './App.scss';
 
+
 /*
-App.jsx
-- Represents the main component of the application
-- Contains header, footer and defines routes for different pages
-*/
+ * App.jsx
+ * - Represents the main component of the application
+ * - Contains header, footer and defines routes for different pages
+ */
 
 function App() {
     return (
@@ -17,25 +28,44 @@ function App() {
                 <Header />
 
                 {/* Define routes for different pages */}
-                <Routes>
-                    {/* Home Page */}
-                    {/* <Route path="/" element={<WarehousesPage />} /> */}
+                <div className="App__page">
+                    <Routes>
+                        {/* Home Page */}
+                        <Route path="/" element={<Navigate to="/warehouses" />} />
 
-                    {/* Warehouses Page */}
-                    {/* <Route path="/warehouses" element={<WarehousesPage />} /> */}
+                        {/* Warehouses Page */}
+                        <Route path="/warehouses" element={<WarehousesPage />} />
+                        {/* <Route path="/warehouses" element={<AddNewInventoryItem  />} /> */}
 
-                    {/* Individual Warehouse Page */}
-                    {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
+                        {/* Single Warehouse Page */}
+                        {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
+                        <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
-                    {/* Inventory Page */}
-                    {/* <Route path="/inventory" element={<InventoryPage />} /> */}
+                        {/* Edit Single Warehouse */}
+                        <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
 
-                    {/* Individual Inventory Page */}
-                    {/* <Route path="/inventory/:id" element={<InventoryPage />} /> */}
+                        {/* Delete Single Warehouse */}
+                        {/* <Route path="/warehouses/:id/delete" element={<DeleteWarehouse/>} /> */}
 
-                    {/* Catch-all to redirect to Home Page */}
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
+                        {/* Inventories of Individual Warehouse Page*/}
+                        {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
+
+                        {/* Inventory Page */}
+                        <Route path="/inventories" element={<InventoryPage />} />
+
+                        {/* Single Inventory Page */}
+                        <Route path="/inventories/:id" element={<InventoryDetails />} />
+
+                        {/* Edit Single Inventory Item */}
+                        <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
+
+                        {/* Delete Single Inventory Item */}
+                        <Route path="/inventories/:id/delete" element={<InventoryPage />} />
+
+                        {/* Catch-all to redirect to Home Page */}
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                </div>
 
                 {/* Footer Component */}
                 <Footer />

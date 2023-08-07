@@ -1,5 +1,27 @@
 @use './styles/partials/global' as *;
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
 
 .App {
-  
+    background-color: $secondary-background-hover-color;
+    height: 175px;
+
+    @include tablet {
+        height: 185px;
+    }
+
+    &__page {
+        background-color: $light-color;
+        border-radius: 0.25rem;
+        margin: 0 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+        @include tablet {
+            margin: 0 2rem;
+        }
+
+        @include desktop {
+            @include desktop-margin();
+        }
+    }
 }
