@@ -15,13 +15,13 @@ function DeleteWarehouse({ array, page, deleteItemHandler}) {
     const {id} = useParams();
 
     //Find item by id to us its name in the message below
-    function findItem(item) {
-        return item.id == id;
+    function findWarehouse(warehouse) {
+        return warehouse.id == id;
     }
 
-    const obj = array.find(findItem);
+    const obj = array.find(findWarehouse);
 
-    console.log(obj);
+    console.log("Found Warehouse:", obj);
     
 
     //DELETE request
@@ -29,7 +29,7 @@ function DeleteWarehouse({ array, page, deleteItemHandler}) {
         e.preventDefault();
 
         axios
-        .delete(`http://localhost:5050/api/inventories/${id}`)
+        .delete(`http://localhost:5050/api/warehouses/${id}`)
 
         .then((res) => {
             console.log(`deleted post with id ${id}`);

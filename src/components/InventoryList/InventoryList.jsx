@@ -19,7 +19,7 @@ function InventoryList() {
     //States
     const [listData, setListData] = useState([]);
     const [deleteVisibility, setDeleteVisibility] = useState(false);
-    const [selectedItemId, setSelectedItemId] = useState(null); // Add this state variable
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
     //GET request
     useEffect(() => {
@@ -31,8 +31,8 @@ function InventoryList() {
             });
     }, []);
 
-       // Function to handle when the delete button is clicked
-       const deleteItemHandler = (id) => {
+    // Function to handle when the delete button is clicked
+    const deleteItemHandler = (id) => {
         // Set the selectedItemId state with the id of the item to be deleted
         setSelectedItemId(id);
         // Show the delete modal
@@ -78,8 +78,8 @@ function InventoryList() {
                     <div>
                         <div className="inventory-list__buttons">
                             <Link to={`/inventories/${item.id}/delete`} >
-                                    <img className="inventory-list__delete" src={deleteIcon} onClick={deleteItemHandler} alt="Delete Inventory Button"/>
-                                </Link>
+                            <img className="inventory-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(item.id)} alt="Delete Inventory Button"/>
+                            </Link>
                             <Link to={`/inventories/${item.id}/edit`}>
                                     <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
                             </Link>
@@ -175,7 +175,7 @@ function InventoryList() {
             </table>
             {/* Render the DeleteInventory component only when deleteVisibility is true */}
             {deleteVisibility && (
-                <div className="delete__component--wrap">
+                <div>
                     {/* Pass the array, page, and the deleteItemHandler function to the DeleteInventory component */}
                     <DeleteInventory
                         array={listData}

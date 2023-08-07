@@ -5,6 +5,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import forwardArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import "./WarehouseList.scss";
 
 /* 
@@ -18,6 +19,8 @@ import "./WarehouseList.scss";
 function WarehouseList() {
     //State
     const [listData, setListData] = useState([]);
+    const [deleteVisibility, setDeleteVisibility] = useState(false);
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
     //Query States
     const [sortBy, setSortBy] = useState("");
@@ -32,6 +35,14 @@ function WarehouseList() {
             setListData(response.data);
           });
     }, [sortBy, orderBy]);
+
+    // Function to handle when the delete button is clicked
+    const deleteItemHandler = (id) => {
+        // Set the selectedItemId state with the id of the item to be deleted
+        setSelectedItemId(id);
+        // Show the delete modal
+        setDeleteVisibility(true);
+    }
 
     //Query change handler
     const orderByToggle = () => {
@@ -140,7 +151,9 @@ function WarehouseList() {
                             <div>
                                 <td className="warehouse-list__action-icons">
                                     <div className="warehouse-list__buttons">
-                                        <img className="warehouse-list__delete" src={deleteIcon} alt="Delete Warehouse Button" />
+                                        <Link to={`/warehouses/${warehouse.id}/delete`} >
+                                        <img className="warehouse-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(warehouse.id)} alt="Delete Warehouse Button" />
+                                        </Link>
                                         <Link to={`/warehouses/${warehouse.id}/edit`}>
                                             <img className="warehouse-list__edit" src={editIcon} alt="Edit Warehouse Button" />
                                         </Link>
@@ -151,6 +164,21 @@ function WarehouseList() {
                     ))}
                 </tbody>
             </table>
+            {/* Render the DeleteWarehouse component only when deleteVisibility is true */}
+            {deleteVisibility && (
+                <div>
+                    {/* Pass the array, page, and the deleteItemHandler function to the DeleteWarehouse component */}
+                    <DeleteWarehouse
+                        array={listData}
+                        page="warehouse"
+                        deleteItemHandler={() => {
+                            // Reset the deleteVisibility state and selectedItemId state when the deletion is complete
+                            setDeleteVisibility(false);
+                            setSelectedItemId(null);
+                        }}
+                    />
+                </div>
+            )}
         </div>
     );
 };

@@ -38,6 +38,9 @@ function App() {
                         {/* Edit Single Warehouse */}
                         <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
 
+                        {/* Delete Single Warehouse */}
+                        <Route path="/warehouses/:id/delete" element={<WarehousesPage />} />
+
                         {/* Inventory Page */}
                         <Route path="/inventories" element={<InventoryPage />} />
 
