@@ -33,13 +33,28 @@ function InventoryList() {
             });
     }, []);
 
-    const deleteItemHandler = (id) => {
-        // setDeleteVisibility(!deleteVisibility);
-        // setStyle(!style);
-        setSelectedItemId(id); // Save the selected itemId in the state
-        setDeleteVisibility(true); // Show the DeleteInventory modal
-        setStyle(!style);
-    }
+    // const deleteItemHandler = (id) => {
+    //     // setDeleteVisibility(!deleteVisibility);
+    //     // setStyle(!style);
+    //     setSelectedItemId(id); // Save the selected itemId in the state
+    //     setDeleteVisibility(true); // Show the DeleteInventory modal
+    //     setStyle(!style);
+    // }
+
+    // const deleteItemHandler = (id) => {
+
+    //     setDeleteVisibility(!deleteVisibility);
+    //     setStyle(!style);
+    
+    // }
+
+       // Function to handle when the delete button is clicked
+       const deleteItemHandler = (id) => {
+        // Set the selectedItemId state with the id of the item to be deleted
+        setSelectedItemId(id);
+        // Show the delete modal
+        setDeleteVisibility(true);
+    };
 
     return (
         <div className="inventory-list">
@@ -49,11 +64,11 @@ function InventoryList() {
                     <div className="inventory-list__mobile-container">
                         <div className="inventory-list__mobile-column">
                             <div>
-                                    <h2 className="inventory-list__mobile-title">Inventory Item</h2>
-                                    <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
-                                        <p className="inventory-list__name">{item.item_name}</p>
-                                        <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
-                                    </Link>
+                                <h2 className="inventory-list__mobile-title">Inventory Item</h2>
+                                <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
+                                    <p className="inventory-list__name">{item.item_name}</p>
+                                    <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
+                                </Link>
                             </div>
                             <div className="inventory-list__mobile-category">
                                 <h2 className="inventory-list__mobile-title">Category</h2>
@@ -80,7 +95,7 @@ function InventoryList() {
                     <div>
                         <div className="inventory-list__buttons">
                             <Link to={`/inventories/${item.id}/delete`} >
-                                    <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"/>
+                                    <img className="inventory-list__delete" src={deleteIcon} onClick={deleteItemHandler} alt="Delete Inventory Button"/>
                                 </Link>
                             <Link to={`/inventories/${item.id}/edit`}>
                                     <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
@@ -164,7 +179,7 @@ function InventoryList() {
                             <td className="inventory-list__data">
                                 <div className="inventory-list__buttons">
                                     <Link to={`/inventories/${item.id}/delete`} >
-                                        <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"/>
+                                        <img className="inventory-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(item.id)} alt="Delete Inventory Button"/>
                                     </Link>
                                     <Link to={`/inventories/${item.id}/edit`}>
                                         <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
@@ -175,6 +190,21 @@ function InventoryList() {
                     ))}
                 </tbody>
             </table>
+            {/* Render the DeleteInventory component only when deleteVisibility is true */}
+            {deleteVisibility && (
+                <div className="delete__component--wrap">
+                    {/* Pass the array, page, and the deleteItemHandler function to the DeleteInventory component */}
+                    <DeleteInventory
+                        array={listData}
+                        page="inventory"
+                        deleteItemHandler={() => {
+                            // Reset the deleteVisibility state and selectedItemId state when the deletion is complete
+                            setDeleteVisibility(false);
+                            setSelectedItemId(null);
+                        }}
+                    />
+                </div>
+            )}
         </div>
     );
 }

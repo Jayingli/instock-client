@@ -4,7 +4,6 @@ import axios from "axios";
 import Button from "../Button/Button";
 import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
 import "./EditWarehouse.scss";
-import "../AddNewWarehouse/AddNewWarehouse.scss";
 
 /*
  * Edit Warehouse Component
