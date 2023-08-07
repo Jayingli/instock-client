@@ -83,9 +83,9 @@ const {warehouse_name, address, city, country, contact_name, contact_position, c
         }
     };
 
-    //Phone Number validation
+    // Phone Number validation
     const isPhoneValid = () => {
-        const phoneValidator = /1?-?\(?[0-9]{3}[\-\)][0-9]{3}-[0-9]{4}/;
+        const phoneValidator = /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d*)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/igm;
 
         if (!phoneValidator.test(contact_phone)) {
         return false;
