@@ -4,6 +4,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Button from '../../components/Button/Button';
 import AddNewInventoryItem from '../../components/AddNewInventoryItem/AddNewInventoryItem';
 import InventoryList from '../../components/InventoryList/InventoryList';
+import DeleteInventory from '../../components/DeleteInventory/DeleteInventory';
 import './InventoryPage.scss';
 
 /* 
@@ -48,6 +49,7 @@ function InventoryPage() {
             ) : (
                 // Render the InventoryList component when "showAddItem" is false
                 <InventoryList />
+                // <DeleteInventory obj="television" page="inventory" />
             )}
         </div>        
     );

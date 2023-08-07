@@ -10,7 +10,7 @@ import "./InventoryDetails.scss";
 
 /* 
  * InventoryDetails Component
- * - Represents the details of the individual component
+ * - Represents the details of a specific inventory item
  * - Includes item name, description, category, status, quantity, warehouse
  * - Has an editing function
  */

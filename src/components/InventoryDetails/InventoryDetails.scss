@@ -99,6 +99,7 @@
     &__subtitle {
         @include mobile-text-tableheader-h4();
         padding-bottom: 0.125rem;
+        text-transform: uppercase;
 
         @include tablet {
             @include tablet-text-tableheader-h4();

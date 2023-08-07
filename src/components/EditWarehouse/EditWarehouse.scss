@@ -1,7 +1,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-.edit-inventory {
+.edit-warehouse {
     &__heading {
         display: flex;
         align-items: baseline;
@@ -36,9 +36,5 @@
             @include tablet-text-pageheader-h1();
             margin-top: 0.5rem;
         }
-    }
-
-    &__link {
-        text-decoration: none;
     }
 }

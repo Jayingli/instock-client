@@ -5,6 +5,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import forwardArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import DeleteInventory from "../DeleteInventory/DeleteInventory";
 import './InventoryList.scss';
 
 /* 
@@ -17,6 +18,10 @@ import './InventoryList.scss';
 function InventoryList() {
     //State
     const [listData, setListData] = useState([]);
+    const [deleteVisibility, setDeleteVisibility] = useState(false);
+    const [style, setStyle] = useState(false);
+    const [selectedItemId, setSelectedItemId] = useState(null); // Add this state variable
+
     
     //GET request
     useEffect(() => {
@@ -27,6 +32,13 @@ function InventoryList() {
                 setListData(response.data);
             });
     }, []);
+
+    const deleteItemHandler = (id) => {
+        setDeleteVisibility(!deleteVisibility);
+        setStyle(!style);
+        setSelectedItemId(id); // Save the selected itemId in the state
+        console.log(deleteVisibility);
+    }
 
     return (
         <div className="inventory-list">
@@ -109,10 +121,12 @@ function InventoryList() {
                             <div>
                                 <td className="inventory-list__action-icons">
                                     <div className="inventory-list__buttons">
-                                        <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button" />
-                                        <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
-                                        {/* <Link to={`/inventories/${item.id}/edit`}> */}
-                                        {/* </Link> */}
+                                        <Link to={`/inventories/${item.id}/delete`} >
+                                            <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"onClick={() => deleteItemHandler(item.id)}/>
+                                        </Link>
+                                        <Link to={`/inventories/${item.id}/edit`}>
+                                            <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
+                                        </Link>
                                     </div>
                                 </td>
                             </div>
@@ -120,6 +134,14 @@ function InventoryList() {
                     ))}
                 </tbody>
             </table>
+            {/* Passing the listData array as the array prop to DeleteInventory */}
+      {deleteVisibility && (
+        <DeleteInventory
+          array={listData} // Pass the 'listData' as the 'array' prop
+          itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
+          onCancelDelete={() => setDeleteVisibility(false)}
+        />
+      )}
         </div>
     );
 }

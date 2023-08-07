@@ -139,12 +139,12 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
 
             //Once form is submitted, re-direct to Warehouses List page
             navigate("/warehouses");
+
+            // Close the AddNewWarehouse component
+            onCancelAddWarehouse();
         } else {
             console.log("Form Invalid");
         }
-
-        // Close the AddNewWarehouse component
-        onCancelAddWarehouse();
     };
 
     return (

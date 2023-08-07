@@ -18,15 +18,48 @@ function WarehouseList() {
     //State
     const [listData, setListData] = useState([]);
 
+    //Query States
+    const [sortBy, setSortBy] = useState("");
+    const [orderBy, setOrderBy] = useState("");
+
     //GET request
     useEffect(() => {
         //GET array of all warehouses
         const warehousesURL = "http://localhost:5050/api/warehouses";
-        axios.get(warehousesURL)
+        axios.get(`${warehousesURL}?sort_by=${sortBy}&order_by=${orderBy}`)
           .then((response) => {
             setListData(response.data);
           });
-    }, []);
+    }, [sortBy, orderBy]);
+
+    //Query change handler
+    const orderByToggle = () => {
+        if (orderBy === "asc") {
+            setOrderBy("desc");
+        } else {
+            setOrderBy("asc");
+        }
+    };
+
+    const sortHandlerWarehouse = () => {
+        orderByToggle();
+        setSortBy("warehouse_name");
+    };
+    
+    const sortHandlerContactName = () => {
+        orderByToggle();
+        setSortBy("contact_name");
+    };
+    
+    const sortHandlerAddress = () => {
+        orderByToggle();
+        setSortBy("address");
+    };
+    
+    const sortHandlerContactInfo = () => {
+        orderByToggle();
+        setSortBy("contact_email");
+    };
 
     return (
         <div className="warehouse-list">
@@ -36,25 +69,25 @@ function WarehouseList() {
                         <th>
                             <div className="warehouse-list__column-header">
                                 <h2 className="warehouse-list__title">Warehouse</h2>
-                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" onClick={sortHandlerWarehouse}/>
                             </div>
                         </th>
                         <th>
                             <div className="warehouse-list__column-header">
                                 <h2 className="warehouse-list__title">Address</h2>
-                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" onClick={sortHandlerContactName}/>
                             </div>
                         </th>
                         <th>
                             <div className="warehouse-list__column-header">
                                 <h2 className="warehouse-list__title">Contact Name</h2>
-                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" onClick={sortHandlerAddress}/>
                             </div>
                         </th>
                         <th>
                             <div className="warehouse-list__column-header">
                                 <h2 className="warehouse-list__title">Contact Information</h2>
-                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" />
+                                <img className="warehouse-list__icon" src={sortIcon} alt="sort icon" onClick={sortHandlerContactInfo}/>
                             </div>
                         </th>
                         <th>
@@ -107,7 +140,9 @@ function WarehouseList() {
                                 <td className="warehouse-list__action-icons">
                                     <div className="warehouse-list__buttons">
                                         <img className="warehouse-list__delete" src={deleteIcon} alt="Delete Warehouse Button" />
-                                        <img className="warehouse-list__edit" src={editIcon} alt="Edit Warehouse Button" />
+                                        <Link to={`/warehouses/${warehouse.id}/edit`}>
+                                            <img className="warehouse-list__edit" src={editIcon} alt="Edit Warehouse Button" />
+                                        </Link>
                                     </div>
                                 </td>
                             </div>

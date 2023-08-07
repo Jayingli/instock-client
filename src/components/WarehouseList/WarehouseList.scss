@@ -91,6 +91,7 @@
             display: flex;
             width: 16px;
             margin-left: 0.25rem;
+            cursor: pointer;
         }
     }
 
@@ -126,6 +127,7 @@
     &__link-icon {
         width: 22px;
         padding-left: 0.25rem;
+        cursor: pointer;
     }
 
     &__name {

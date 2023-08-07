@@ -4,11 +4,15 @@ import Footer from './components/Footer/Footer';
 import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 
-// import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
-// import EditInventoryItem from './components/EditInventoryItem/EditInventoryItem';
-import InventoryDetails from './components/InventoryDetails/InventoryDetails';
 
+import InventoryDetails from './components/InventoryDetails/InventoryDetails';
+import EditInventoryItem from './components/EditInventoryItem/EditInventoryItem';
+import DeleteInventory from './components/DeleteInventory/DeleteInventory';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails';
+import EditWarehouse from './components/EditWarehouse/EditWarehouse';
+import DeleteWarehouse from './components/DeleteWarehouse/DeleteWarehouse';
 import './App.scss';
+
 
 /*
  * App.jsx
@@ -35,7 +39,13 @@ function App() {
 
                         {/* Single Warehouse Page */}
                         {/* <Route path="/warehouses/:id" element={<WarehousesPage />} /> */}
-                        {/* <Route path="/warehouses/:id" element={<WarehousesDetails />} /> */}
+                        <Route path="/warehouses/:id" element={<WarehouseDetails />} />
+
+                        {/* Edit Single Warehouse */}
+                        <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
+
+                        {/* Delete Single Warehouse */}
+                        {/* <Route path="/warehouses/:id/delete" element={<DeleteWarehouse/>} /> */}
 
                         {/* Inventories of Individual Warehouse Page*/}
                         {/* <Route path="/warehouses/:id/inventories" element={<WarehousesPage />} /> */}
@@ -44,8 +54,13 @@ function App() {
                         <Route path="/inventories" element={<InventoryPage />} />
 
                         {/* Single Inventory Page */}
-                        {/* <Route path="/inventories/:id" element={<InventoryPage />} /> */}
                         <Route path="/inventories/:id" element={<InventoryDetails />} />
+
+                        {/* Edit Single Inventory Item */}
+                        <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
+
+                        {/* Delete Single Inventory Item */}
+                        <Route path="/inventories/:id/delete" element={<DeleteInventory />} />
 
                         {/* Catch-all to redirect to Home Page */}
                         <Route path="*" element={<Navigate to="/" />} />
