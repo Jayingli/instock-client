@@ -106,9 +106,9 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
         if (!isFieldsValid()) {
         return false;
         }
-        // if (!isEmailValid()) {
-        // return false;
-        // }
+        if (!isEmailValid()) {
+        return false;
+        }
         if (!isPhoneValid()) {
         return false;
         }

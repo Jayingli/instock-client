@@ -35,7 +35,7 @@ function WarehouseInventoryList() {
         //Set WarehouseName to the string of warehouseNameData
         setWarehouseName(warehouseNameData);
       });
-  });
+  },[]);
 
   //GET request
   useEffect(() => {
@@ -58,7 +58,7 @@ function WarehouseInventoryList() {
         console.log(filteredData);
         setInventoryfilteredData(filteredData);
       });
-  });
+  },[]);
   return (
     <section className="warehouseinventory__list">
       <div className="inventory__list--mobile">
