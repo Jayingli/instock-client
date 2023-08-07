@@ -7,6 +7,12 @@ import "./InventoryForm.scss";
 /*
  * InventoryForm Component
  * - Represents the inventory form for adding new inventory item
+ * - If status is “Out of Stock”, the quantity field will not be visible
+ * - If status is "In stock", the quantity field will be visible
+ * 
+ * Form Validation:
+ * - The form ensures that all required fields are filled out before submission.
+ * - Validation errors are displayed under each corresponding field when applicable.
  */
 
 function InventoryForm({ onCancelAddItem }) {
@@ -37,11 +43,20 @@ function InventoryForm({ onCancelAddItem }) {
     }, []);
 
     // State to store the selected option "In stock"
-    const [selectedOption, setSelectedOption] = useState("in-stock");
+    const [selectedOption, setSelectedOption] = useState("in stock");
 
     // Handler function to update the selected option
     const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
+        const selectedValue = event.target.value;
+        setSelectedOption(selectedValue);
+      
+        // Clear the quantity field when switching to "out of stock"
+        if (selectedValue === "out of stock") {
+          setFormValues((prevFormValues) => ({
+            ...prevFormValues,
+            quantity: "",
+          }));
+        }
     };
 
     // State to store form validation errors
@@ -49,7 +64,7 @@ function InventoryForm({ onCancelAddItem }) {
         name: "",
         description: "",
         category: "",
-        status: "in-stock",
+        status: "in stock",
         quantity: "",
         warehouse: "",
     });
@@ -74,17 +89,16 @@ function InventoryForm({ onCancelAddItem }) {
         if (!formValues.status) {
           errors.status = "This field is required";
         }
-        if (formValues.status === "in-stock") {
-            const quantityValue = parseInt(formValues.quantity);
-            if (isNaN(quantityValue) || quantityValue <= 0) {
-              errors.quantity = "This field is required";
-            }
+        if (!formValues.status) {
+            errors.status = "This field is required";
+        }
+        if (formValues.status === "in stock" && (!formValues.quantity || isNaN(parseInt(formValues.quantity)) || parseInt(formValues.quantity) <= 0)) {
+        errors.quantity = "Invalid quantity";
         }
         if (!formValues.warehouse || formValues.warehouse === "Please select") {
           errors.warehouse = "This field is required";
         }
 
-        setFormErrors(errors);
 
         // If there are errors, set them in the state and prevent form submission
         if (Object.keys(errors).length > 0) {
@@ -97,10 +111,9 @@ function InventoryForm({ onCancelAddItem }) {
             item_name: formValues.name,
             description: formValues.description,
             category: formValues.category,
-            status: formValues.status,
+            status: selectedOption,
             quantity: formValues.quantity,
             warehouse_id: formValues.warehouse,
-            // warehouse_name: formValues.warehouse,
         };
 
         // Send the new item data to your backend API endpoint
@@ -108,13 +121,15 @@ function InventoryForm({ onCancelAddItem }) {
         .post("http://localhost:5050/api/inventories", newItem)
         .then((response) => {
             console.log("New item added:", response.data);
+            // Reload the page after successful submission
+            window.location.reload();
         })
         .catch((error) => console.error("Failed to add item:", error));
 
         // Clear the form fields after successful submission
         event.target.reset();
         // Reset radio button to default value
-        setSelectedOption("in-stock");
+        setSelectedOption("in stock");
         // Clear form errors after successful submission
         setFormErrors({});
 
@@ -209,8 +224,8 @@ function InventoryForm({ onCancelAddItem }) {
                             className="inventory-form__radio"
                             type="radio"
                             name="status"
-                            value="in-stock"
-                            checked={selectedOption === "in-stock"}
+                            value="in stock"
+                            checked={selectedOption === "in stock"}
                             onChange={handleOptionChange}
                         />
                         In stock
@@ -220,8 +235,8 @@ function InventoryForm({ onCancelAddItem }) {
                             className="inventory-form__radio"
                             type="radio"
                             name="status"
-                            value="out-of-stock"
-                            checked={selectedOption === "out-of-stock"}
+                            value="out of stock"
+                            checked={selectedOption === "out of stock"}
                             onChange={handleOptionChange}
                         />
                         Out of stock
@@ -235,19 +250,19 @@ function InventoryForm({ onCancelAddItem }) {
                     )}
 
                     {/* Quantity (visible only if status is "in stock") */}
-                    {selectedOption === "in-stock" ? (
+                    {selectedOption === "in stock" && (
                         <div className="inventory-form__quantity">
                             <label className="inventory-form__label" htmlFor="quantity">
                                 Quantity
                             </label>
                             <input
                                 className={`inventory-form__input ${formErrors.quantity ? "inventory-form__error" : ""}`}
-                                type="quantity"
+                                type="number"
                                 id="quantity"
                                 name="quantity"
                                 value={formValues.quantity}
                                 onChange={(e) => setFormValues({ ...formValues, quantity: e.target.value })}
-                            ></input>
+                            />
                             {/* Quantity error message */}
                             {formErrors.quantity && (
                                 <div className="inventory-form__error-message">
@@ -255,7 +270,7 @@ function InventoryForm({ onCancelAddItem }) {
                                 </div>
                             )}
                         </div>
-                    ) : null}
+                    )}
 
                     {/* Warehouse */}
                     <label className="inventory-form__label" htmlFor="warehouse">

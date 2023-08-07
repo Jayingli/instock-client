@@ -137,6 +137,7 @@
             @include tablet-padding();
             justify-content: flex-end;
             height: 68px;
+            gap: 1rem;
         }
 
         @include desktop {

@@ -43,6 +43,54 @@ function InventoryList() {
 
     return (
         <div className="inventory-list">
+            {/* Mobile View */}
+            {listData.map((item) => (
+                <div className="inventory-list__mobile" key={item.id}>
+                    <div className="inventory-list__mobile-container">
+                        <div className="inventory-list__mobile-column">
+                            <div>
+                                    <h2 className="inventory-list__mobile-title">Inventory Item</h2>
+                                    <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
+                                        <p className="inventory-list__name">{item.item_name}</p>
+                                        <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
+                                    </Link>
+                            </div>
+                            <div className="inventory-list__mobile-category">
+                                <h2 className="inventory-list__mobile-title">Category</h2>
+                                <p className="inventory-list__paragraph">{item.category}</p>
+                            </div>
+                        </div>
+                        <div className="inventory-list__mobile-column">
+                            <div>
+                                <h2 className="inventory-list__mobile-title">Status</h2>
+                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                                    <p className="inventory-list__status">{item.status}</p>
+                                </div>
+                            </div>
+                            <div className="inventory-list__mobile-qty">
+                                <h2 className="inventory-list__mobile-title">Qty</h2>
+                                <p className="inventory-list__paragraph">{item.quantity}</p> 
+                            </div>
+                            <div className="inventory-list__mobile-warehouse">
+                                <h2 className="inventory-list__mobile-title">Warehouse</h2>
+                                <p className="inventory-list__paragraph">{item.warehouse_name}</p> 
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="inventory-list__buttons">
+                            <Link to={`/inventories/${item.id}/delete`} >
+                                    <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"/>
+                                </Link>
+                            <Link to={`/inventories/${item.id}/edit`}>
+                                    <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            ))}
+
+            {/* Tablet / Desktop View */}
             <table className="inventory-list__table">
                 <thead className="inventory-list__header">
                     <tr className="inventory-list__row-header">
@@ -66,7 +114,7 @@ function InventoryList() {
                         </th>
                         <th>
                             <div className="inventory-list__column-header">
-                                <h2 className="inventory-list__title">QTY</h2>
+                                <h2 className="inventory-list__title">Qty</h2>
                                 <img className="inventory-list__icon" src={sortIcon} alt="sort icon" />
                             </div>
                         </th>
@@ -83,85 +131,50 @@ function InventoryList() {
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="inventory-list__tbody">
                     {listData.map((item) => (
                         <tr className="inventory-list__row-body" key={item.id}>
-                            <div className="inventory-list__content">
-                                <div className="inventory-list__column-body">
-                                    <td className="inventory-list__data">
-                                        <h2 className="inventory-list__title-mobile">Inventory Item</h2>
-                                        <div>
-                                            <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
-                                                <p className="inventory-list__name">{item.item_name}</p>
-                                                <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
-                                            </Link>
-                                        </div>
-                                    </td>
-                                    <td className="inventory-list__data">
-                                        <h2 className="inventory-list__title-mobile">Category</h2>
-                                        <p className="inventory-list__paragraph">{item.category}</p>
-                                    </td>
+                            <td className="inventory-list__data">
+                                <div>
+                                    <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
+                                        <p className="inventory-list__name">{item.item_name}</p>
+                                        <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
+                                    </Link>
                                 </div>
-                                <div className="inventory-list__column-body">
-                                    <td className="inventory-list__data">
-                                        <h2 className="inventory-list__title-mobile">Status</h2>
-                                        <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
-                                            <p className="inventory-list__status">{item.status}</p>
-                                        </div>
-                                    </td>
-                                    <td className="inventory-list__data">
-                                        <h2 className="inventory-list__title-mobile">Qty</h2>
-                                        <p className="inventory-list__qty">{item.quantity}</p>
-                                    </td>
-                                    <td className="inventory-list__data">
-                                        <h2 className="inventory-list__title-mobile">Warehouse</h2>
-                                        <p className="inventory-list__warehouse">{item.warehouse_name}</p>
-                                    </td>
+                            </td>
+
+                            <td className="inventory-list__data">
+                                <p className="inventory-list__category">{item.category}</p>
+                            </td>
+
+                            <td className="inventory-list__data">
+                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                                    <p className="inventory-list__status">{item.status}</p>
                                 </div>
-                            </div>
-                            <div>
-                                <td className="inventory-list__action-icons">
-                                    <div className="inventory-list__buttons">
-                                        <Link to={`/inventories/${item.id}/delete`} >
-                                            <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button" onClick={deleteItemHandler}/>
-                                        </Link>
-                                        <Link to={`/inventories/${item.id}/edit`}>
-                                            <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
-                                        </Link>
-                                    </div>
-                                </td>
-                            </div>
+                            </td>
+
+                            <td className="inventory-list__data">
+                                <p className="inventory-list__qty">{item.quantity}</p>
+                            </td>
+
+                            <td className="inventory-list__data">
+                                <p className="inventory-list__warehouse">{item.warehouse_name}</p>
+                            </td>
+
+                            <td className="inventory-list__data">
+                                <div className="inventory-list__buttons">
+                                    <Link to={`/inventories/${item.id}/delete`} >
+                                        <img className="inventory-list__delete" src={deleteIcon} alt="Delete Inventory Button"/>
+                                    </Link>
+                                    <Link to={`/inventories/${item.id}/edit`}>
+                                        <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
+                                    </Link>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            {/* Passing the listData array as the array prop to DeleteInventory */}
-        {/* {deleteVisibility && (
-            <DeleteInventory
-            array={listData} // Pass the 'listData' as the 'array' prop
-            itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
-            onCancelDelete={() => setDeleteVisibility(false)}
-            />
-        )} */}
-
-            {/* {deleteVisibility && 
-                <div className="delete__component--wrap">
-                    <DeleteItem 
-                        array={listData}
-                        page="inventory"
-                        visibility="hidden"
-                        deleteItemHandler={deleteItemHandler}
-                        obj="television"
-                    />
-                </div>
-            } */}
-            {deleteVisibility && (
-            <DeleteInventory
-                array={listData} // Pass the 'listData' as the 'array' prop
-                itemId={selectedItemId} // Pass the selectedItemId as the itemId prop
-                deleteItemHandler={() => setDeleteVisibility(false)}
-            />
-        )}
         </div>
     );
 }
