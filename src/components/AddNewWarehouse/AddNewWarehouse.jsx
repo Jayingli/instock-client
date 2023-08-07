@@ -12,7 +12,7 @@ import axios from "axios";
 
 const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
     //Variables
-    const baseURL = process.env.REACT_APP_BASE_URL;
+    // const baseURL = process.env.REACT_APP_BASE_URL;
     let navigate = useNavigate();
 
     //States
@@ -129,7 +129,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
 
         if (isValidForm()) {
             axios
-                .post(`${baseURL}/api/warehouses`, warehouseState)
+                .post("http://localhost:5050/api/warehouses", warehouseState)
                 .then((res) => {
                 console.log(res);
                 })

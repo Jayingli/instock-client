@@ -1,9 +1,10 @@
 import { useEffect, useState} from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "../Button/Button";
 import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
 import "./EditWarehouse.scss";
+import "../AddNewWarehouse/AddNewWarehouse.scss";
 
 /*
  * Edit Warehouse Component
@@ -14,6 +15,9 @@ function EditWarehouse() {
     //state
     const { id } = useParams();
     const [formData, setFormData] = useState({});
+
+    //Variables
+    let navigate = useNavigate();
 
     //GET request to get array of warehuose
     useEffect(() => {
@@ -49,6 +53,9 @@ function EditWarehouse() {
             .catch((err) => {
             console.log(err);
             });
+
+        //Once form is submitted, re-direct to Warehouses List page
+        navigate("/warehouses");
     };
 
     return (
@@ -153,7 +160,9 @@ function EditWarehouse() {
 
                 {/* Form Buttons */}
                 <div className="add-warehouse__buttons">
-                    <Button variant="secondary" text="Cancel"/>
+                    <Link to="/warehouses" className="edit-warehouse__link">
+                        <Button variant="secondary" text="Cancel"/>
+                    </Link>
                     <Button variant="primary" type="submit" text="Save" />
                 </div>
             </form>
