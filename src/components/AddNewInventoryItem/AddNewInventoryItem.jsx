@@ -6,7 +6,7 @@ import "./AddNewInventoryItem.scss";
 /*
  * Add New Inventory Item Component
  * - Represents the add new inventory section with the form for adding new inventory item
- * - InventoryForm
+ * - Contains InventoryForm
 */
 
 function AddNewInventoryItem({ onCancelAddItem }) {

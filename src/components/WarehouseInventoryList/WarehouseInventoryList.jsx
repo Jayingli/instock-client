@@ -23,6 +23,7 @@ function WarehouseInventoryList() {
     const [warehouseName, setWarehouseName] = useState("");
     const [deleteVisibility, setDeleteVisibility] = useState(false);
     const [selectedItemId, setSelectedItemId] = useState(null);
+    const [shouldRefetch, setShouldRefetch] = useState(false);
 
     //GET current ID
     const { id } = useParams();
@@ -42,7 +43,7 @@ function WarehouseInventoryList() {
               //Set WarehouseName to the string of warehouseNameData
               setWarehouseName(warehouseNameData);
             });
-    },[]);
+    },[id, shouldRefetch]);
 
     //GET request
     useEffect(() => {
@@ -72,6 +73,9 @@ function WarehouseInventoryList() {
         // Filter out the deleted item from the inventoryData array
         const updatedList = inventoryData.filter((item) => item.id !== deletedItemId);
         setInventoryData(updatedList);
+
+        // Trigger re-fetch by changing shouldRefetch state
+        setShouldRefetch(!shouldRefetch);
     };
 
 
@@ -109,7 +113,7 @@ function WarehouseInventoryList() {
                   </div>
                   <div>
                       <div className="warehouse-inventory-list__buttons">
-                          <Link to={`/inventories/${item.id}/delete`} >
+                          <Link to={`/warehouses/${item.id}/inventories/delete`} >
                                 <img className="warehouse-inventory-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(item.id)} alt="Delete Inventory Button"/>
                           </Link>
                           <Link to={`/inventories/${item.id}/edit`}>
@@ -183,7 +187,7 @@ function WarehouseInventoryList() {
 
                           <td className="warehouse-inventory-list__data">
                               <div className="warehouse-inventory-list__buttons">
-                                  <Link to={`/inventories/${item.id}/delete`} >
+                                  <Link to={`/warehouses/${item.id}/inventories/delete`} >
                                       <img className="warehouse-inventory-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(item.id)} alt="Delete Inventory Button"/>
                                   </Link>
                                   <Link to={`/inventories/${item.id}/edit`}>
@@ -197,20 +201,20 @@ function WarehouseInventoryList() {
           </table>
           {/* Render the DeleteInventory component only when deleteVisibility is true */}
           {deleteVisibility && (
-                <div>
-                    {/* Pass the array, page, and the deleteItemHandler function to the DeleteInventory component */}
-                    <DeleteInventory
-                        array={inventoryData}
-                        page="warehouse"
-                        deleteItemHandler={() => {
-                            // Reset the deleteVisibility state and selectedItemId state when the deletion is complete
-                            setDeleteVisibility(false);
-                            setSelectedItemId(null);
-                        }}
-                        updateListAfterDeletion={updateListAfterDeletion}
-                    />
-                </div>
-            )}
+              <div>
+                  {/* Pass the array, page, and the deleteItemHandler function to the DeleteInventory component */}
+                  <DeleteInventory
+                      array={inventoryData}
+                      page="inventory"
+                      deleteItemHandler={() => {
+                          // Reset the deleteVisibility state and selectedItemId state when the deletion is complete
+                          setDeleteVisibility(false);
+                          setSelectedItemId(null);
+                      }}
+                      updateListAfterDeletion={updateListAfterDeletion}
+                  />
+              </div>
+          )}
       </div>
   );
 }

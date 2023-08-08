@@ -8,6 +8,7 @@ import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
 import Button from "../Button/Button";
 import EditWarehouse from "../EditWarehouse/EditWarehouse";
 import WarehouseInventoryList from "../WarehouseInventoryList/WarehouseInventoryList";
+import DeleteInventory from "../DeleteInventory/DeleteInventory";
 import "./WarehouseDetails.scss";
 
 /* 

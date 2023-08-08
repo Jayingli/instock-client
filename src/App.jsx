@@ -36,11 +36,14 @@ function App() {
                             {/* Single Warehouse Page */}
                             <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
+                            {/* Delete Single Warehouse */}
+                            <Route path="/warehouses/:id/delete" element={<WarehousesPage />} />
+
                             {/* Edit Single Warehouse */}
                             <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
 
-                            {/* Delete Single Warehouse */}
-                            <Route path="/warehouses/:id/delete" element={<WarehousesPage />} />
+                            {/* Delete Single Inventory Item from a Specific Warehouse*/}
+                            <Route path="/warehouses/:id/inventories/delete" element={<WarehouseDetails />} />
 
                             {/* Inventory Page */}
                             <Route path="/inventories" element={<InventoryPage />} />
@@ -48,11 +51,11 @@ function App() {
                             {/* Single Inventory Page */}
                             <Route path="/inventories/:id" element={<InventoryDetails />} />
 
-                            {/* Edit Single Inventory Item */}
-                            <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
-
                             {/* Delete Single Inventory Item */}
                             <Route path="/inventories/:id/delete" element={<InventoryPage />} />
+
+                            {/* Edit Single Inventory Item */}
+                            <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
 
                             {/* Catch-all to redirect to Home Page */}
                             <Route path="*" element={<Navigate to="/" />} />
