@@ -16,13 +16,11 @@ import './InventoryList.scss';
  */
 
 function InventoryList() {
-    //State
+    //States
     const [listData, setListData] = useState([]);
     const [deleteVisibility, setDeleteVisibility] = useState(false);
-    const [style, setStyle] = useState(false);
-    const [selectedItemId, setSelectedItemId] = useState(null); // Add this state variable
+    const [selectedItemId, setSelectedItemId] = useState(null);
 
-    
     //GET request
     useEffect(() => {
         //GET array of all inventories
@@ -33,27 +31,19 @@ function InventoryList() {
             });
     }, []);
 
-    // const deleteItemHandler = (id) => {
-    //     // setDeleteVisibility(!deleteVisibility);
-    //     // setStyle(!style);
-    //     setSelectedItemId(id); // Save the selected itemId in the state
-    //     setDeleteVisibility(true); // Show the DeleteInventory modal
-    //     setStyle(!style);
-    // }
-
-    // const deleteItemHandler = (id) => {
-
-    //     setDeleteVisibility(!deleteVisibility);
-    //     setStyle(!style);
-    
-    // }
-
-       // Function to handle when the delete button is clicked
-       const deleteItemHandler = (id) => {
+    // Function to handle when the delete button is clicked
+    const deleteItemHandler = (id) => {
         // Set the selectedItemId state with the id of the item to be deleted
         setSelectedItemId(id);
         // Show the delete modal
         setDeleteVisibility(true);
+    };
+
+    // Function to update the list after deletion
+    const updateListAfterDeletion = (deletedItemId) => {
+        // Filter out the deleted item from the listData array
+        const updatedList = listData.filter((item) => item.id !== deletedItemId);
+        setListData(updatedList);
     };
 
     return (
@@ -65,7 +55,7 @@ function InventoryList() {
                         <div className="inventory-list__mobile-column">
                             <div>
                                 <h2 className="inventory-list__mobile-title">Inventory Item</h2>
-                                <Link className="inventory-list__link" to={`/inventories/${item.id}`}>
+                                <Link className="inventory-list__link" to={`/inventories/${item.id}?from=inventory`}>
                                     <p className="inventory-list__name">{item.item_name}</p>
                                     <img className="inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
                                 </Link>
@@ -78,7 +68,7 @@ function InventoryList() {
                         <div className="inventory-list__mobile-column">
                             <div>
                                 <h2 className="inventory-list__mobile-title">Status</h2>
-                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                                <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
                                     <p className="inventory-list__status">{item.status}</p>
                                 </div>
                             </div>
@@ -95,8 +85,8 @@ function InventoryList() {
                     <div>
                         <div className="inventory-list__buttons">
                             <Link to={`/inventories/${item.id}/delete`} >
-                                    <img className="inventory-list__delete" src={deleteIcon} onClick={deleteItemHandler} alt="Delete Inventory Button"/>
-                                </Link>
+                            <img className="inventory-list__delete" src={deleteIcon} onClick={() => deleteItemHandler(item.id)} alt="Delete Inventory Button"/>
+                            </Link>
                             <Link to={`/inventories/${item.id}/edit`}>
                                     <img className="inventory-list__edit" src={editIcon} alt="Edit Inventory Button" />
                             </Link>
@@ -163,7 +153,7 @@ function InventoryList() {
                             </td>
 
                             <td className="inventory-list__data">
-                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                            <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
                                     <p className="inventory-list__status">{item.status}</p>
                                 </div>
                             </td>
@@ -192,7 +182,7 @@ function InventoryList() {
             </table>
             {/* Render the DeleteInventory component only when deleteVisibility is true */}
             {deleteVisibility && (
-                <div className="delete__component--wrap">
+                <div>
                     {/* Pass the array, page, and the deleteItemHandler function to the DeleteInventory component */}
                     <DeleteInventory
                         array={listData}
@@ -202,6 +192,7 @@ function InventoryList() {
                             setDeleteVisibility(false);
                             setSelectedItemId(null);
                         }}
+                        updateListAfterDeletion={updateListAfterDeletion}
                     />
                 </div>
             )}

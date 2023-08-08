@@ -20,26 +20,30 @@ function EditWarehouse() {
 
     //GET request to get array of warehuose
     useEffect(() => {
-    const URL = `http://localhost:5050/api/warehouses/${id}`;
-    axios.get(URL).then((res) => {
-        //Store Warehouse data in data
-        const data = res.data[0];
+        const URL = `http://localhost:5050/api/warehouses/${id}`;
+        axios.get(URL).then((res) => {
+            //Store Warehouse data in data
+            const data = res.data[0];
 
-        // Data variables
-        const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email}= data;
+            // Data variables
+            const {warehouse_name, address, city, country, contact_name, contact_position, contact_phone, contact_email}= data;
 
-        //set FormData to the warehouse object
-        setFormData({  
-        warehouse_name: warehouse_name,
-        address: address,
-        city: city,
-        country: country,
-        contact_name: contact_name,
-        contact_position: contact_position,
-        contact_phone: contact_phone,
-        contact_email: contact_email
-    });
-    });
+            //set FormData to the warehouse object
+            setFormData({  
+            warehouse_name: warehouse_name,
+            address: address,
+            city: city,
+            country: country,
+            contact_name: contact_name,
+            contact_position: contact_position,
+            contact_phone: contact_phone,
+            contact_email: contact_email
+            });
+        });
+
+        // scroll to top
+        window.scrollTo(0, 0);
+
     }, []);
 
     //Handle Change

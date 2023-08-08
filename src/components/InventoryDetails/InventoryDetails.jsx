@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import editIcon from "../../assets/icons/edit-white-24px.svg";
 import backArrowIcon from "../../assets/icons/arrow_back-24px.svg";
@@ -12,14 +12,23 @@ import "./InventoryDetails.scss";
  * - Represents the details of a specific inventory item
  * - Includes item name, description, category, status, quantity, warehouse
  * - Has an editing function
+ * - Utilizes URL query parameters to determine where to go back based on where the user came from
  */
 
 function InventoryDetails() {
     //State
     const [details, setDetails] = useState([]);
+    const [warehouseId, setWarehouseId] = useState([]);
 
     //Get current id
     const { id } = useParams();
+
+    // Get the location object from the router
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const fromWarehouse = queryParams.get("from") === "warehouse";
+
+    console.log("fromWarehouse:", fromWarehouse);
 
     //GET request
     useEffect(() => {
@@ -28,6 +37,15 @@ function InventoryDetails() {
         axios.get(inventoriesURL)
             .then((response) => {
                 setDetails(response.data);
+          });
+    }, []);
+
+    useEffect(() => {
+        //GET array of all inventories
+        const warehousesURL = "http://localhost:5050/api/warehouses";
+        axios.get(warehousesURL)
+            .then((response) => {
+                setWarehouseId(response.data);
           });
     }, []);
 
@@ -55,17 +73,27 @@ function InventoryDetails() {
                     {details.map((item) => {
                         // If item id is equal to url id, build component below with that data
                         if (item.id == id) {
+                            const correspondingWarehouse = warehouseId.find(
+                                warehouse => warehouse.warehouse_name === item.warehouse_name
+                            );
                             return (
                                 <div>
                                     <div className="inventory-details__header">
                                         <div className="inventory-details__heading">
-                                            <Link to={`/inventories?from=warehouse`}>
-                                                <img
-                                                    className="inventory-details__icon"
-                                                    src={backArrowIcon}
-                                                    alt="Back Arrow Icon"
-                                                />
-                                            </Link>
+                                            {/* Determine where to go back based on where the user came from */}
+                                            {correspondingWarehouse && (
+                                                <Link to={
+                                                    fromWarehouse
+                                                        ? `/warehouses/${correspondingWarehouse.id}`
+                                                        : `/inventories`
+                                                }> 
+                                                    <img
+                                                        className="inventory-details__icon"
+                                                        src={backArrowIcon}
+                                                        alt="Back Arrow Icon"
+                                                    />
+                                                </Link>
+                                            )}
                                             <h1 className="inventory-details__title">{item.item_name}</h1>
                                         </div>
 
@@ -92,7 +120,7 @@ function InventoryDetails() {
                                                 <div>
                                                     <h2 className="inventory-details__subtitle">Status:</h2>
 
-                                                    <div className={item.status === 'In Stock' ? 'inventory-details__in-stock' : 'inventory-details__out-of-stock'}>
+                                                    <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-details__in-stock' : item.status.toLowerCase() === 'out of stock' ? 'inventory-details__out-of-stock' : ''}>
                                                         <p className="inventory-details__status">{item.status}</p>
                                                     </div>
                                                 </div>

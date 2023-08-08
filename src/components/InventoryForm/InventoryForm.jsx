@@ -89,11 +89,8 @@ function InventoryForm({ onCancelAddItem }) {
         if (!formValues.status) {
           errors.status = "This field is required";
         }
-        if (!formValues.status) {
-            errors.status = "This field is required";
-        }
         if (formValues.status === "in stock" && (!formValues.quantity || isNaN(parseInt(formValues.quantity)) || parseInt(formValues.quantity) <= 0)) {
-        errors.quantity = "Invalid quantity";
+            errors.quantity = "Invalid quantity";
         }
         if (!formValues.warehouse || formValues.warehouse === "Please select") {
           errors.warehouse = "This field is required";
@@ -102,6 +99,7 @@ function InventoryForm({ onCancelAddItem }) {
 
         // If there are errors, set them in the state and prevent form submission
         if (Object.keys(errors).length > 0) {
+            setFormErrors(errors); // Set specific errors
             return;
         }
 
@@ -155,7 +153,11 @@ function InventoryForm({ onCancelAddItem }) {
                         name="name"
                         placeholder="Item Name"
                         value={formValues.name}
-                        onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                        onChange={(e) => {
+                            setFormValues({ ...formValues, name: e.target.value });
+                            // Clear the error message for the name field
+                            setFormErrors((prevErrors) => ({ ...prevErrors, name: "" }));
+                        }}
                     ></input>
                     {/* Item name error message */}
                     {formErrors.name && (
@@ -175,7 +177,11 @@ function InventoryForm({ onCancelAddItem }) {
                         rows="5"
                         placeholder="Please enter a brief item description..."
                         value={formValues.description}
-                        onChange={(e) => setFormValues({ ...formValues, description: e.target.value })}
+                        onChange={(e) => {
+                            setFormValues({ ...formValues, description: e.target.value });
+                            // Clear the error message for the name field
+                            setFormErrors((prevErrors) => ({ ...prevErrors, description: "" }));
+                        }}
                     ></textarea>
                     {/* Item description error message */}
                     {formErrors.description && (
@@ -193,7 +199,11 @@ function InventoryForm({ onCancelAddItem }) {
                         name="category"
                         id="category"
                         value={formValues.category}
-                        onChange={(e) => setFormValues({ ...formValues, category: e.target.value })}
+                        onChange={(e) => {
+                            setFormValues({ ...formValues, category: e.target.value });
+                            // Clear the error message for the name field
+                            setFormErrors((prevErrors) => ({ ...prevErrors, category: "" }));
+                        }}
                     >
                         <option className="inventory-form__placeholder">Please select</option>
                         {[...categories].map((category, index) => (
@@ -261,7 +271,11 @@ function InventoryForm({ onCancelAddItem }) {
                                 id="quantity"
                                 name="quantity"
                                 value={formValues.quantity}
-                                onChange={(e) => setFormValues({ ...formValues, quantity: e.target.value })}
+                                onChange={(e) => {
+                                    setFormValues({ ...formValues, quantity: e.target.value });
+                                    // Clear the error message for the name field
+                                    setFormErrors((prevErrors) => ({ ...prevErrors, quantity: "" }));
+                                }}
                             />
                             {/* Quantity error message */}
                             {formErrors.quantity && (
@@ -281,7 +295,11 @@ function InventoryForm({ onCancelAddItem }) {
                         name="warehouse"
                         id="warehouse"
                         value={formValues.warehouse}
-                        onChange={(e) => setFormValues({ ...formValues, warehouse: e.target.value })}
+                        onChange={(e) => {
+                            setFormValues({ ...formValues, warehouse: e.target.value });
+                            // Clear the error message for the name field
+                            setFormErrors((prevErrors) => ({ ...prevErrors, warehouse: "" }));
+                        }}
                     >
                         <option>Please select</option>
                         {warehouses.map((warehouse) => (

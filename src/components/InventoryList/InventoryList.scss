@@ -493,6 +493,7 @@
 
     &__delete {
         width: 20px;
+        cursor: pointer;
 
         @include tablet {
             width: 22px;
@@ -502,6 +503,7 @@
 
     &__edit {
         width: 20px;
+        cursor: pointer;
 
         @include tablet {
             width: 22px;

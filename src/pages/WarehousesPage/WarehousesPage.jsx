@@ -8,6 +8,8 @@ import './WarehousesPage.scss';
 function WarehousesPage() {
     // State to track whether "Add New Warehouse" button is clicked
     const [showAddWarehouse, setShowAddWarehouse] = useState(false);
+    // State to hold the list of warehouses
+    const [warehouses, setWarehouses] = useState([]); 
 
     // Function to handle when "Add New Warehouse" button is clicked
     const handleAddWarehouseClick = () => {
@@ -17,6 +19,12 @@ function WarehousesPage() {
     // Function to handle when "Cancel" button is clicked in AddNewWarehouse component
     const handleCancelAddWarehouse = () => {
         setShowAddWarehouse(false);
+    };
+
+    // Function to update the warehouse list state with the newly added warehouse
+    const handleAddWarehouse = (newWarehouse) => {
+        setWarehouses([...warehouses, newWarehouse]);
+        setShowAddWarehouse(false); // Close the AddNewWarehouse component
     };
 
     return (
@@ -37,7 +45,7 @@ function WarehousesPage() {
             {/* Conditional rendering based on "showAddWarehouse" state */}
             {showAddWarehouse ? (
                 // Render the AddNewWarehouse component when "showAddWarehouse" is true
-                <AddNewWarehouse onCancelAddWarehouse={handleCancelAddWarehouse} />
+                <AddNewWarehouse onCancelAddWarehouse={handleCancelAddWarehouse} onAddWarehouse={handleAddWarehouse}/>
             ) : (
                 // Render the WarehouseList component when "showAddWarehouse" is false
                 <WarehouseList />

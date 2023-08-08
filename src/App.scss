@@ -3,11 +3,17 @@
 @use './styles/partials/mixins' as *;
 
 .App {
-    background-color: $secondary-background-hover-color;
-    height: 175px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-    @include tablet {
-        height: 185px;
+    &__container {
+        background-color: $secondary-background-hover-color;
+        height: 175px;
+
+        @include tablet {
+            height: 185px;
+        }
     }
 
     &__page {

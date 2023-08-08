@@ -49,7 +49,6 @@ function InventoryPage() {
             ) : (
                 // Render the InventoryList component when "showAddItem" is false
                 <InventoryList />
-                // <DeleteInventory obj="television" page="inventory" />
             )}
         </div>        
     );
