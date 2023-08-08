@@ -8,12 +8,6 @@
     min-height: 100vh;
 
     &__container {
-        flex: 1; 
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__content {
         background-color: $secondary-background-hover-color;
         height: 175px;
 
