@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import forwardArrow from "../../assets/icons/chevron_right-24px.svg";
@@ -65,7 +65,7 @@ function WarehouseInventoryList() {
                       <div className="warehouse-inventory-list__mobile-column">
                           <div>
                                 <h2 className="warehouse-inventory-list__mobile-title">Inventory Item</h2>
-                                <Link className="warehouse-inventory-list__link" to={`/inventories/${item.id}`}>
+                                <Link className="warehouse-inventory-list__link" to={`/inventories/${item.id}?from=warehouse`}>
                                     <p className="warehouse-inventory-list__name">{item.item_name}</p>
                                     <img className="warehouse-inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
                                 </Link>
@@ -141,7 +141,7 @@ function WarehouseInventoryList() {
                       <tr className="warehouse-inventory-list__row-body" key={item.id}>
                           <td className="warehouse-inventory-list__data">
                               <div>
-                                  <Link className="warehouse-inventory-list__link" to={`/inventories/${item.id}`}>
+                                  <Link className="warehouse-inventory-list__link" to={`/inventories/${item.id}?from=warehouse`}>
                                       <p className="warehouse-inventory-list__name">{item.item_name}</p>
                                       <img className="warehouse-inventory-list__link-icon" src={forwardArrowIcon} alt="Forward Arrow Icon" />
                                   </Link>
