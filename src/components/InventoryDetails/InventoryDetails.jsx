@@ -120,7 +120,7 @@ function InventoryDetails() {
                                                 <div>
                                                     <h2 className="inventory-details__subtitle">Status:</h2>
 
-                                                    <div className={item.status === 'In Stock' ? 'inventory-details__in-stock' : 'inventory-details__out-of-stock'}>
+                                                    <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-details__in-stock' : item.status.toLowerCase() === 'out of stock' ? 'inventory-details__out-of-stock' : ''}>
                                                         <p className="inventory-details__status">{item.status}</p>
                                                     </div>
                                                 </div>

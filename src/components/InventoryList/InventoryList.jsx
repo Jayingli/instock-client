@@ -68,7 +68,7 @@ function InventoryList() {
                         <div className="inventory-list__mobile-column">
                             <div>
                                 <h2 className="inventory-list__mobile-title">Status</h2>
-                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                                <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
                                     <p className="inventory-list__status">{item.status}</p>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@ function InventoryList() {
                             </td>
 
                             <td className="inventory-list__data">
-                                <div className={item.status === 'In Stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
+                            <div className={item.status.toLowerCase() === 'in stock' ? 'inventory-list__in-stock' : 'inventory-list__out-of-stock'}>
                                     <p className="inventory-list__status">{item.status}</p>
                                 </div>
                             </td>
