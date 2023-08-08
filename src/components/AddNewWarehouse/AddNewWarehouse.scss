@@ -110,7 +110,7 @@
 
     &__error-message {
         @include mobile-text-bodysmall-p3();
-        margin-top: 0.25rem;
+        margin-top: -0.25rem;
         color: $label-outofstock-color;
         padding-left: 1.25rem;
         background-image: url('../../assets/icons/error-24px.svg'); 
@@ -120,7 +120,7 @@
 
         @include tablet {
             @include tablet-text-bodysmall-p3();
-            margin-top: 0.25rem;
+            margin-top: -0.4rem;
         }
     }
 

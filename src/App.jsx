@@ -21,42 +21,44 @@ function App() {
         <BrowserRouter>
             <div className="App">
                 <div className="App__container">
-                    {/* Header Component */}
-                    <Header />
-                
-                    {/* Define routes for different pages */}
-                    <div className="App__page">
-                        <Routes>
-                            {/* Home Page */}
-                            <Route path="/" element={<Navigate to="/warehouses" />} />
+                    <div className="App__content">
+                        {/* Header Component */}
+                        <Header />
 
-                            {/* Warehouses Page */}
-                            <Route path="/warehouses" element={<WarehousesPage />} />
+                        {/* Define routes for different pages */}
+                        <div className="App__page">
+                            <Routes>
+                                {/* Home Page */}
+                                <Route path="/" element={<Navigate to="/warehouses" />} />
 
-                            {/* Single Warehouse Page */}
-                            <Route path="/warehouses/:id" element={<WarehouseDetails />} />
+                                {/* Warehouses Page */}
+                                <Route path="/warehouses" element={<WarehousesPage />} />
 
-                            {/* Edit Single Warehouse */}
-                            <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
+                                {/* Single Warehouse Page */}
+                                <Route path="/warehouses/:id" element={<WarehouseDetails />} />
 
-                            {/* Delete Single Warehouse */}
-                            <Route path="/warehouses/:id/delete" element={<WarehousesPage />} />
+                                {/* Edit Single Warehouse */}
+                                <Route path="/warehouses/:id/edit" element={<EditWarehouse />} />
 
-                            {/* Inventory Page */}
-                            <Route path="/inventories" element={<InventoryPage />} />
+                                {/* Delete Single Warehouse */}
+                                <Route path="/warehouses/:id/delete" element={<WarehousesPage />} />
 
-                            {/* Single Inventory Page */}
-                            <Route path="/inventories/:id" element={<InventoryDetails />} />
+                                {/* Inventory Page */}
+                                <Route path="/inventories" element={<InventoryPage />} />
 
-                            {/* Edit Single Inventory Item */}
-                            <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
+                                {/* Single Inventory Page */}
+                                <Route path="/inventories/:id" element={<InventoryDetails />} />
 
-                            {/* Delete Single Inventory Item */}
-                            <Route path="/inventories/:id/delete" element={<InventoryPage />} />
+                                {/* Edit Single Inventory Item */}
+                                <Route path="/inventories/:id/edit" element={<EditInventoryItem />} />
 
-                            {/* Catch-all to redirect to Home Page */}
-                            <Route path="*" element={<Navigate to="/" />} />
-                        </Routes>
+                                {/* Delete Single Inventory Item */}
+                                <Route path="/inventories/:id/delete" element={<InventoryPage />} />
+
+                                {/* Catch-all to redirect to Home Page */}
+                                <Route path="*" element={<Navigate to="/" />} />
+                            </Routes>
+                        </div>
                     </div>
             
                     {/* Footer Component */}

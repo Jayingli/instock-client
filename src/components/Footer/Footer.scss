@@ -5,7 +5,8 @@
     @include mobile-padding();
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    margin-top: auto;
     height: 75px;
 
     @include tablet {

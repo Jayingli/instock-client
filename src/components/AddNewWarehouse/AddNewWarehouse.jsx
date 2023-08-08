@@ -11,9 +11,7 @@ import axios from "axios";
  */
 
 const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
-    //Variables
-    // const baseURL = process.env.REACT_APP_BASE_URL;
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     //States
     const [warehouseState, setWarehouseState] = useState({
@@ -180,9 +178,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={
-                            !warehouse_name ? errorFieldRequiredShow : errorFieldRequiredHide
-                            }
+                            style={!warehouse_name && !isFieldsValid() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -201,7 +197,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={!address ? errorFieldRequiredShow : errorFieldRequiredHide}
+                            style={address && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -220,7 +216,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={!city ? errorFieldRequiredShow : errorFieldRequiredHide}
+                            style={city && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -239,7 +235,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={!country ? errorFieldRequiredShow : errorFieldRequiredHide}
+                            style={country && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -263,9 +259,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={
-                            !contact_name ? errorFieldRequiredShow : errorFieldRequiredHide
-                            }
+                            style={!contact_name && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -285,11 +279,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={
-                            !contact_position
-                                ? errorFieldRequiredShow
-                                : errorFieldRequiredHide
-                            }
+                            style={!contact_position && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -309,9 +299,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={
-                            !contact_phone ? errorFieldRequiredShow : errorFieldRequiredHide
-                            }
+                            style={!contact_phone && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
@@ -331,9 +319,7 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                         {/* Error state field required */}
                         <div
                             className="add-warehouse__error-message"
-                            style={
-                            !contact_email ? errorFieldRequiredShow : errorFieldRequiredHide
-                            }
+                            style={!contact_email && !isValidForm() ? errorFieldRequiredShow : errorFieldRequiredHide}
                         >
                             <p>This field is required</p>
                         </div>
