@@ -11,7 +11,7 @@ import axios from "axios";
  */
 
 
-const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
+const AddNewWarehouse = ({ onCancelAddWarehouse, onAddWarehouse }) => {
 
     let navigate = useNavigate();
 
@@ -139,6 +139,8 @@ const AddNewWarehouse = ({ onCancelAddWarehouse }) => {
                 .post("http://localhost:5050/api/warehouses", warehouseState)
                 .then((res) => {
                 console.log(res);
+                // Call the onAddWarehouse callback to update the parent's state
+                onAddWarehouse(res.data);
                 })
                 .catch((err) => {
                 console.log(err);
