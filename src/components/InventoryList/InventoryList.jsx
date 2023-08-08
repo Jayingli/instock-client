@@ -39,6 +39,13 @@ function InventoryList() {
         setDeleteVisibility(true);
     };
 
+    // Function to update the list after deletion
+    const updateListAfterDeletion = (deletedItemId) => {
+        // Filter out the deleted item from the listData array
+        const updatedList = listData.filter((item) => item.id !== deletedItemId);
+        setListData(updatedList);
+    };
+
     return (
         <div className="inventory-list">
             {/* Mobile View */}
@@ -185,6 +192,7 @@ function InventoryList() {
                             setDeleteVisibility(false);
                             setSelectedItemId(null);
                         }}
+                        updateListAfterDeletion={updateListAfterDeletion}
                     />
                 </div>
             )}

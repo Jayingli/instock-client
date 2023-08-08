@@ -44,6 +44,13 @@ function WarehouseList() {
         setDeleteVisibility(true);
     }
 
+    // Function to update the list after deletion
+    const updateListAfterDeletion = (deletedItemId) => {
+        // Filter out the deleted item from the listData array
+        const updatedList = listData.filter((item) => item.id !== deletedItemId);
+        setListData(updatedList);
+    };
+
     //Query change handler
     const orderByToggle = () => {
         if (orderBy === "asc") {
@@ -176,6 +183,7 @@ function WarehouseList() {
                             setDeleteVisibility(false);
                             setSelectedItemId(null);
                         }}
+                        updateListAfterDeletion={updateListAfterDeletion}
                     />
                 </div>
             )}

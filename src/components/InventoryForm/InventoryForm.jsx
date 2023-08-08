@@ -121,8 +121,6 @@ function InventoryForm({ onCancelAddItem }) {
         .post("http://localhost:5050/api/inventories", newItem)
         .then((response) => {
             console.log("New item added:", response.data);
-            // Reload the page after successful submission
-            window.location.reload();
         })
         .catch((error) => console.error("Failed to add item:", error));
 

@@ -10,7 +10,7 @@ import './DeleteWarehouse.scss';
  * - Can cancel, delete or close
  */
 
-function DeleteWarehouse({ array, page, deleteItemHandler}) {
+function DeleteWarehouse({ array, page, deleteItemHandler, updateListAfterDeletion}) {
 
     const {id} = useParams();
 
@@ -34,6 +34,7 @@ function DeleteWarehouse({ array, page, deleteItemHandler}) {
         .then((res) => {
             console.log(`deleted post with id ${id}`);
             deleteItemHandler();
+            updateListAfterDeletion(id); // Call the function to update the list after deletion
         })
 
         .catch((err) => {
