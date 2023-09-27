@@ -1,2 +1,3 @@
-InStock [Warehouse Management System]
-Collaborative Project
+**InStock [Warehouse Management System]**
+
+Collaborative Project || BRAINSTATION
