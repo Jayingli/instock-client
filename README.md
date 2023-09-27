@@ -1,1 +1,2 @@
-# instock
+InStock [Warehouse Management System]
+Collaborative Project
